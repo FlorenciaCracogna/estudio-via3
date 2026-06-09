@@ -55,10 +55,10 @@ export default function Navbar() {
           <Image
             src="/logo-color-subtitulo.svg"
             alt="Estudio VIA 3"
-            width={140}
-            height={40}
+            width={600}
+            height={160}
             priority
-            className="h-20 lg:h-20 w-auto"
+            className="h-12 md:h-16 lg:h-24 w-auto"
           />
         </Link>
 
