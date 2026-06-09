@@ -48,12 +48,18 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`${poppins.className} fixed top-0 w-full z-50 transition-all duration-300 bg-white ${scrolled ? "shadow-md" : ""}`}
+      className={`${poppins.className} fixed top-0 w-full z-50 transition-all duration-500 ${
+        scrolled ? "bg-white shadow-md" : "bg-transparent"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 lg:h-20">
         <Link href="/" className="flex-shrink-0">
           <Image
-            src="/logo-color-subtitulo.svg"
+            src={
+              scrolled
+                ? "/logo-color-subtitulo.svg"
+                : "/logo-blanco-subtitulo.svg"
+            }
             alt="Estudio VIA 3"
             width={600}
             height={160}
@@ -67,7 +73,11 @@ export default function Navbar() {
             <li key={label}>
               <Link
                 href={href}
-                className="flex items-center gap-1 text-sm font-medium tracking-wide uppercase transition-colors duration-200 text-gray-700 hover:text-[#99042F]"
+                className={`flex items-center gap-1 text-sm font-medium tracking-wide uppercase transition-colors duration-200 ${
+                  scrolled
+                    ? "text-gray-700 hover:text-[#99042F]"
+                    : "text-white hover:text-white/80"
+                }`}
               >
                 {label}
                 {dropdown && <ChevronDown />}
@@ -79,7 +89,7 @@ export default function Navbar() {
         <button
           onClick={() => setMobileOpen((prev) => !prev)}
           aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
-          className="lg:hidden p-2 text-gray-700"
+          className={`lg:hidden p-2 ${scrolled ? "text-gray-700" : "text-white"}`}
         >
           {mobileOpen ? (
             <svg
