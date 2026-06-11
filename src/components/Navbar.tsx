@@ -3,13 +3,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Poppins } from "next/font/google";
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-poppins",
-});
 
 const navLinks = [
   { label: "EL ESTUDIO", href: "#el-estudio" },
@@ -48,7 +41,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`${poppins.className} fixed top-0 w-full z-50 transition-all duration-500 ${
+      className={`font-poppins fixed top-0 w-full z-50 transition-all duration-500 ${
         scrolled ? "bg-white shadow-md" : "bg-transparent"
       }`}
     >

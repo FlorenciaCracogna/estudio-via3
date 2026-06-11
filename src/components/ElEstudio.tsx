@@ -1,12 +1,33 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
-const carouselImages = [
-  { src: "/estudio-grupo.jpg", alt: "Grupo Vía3" },
-  { src: "/estudio-reunion.jpeg", alt: "Reunión Vía3" },
-  { src: "/estudio-virtual.jpg", alt: "Reunión virtual Vía3" },
+const slots = [
+  {
+    images: [
+      { src: "/collage/collage-1.jpg", alt: "Vía3 actividad 1" },
+      { src: "/collage/collage-2.jpg", alt: "Vía3 actividad 2" },
+      { src: "/collage/collage-3.jpg", alt: "Vía3 actividad 3" },
+    ],
+    interval: 3000,
+  },
+  {
+    images: [
+      { src: "/collage/collage-4.jpg", alt: "Vía3 actividad 4" },
+      { src: "/collage/collage-5.jpg", alt: "Vía3 actividad 5" },
+      { src: "/collage/collage-6.jpg", alt: "Vía3 actividad 6" },
+    ],
+    interval: 5000,
+  },
+  {
+    images: [
+      { src: "/collage/collage-7.jpg", alt: "Vía3 actividad 7" },
+      { src: "/collage/collage-8.jpg", alt: "Vía3 actividad 8" },
+      { src: "/collage/collage-9.jpg", alt: "Vía3 actividad 9" },
+    ],
+    interval: 7000,
+  },
 ];
 
 const DotsGrid = () => (
@@ -23,20 +44,104 @@ const Arrows = () => (
   </span>
 );
 
-export default function ElEstudio() {
+function CollageSlot({
+  images,
+  interval,
+  className,
+}: {
+  images: { src: string; alt: string }[];
+  interval: number;
+  className?: string;
+}) {
   const [current, setCurrent] = useState(0);
+  const [hovered, setHovered] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    if (hovered) {
+      if (timerRef.current) clearInterval(timerRef.current);
+      return;
+    }
+    timerRef.current = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, interval);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [hovered, interval, images.length]);
+
+  return (
+    <div
+      className={`relative rounded-xl overflow-hidden shadow-lg cursor-pointer transition-all duration-500 ${
+        hovered ? "scale-120 brightness-110" : "brightness-90"
+      } ${className}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <Image
+        src={images[current].src}
+        alt={images[current].alt}
+        fill
+        className="object-cover transition-opacity duration-700"
+        sizes="25vw"
+      />
+    </div>
+  );
+}
+
+function MobileCarousel({
+  images,
+  interval,
+}: {
+  images: { src: string; alt: string }[];
+  interval: number;
+}) {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, interval);
+    return () => clearInterval(timer);
+  }, [interval, images.length]);
+
+  return (
+    <div className="relative h-56 rounded-xl overflow-hidden shadow-md">
+      <Image
+        src={images[current].src}
+        alt={images[current].alt}
+        fill
+        className="object-cover transition-all duration-500"
+        sizes="100vw"
+      />
+      {/* Dots indicadores */}
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+        {images.map((_, i) => (
+          <div
+            key={i}
+            className={`w-1.5 h-1.5 rounded-full transition-colors ${
+              i === current ? "bg-white" : "bg-white/40"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function ElEstudio() {
+  const allImages = slots.flatMap((s) => s.images);
 
   return (
     <section id="el-estudio" className="bg-white overflow-x-hidden w-full">
       {/* ── PARTE 1: Título + texto + foto que sobresale ── */}
-      <div className="relative py-16 md:py-24 overflow-hidden">
-        {/* Texto — siempre visible, en desktop tiene z-10 */}
+      <div className="relative py-16 md:py-24 overflow-hidden w-full max-w-full">
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12">
           <div className="md:max-w-[50%]">
-            <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center md:text-left mb-6">
+            <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center md:text-left mb-6 font-poppins">
               El Estudio
             </h2>
-            <p className="text-gray-700 text-base md:text-lg leading-loose">
+            <p className="text-gray-700 text-base md:text-lg leading-loose font-roboto">
               Somos una red dinámica de contactos entre personas y
               organizaciones, profesionales, empresas y marcas que,
               complementándose, hacen sinergia junto a Vía3 para brindar la
@@ -45,13 +150,7 @@ export default function ElEstudio() {
           </div>
         </div>
 
-        {/* Foto — en mobile: estática abajo del texto. En desktop: absolute derecha */}
-        <div
-          className="
-    relative w-full h-64 mt-8
-    md:absolute md:right-0 md:top-0 md:bottom-0 md:w-[55%] md:h-full md:mt-0
-  "
-        >
+        <div className="relative w-full h-64 mt-8 overflow-hidden md:absolute md:right-0 md:top-0 md:bottom-0 md:w-[55%] md:h-full md:mt-0">
           <Image
             src="/estudio-principal.jpg"
             alt="Equipo Estudio Vía3"
@@ -65,101 +164,50 @@ export default function ElEstudio() {
       </div>
 
       {/* ── PARTE 2: Collage + texto secundario ── */}
-      <div className="relative py-12 md:py-20 max-w-7xl mx-auto px-6 md:px-12">
-        {/* MOBILE: texto + carousel */}
-        <div className="md:hidden flex flex-col gap-6">
-          <p className="text-gray-700 text-base leading-loose">
+      <div className="relative py-12 md:py-20">
+        {/* MOBILE: texto + carrusel simple */}
+        <div className="md:hidden flex flex-col gap-6 px-6">
+          <p className="text-gray-700 text-base leading-loose font-roboto">
             Estamos convencidos que cada organización requiere sus propias
             soluciones para optimizar los procesos, mejorar el desempeño de sus
             colaboradores e integrarlos a la rentabilidad del negocio.
           </p>
-          <div className="relative h-56 rounded-xl overflow-hidden shadow-md">
-            <Image
-              src={carouselImages[current].src}
-              alt={carouselImages[current].alt}
-              fill
-              className="object-cover transition-all duration-500"
-              sizes="100vw"
-            />
-          </div>
-          <div className="flex items-center justify-center gap-4">
-            <button
-              onClick={() =>
-                setCurrent(
-                  (prev) =>
-                    (prev - 1 + carouselImages.length) % carouselImages.length,
-                )
-              }
-              className="w-8 h-8 rounded-full border border-gray-400 flex items-center justify-center text-gray-600 hover:border-[#99042F] hover:text-[#99042F] transition-colors"
-            >
-              ‹
-            </button>
-            <div className="flex gap-2">
-              {carouselImages.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  className={`w-2 h-2 rounded-full transition-colors ${i === current ? "bg-[#99042F]" : "bg-gray-300"}`}
-                />
-              ))}
-            </div>
-            <button
-              onClick={() =>
-                setCurrent((prev) => (prev + 1) % carouselImages.length)
-              }
-              className="w-8 h-8 rounded-full border border-gray-400 flex items-center justify-center text-gray-600 hover:border-[#99042F] hover:text-[#99042F] transition-colors"
-            >
-              ›
-            </button>
-          </div>
+          <MobileCarousel images={allImages} interval={3000} />
         </div>
 
-        {/* TABLET/DESKTOP: collage izquierda + texto derecha */}
-        <div className="hidden md:grid md:grid-cols-2 gap-10 items-center">
-          {/* Collage superpuesto */}
-          <div className="relative h-[380px] lg:h-[440px]">
-            <div className="absolute -left-10 top-8 z-10">
-              <Arrows />
-            </div>
+        {/* TABLET/DESKTOP: collage full-width izquierda + texto derecha */}
+        <div className="hidden md:grid md:grid-cols-[2fr_1fr] items-center">
+          {/* Columna izquierda — collage sin padding, llega al borde */}
+          <div className="relative pl-12 h-[560px] lg:h-[620px] overflow-hidden">
             {/* Foto chica arriba izquierda */}
-            <div className="absolute -left-4 top-0 w-[42%] h-[46%] rounded-xl overflow-hidden shadow-lg z-30">
-              <Image
-                src="/estudio-grupo.jpg"
-                alt="Grupo Vía3"
-                fill
-                className="object-cover"
-                sizes="25vw"
-              />
-            </div>
+            <CollageSlot
+              images={slots[0].images}
+              interval={slots[0].interval}
+              className="absolute left-0 top-0 w-[30%] h-[32%] z-20"
+            />
+
             {/* Foto grande centro */}
-            <div className="absolute left-24 top-20 w-[58%] h-[62%] rounded-xl overflow-hidden shadow-lg z-20">
-              <Image
-                src="/estudio-reunion.jpeg"
-                alt="Reunión Vía3"
-                fill
-                className="object-cover"
-                sizes="35vw"
-              />
-            </div>
+            <CollageSlot
+              images={slots[1].images}
+              interval={slots[1].interval}
+              className="absolute left-[20%] -top-5 w-[42%] h-[42%] z-30"
+            />
+
             {/* Foto chica abajo derecha */}
-            <div className="absolute right-2 bottom-4 w-[38%] h-[42%] rounded-xl overflow-hidden shadow-lg z-30">
-              <Image
-                src="/estudio-virtual.jpg"
-                alt="Virtual Vía3"
-                fill
-                className="object-cover"
-                sizes="25vw"
-              />
-            </div>
-            {/* Dots abajo */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-10">
-              <DotsGrid />
+            <CollageSlot
+              images={slots[2].images}
+              interval={slots[2].interval}
+              className="absolute left-[50%] -top-10 w-[30%] h-[32%] z-20"
+            />
+
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 z-10">
+              <Arrows />
             </div>
           </div>
 
-          {/* Texto derecha — alineado a la derecha como en Figma */}
-          <div className="flex flex-col gap-6 text-right">
-            <p className="text-gray-700 text-base md:text-lg leading-loose">
+          {/* Columna derecha — texto con padding */}
+          <div className="flex flex-col gap-6 text-left px-10">
+            <p className="text-gray-700 text-base md:text-lg leading-loose font-roboto">
               Estamos convencidos que cada organización requiere sus propias
               soluciones para optimizar los procesos, mejorar el desempeño de
               sus colaboradores e integrarlos a la rentabilidad del negocio.

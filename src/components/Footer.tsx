@@ -11,7 +11,7 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white font-[Poppins]">
+    <footer className="bg-black text-white font-poppins">
       {/* Contenido principal */}
       <div className="max-w-7xl mx-auto px-8 py-14 flex flex-col gap-8">
         <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr_1.6fr] gap-8 lg:gap-0">
