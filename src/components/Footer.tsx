@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 
 const navLinks = [
   { label: "Acerca de Vía3", href: "#acerca" },
@@ -9,7 +12,38 @@ const navLinks = [
   { label: "Contacto", href: "#contacto" },
 ];
 
+const sedes = [
+  {
+    nombre: "Sede Buenos Aires",
+    telefono: "+5411 51806029",
+    telefonoHref: "https://wa.me/541151806029",
+    mail: "julio.capra@estudiovia3.com.ar",
+    direccion: "Avda. Del Libertador 5582 – 14 D - CABA",
+    mapSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.7111432390343!2d-58.446970524946025!3d-34.56086835523525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb5c9608fdfa7%3A0xf9a8644fb79679d8!2sAv.%20del%20Libertador%205582%2C%20C1426%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1781016814668!5m2!1ses!2sar",
+    mapTitle: "Ubicación Sede Buenos Aires",
+  },
+  {
+    nombre: "Sede NEA",
+    telefono: "+54362 4388507",
+    telefonoHref: "https://wa.me/543624388507",
+    mail: "antonella.cracogna@estudiovia3.com.ar",
+    direccion: "Santiago del Estero 636 – Resistencia, Chaco",
+    mapSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1251.804769298111!2d-58.99637730380771!3d-27.449372720192862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450d76712d733f%3A0x231520d84f9cb6c7!2sLic.%20en%20Psicolog%C3%ADa%20Antonella%20Cracogna!5e0!3m2!1ses!2sar!4v1781707500043!5m2!1ses!2sar",
+    mapTitle: "Ubicación Sede NEA",
+  },
+];
+
 export default function Footer() {
+  const [sedeActiva, setSedeActiva] = useState(0);
+
+  const prev = () =>
+    setSedeActiva((i) => (i - 1 + sedes.length) % sedes.length);
+  const next = () => setSedeActiva((i) => (i + 1) % sedes.length);
+
+  const sede = sedes[sedeActiva];
+
   return (
     <footer className="bg-black text-white font-poppins">
       {/* Contenido principal */}
@@ -17,7 +51,6 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr_1.6fr] gap-8 lg:gap-0">
           {/* Columna 1: Logo + Redes sociales */}
           <div className="flex flex-col md:flex-row md:justify-around gap-6 lg:flex-col lg:w-64 shrink-0 items-center lg:items-center">
-            {/* Logo: símbolo + texto apilados */}
             <div className="flex flex-col items-center lg:items-center">
               <Image
                 src="/simbolo-color.svg"
@@ -35,7 +68,6 @@ export default function Footer() {
               />
             </div>
 
-            {/* Redes */}
             <div className="flex flex-col items-center lg:items-center -mt-15">
               <p className="font-semibold text-lg mb-4">Encontranos</p>
               <div className="flex flex-col gap-3">
@@ -78,55 +110,91 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Columna 3: Nuestras direcciones */}
-          <div className="bg-[#1a1a1a] rounded-xl p-6 flex flex-col gap-5 lg:flex-1">
+          {/* Columna 3: Nuestras direcciones (carrusel) */}
+          <div className="bg-[#1a1a1a] rounded-xl p-6 flex flex-col gap-4 lg:flex-1">
             <p className="font-semibold text-lg">Nuestras direcciones</p>
 
+            {/* Nombre de la sede */}
+            <p className="font-semibold text-base text-[#99042f]">
+              {sede.nombre}
+            </p>
+
             {/* Contacto */}
-            <div>
-              <p className="font-semibold text-base mb-3">Contacto</p>
-              <div className="flex flex-col gap-3">
-                <a
-                  href="https://wa.me/5491151806029"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-base text-gray-300 hover:text-white transition-colors"
-                >
-                  <WhatsAppIcon />
-                  +54 11.51806029
-                </a>
-                <a
-                  href="mailto:estudio@estudiovia3.com.ar"
-                  className="flex items-center gap-3 text-base text-gray-300 hover:text-white transition-colors"
-                >
+            <div className="flex flex-col gap-3">
+              <a
+                href={sede.telefonoHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-base text-gray-300 hover:text-white transition-colors"
+              >
+                <WhatsAppIcon />
+                {sede.telefono}
+              </a>
+              <a
+                href={`mailto:${sede.mail}`}
+                className="flex items-center gap-3 text-base text-gray-300 hover:text-white transition-colors min-w-0"
+              >
+                <span className="shrink-0">
                   <EmailIcon />
-                  estudio@estudiovia3.com.ar
-                </a>
-              </div>
+                </span>
+                <span className="break-all">{sede.mail}</span>
+              </a>
             </div>
 
-            {/* Dirección física */}
+            {/* Dirección */}
             <div>
               <p className="font-semibold text-base mb-1">
                 Estudio Vía3 S. R. L.
               </p>
-              <p className="text-base text-gray-300">
-                Av. Libertador 5582 - 14D
-              </p>
+              <p className="text-base text-gray-300">{sede.direccion}</p>
             </div>
 
             {/* Mapa */}
-            <div className="rounded-lg overflow-hidden h-36 w-full">
+            <div className="rounded-lg overflow-hidden h-36 md:h-48 w-full">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.7111432390343!2d-58.446970524946025!3d-34.56086835523525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb5c9608fdfa7%3A0xf9a8644fb79679d8!2sAv.%20del%20Libertador%205582%2C%20C1426%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1781016814668!5m2!1ses!2sar"
+                key={sedeActiva}
+                src={sede.mapSrc}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Ubicación Estudio Vía3"
+                title={sede.mapTitle}
               />
+            </div>
+
+            {/* Controles del carrusel */}
+            <div className="flex items-center justify-center gap-4 mt-1">
+              <button
+                onClick={prev}
+                aria-label="Sede anterior"
+                className="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center text-gray-300 hover:border-white hover:text-white transition-colors"
+              >
+                <ArrowLeftIcon />
+              </button>
+
+              {/* Puntos indicadores */}
+              <div className="flex gap-2">
+                {sedes.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setSedeActiva(i)}
+                    aria-label={`Ir a ${sedes[i].nombre}`}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      i === sedeActiva ? "bg-white" : "bg-gray-600"
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={next}
+                aria-label="Sede siguiente"
+                className="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center text-gray-300 hover:border-white hover:text-white transition-colors"
+              >
+                <ArrowRightIcon />
+              </button>
             </div>
           </div>
         </div>
@@ -182,6 +250,40 @@ function EmailIcon() {
     >
       <rect width="20" height="16" x="2" y="4" rx="2" />
       <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </svg>
+  );
+}
+
+function ArrowLeftIcon() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M15 18l-6-6 6-6" />
+    </svg>
+  );
+}
+
+function ArrowRightIcon() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M9 18l6-6-6-6" />
     </svg>
   );
 }
