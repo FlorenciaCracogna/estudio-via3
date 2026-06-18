@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="relative w-full h-screen min-h-[600px] md:min-h-[700px] max-h-[800px] md:max-h-[900px] lg:max-h-[800px] flex items-center">
       {/* Imagen de fondo */}
       <Image
-        src="/hero-bg.jpeg"
+        src="https://res.cloudinary.com/dg8rew4w9/image/upload/v1781807517/hero-bg_bc4nqs.jpg"
         alt="Equipo Estudio Vía3"
         fill
         priority

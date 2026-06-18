@@ -6,39 +6,39 @@ import { ChevronDown } from "lucide-react";
 const pilares = [
   {
     id: 1,
-    icon: "/icons/pilares/personas.png",
+    icon: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1781808683/personas_jiqoq9.png",
     texto: "Integramos a las personas a la rentabilidad del negocio.",
   },
   {
     id: 2,
-    icon: "/icons/pilares/chess-brain.png",
+    icon: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1781808664/chess-brain_zzbdy4.png",
     texto: "Relacionamos la dinámica organizacional con el aprendizaje.",
   },
   {
     id: 3,
-    icon: "/icons/pilares/target.png",
+    icon: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1781808689/target_lmxku9.png",
     texto:
       "Partimos siempre de las necesidades relacionadas con el desempeño laboral.",
   },
   {
     id: 4,
-    icon: "/icons/pilares/lightbulb.png",
+    icon: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1781808681/lightbulb_zzyz0p.png",
     texto: 'Nuestra prioridad es transferir el "saber hacer".',
   },
   {
     id: 5,
-    icon: "/icons/pilares/smile.png",
+    icon: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1781808687/smile_p4itot.png",
     texto: "Unimos el entusiasmo personal al compromiso en el servicio.",
   },
   {
     id: 6,
-    icon: "/icons/pilares/clipboard.png",
+    icon: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1781808679/clipboard_fgn4wb.png",
     texto:
       "Estamos convencidos que cada organización requiere sus propias soluciones.",
   },
   {
     id: 7,
-    icon: "/icons/pilares/puzzle.png",
+    icon: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1781808685/puzzle_rx2scb.png",
     texto:
       "Nos sentimos y actuamos como socios estratégicos de la organización.",
   },
@@ -51,7 +51,8 @@ export default function NuestrosPilares() {
     <section
       className="relative flex flex-col items-center px-2 md:px-8 py-16 overflow-hidden"
       style={{
-        backgroundImage: "url('/estudio-principal.jpg')",
+        backgroundImage:
+          "url('https://res.cloudinary.com/dg8rew4w9/image/upload/v1781807517/estudio-principal_qp6yxt.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

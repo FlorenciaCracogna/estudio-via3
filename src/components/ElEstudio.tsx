@@ -6,25 +6,52 @@ import { useState, useEffect, useRef } from "react";
 const slots = [
   {
     images: [
-      { src: "/collage/collage-1.jpg", alt: "Vía3 actividad 1" },
-      { src: "/collage/collage-2.jpg", alt: "Vía3 actividad 2" },
-      { src: "/collage/collage-3.jpg", alt: "Vía3 actividad 3" },
+      {
+        src: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1781808175/collage-1_dkxjx1.jpg",
+        alt: "Vía3 actividad 1",
+      },
+      {
+        src: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1781808183/collage-2_nbxwhh.jpg",
+        alt: "Vía3 actividad 2",
+      },
+      {
+        src: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1781808177/collage-3_ixtrri.jpg",
+        alt: "Vía3 actividad 3",
+      },
     ],
     interval: 3000,
   },
   {
     images: [
-      { src: "/collage/collage-4.jpg", alt: "Vía3 actividad 4" },
-      { src: "/collage/collage-5.jpg", alt: "Vía3 actividad 5" },
-      { src: "/collage/collage-6.jpg", alt: "Vía3 actividad 6" },
+      {
+        src: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1781808176/collage-4_pf5yaz.jpg",
+        alt: "Vía3 actividad 4",
+      },
+      {
+        src: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1781808179/collage-5_jje6jd.jpg",
+        alt: "Vía3 actividad 5",
+      },
+      {
+        src: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1781808181/collage-6_shg0ct.jpg",
+        alt: "Vía3 actividad 6",
+      },
     ],
     interval: 5000,
   },
   {
     images: [
-      { src: "/collage/collage-7.jpg", alt: "Vía3 actividad 7" },
-      { src: "/collage/collage-8.jpg", alt: "Vía3 actividad 8" },
-      { src: "/collage/collage-9.jpg", alt: "Vía3 actividad 9" },
+      {
+        src: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1781808182/collage-7_vj7iv2.jpg",
+        alt: "Vía3 actividad 7",
+      },
+      {
+        src: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1781808184/collage-8_mgzj2u.jpg",
+        alt: "Vía3 actividad 8",
+      },
+      {
+        src: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1781808187/collage-9_toxeot.jpg",
+        alt: "Vía3 actividad 9",
+      },
     ],
     interval: 7000,
   },
@@ -152,7 +179,7 @@ export default function ElEstudio() {
 
         <div className="relative w-full h-64 mt-8 overflow-hidden md:absolute md:right-0 md:top-0 md:bottom-0 md:w-[55%] md:h-full md:mt-0">
           <Image
-            src="/estudio-principal.jpg"
+            src="https://res.cloudinary.com/dg8rew4w9/image/upload/v1781807517/estudio-principal_qp6yxt.jpg"
             alt="Equipo Estudio Vía3"
             fill
             className="object-cover object-center"
