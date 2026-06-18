@@ -1,11 +1,13 @@
 import Hero from "@/components/Hero";
 import ElEstudio from "@/components/ElEstudio";
+import NuestrosPilares from "@/components/NuestrosPilares";
 
 export default function Home() {
   return (
     <main>
       <Hero />
       <ElEstudio />
+      <NuestrosPilares />
     </main>
   );
 }
