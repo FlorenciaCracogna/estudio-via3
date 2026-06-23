@@ -60,7 +60,7 @@ export default function NuestrosPilares() {
       <div className="absolute inset-0 bg-black/90" />
 
       <div className="relative z-10 text-center w-full max-w-4xl">
-        <h2 className="font-poppins font-bold text-white tracking-widest text-3xl md:text-4xl mb-4">
+        <h2 className="titulo-seccion font-poppins font-bold text-white tracking-widest text-3xl md:text-4xl mb-4">
           NUESTROS PILARES
         </h2>
         <p className="font-roboto italic text-white/85 text-base md:text-base leading-relaxed max-w-2xl mx-auto mb-8">

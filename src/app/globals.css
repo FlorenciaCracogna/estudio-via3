@@ -9,3 +9,7 @@ body {
   background: #ffffff;
   color: #171717;
 }
+
+.titulo-seccion {
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}

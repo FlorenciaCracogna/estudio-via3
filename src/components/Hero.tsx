@@ -17,7 +17,7 @@ export default function Hero() {
 
       {/* Contenido */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col items-center text-center text-white gap-6">
-        <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold uppercase tracking-wide leading-tight px-4">
+        <h1 className="titulo-seccion text-3xl md:text-4xl lg:text-6xl font-bold uppercase tracking-wide leading-tight px-4">
           Aprendizaje Organizacional
         </h1>
 

@@ -29,7 +29,7 @@ export default function Nosotros() {
             />
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center font-poppins mb-4">
+          <h2 className="titulo-seccion text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center font-poppins mb-4">
             Nosotros
           </h2>
           <p className="text-gray-800 text-sm md:text-base text-center max-w-2xl font-roboto">
@@ -63,7 +63,7 @@ export default function Nosotros() {
                 className="flex flex-col items-center gap-3 group cursor-pointer"
               >
                 {/* Foto circular */}
-                <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-4 ring-transparent group-hover:ring-[#aaaaaa] transition-all duration-300 shadow-md bg-white">
+                <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-4 ring-transparent group-hover:ring-[#DBCAB9] transition-all duration-300 shadow-md bg-white">
                   <Image
                     src={persona.foto}
                     alt={nombreCorto(persona.nombre)}
@@ -73,7 +73,7 @@ export default function Nosotros() {
                   />
                 </div>
                 {/* Nombre sin "Lic." */}
-                <span className="text-center text-sm md:text-base font-semibold text-gray-800 group-hover:text-[#aaaaaa] transition-colors duration-300 font-roboto leading-tight">
+                <span className="text-center text-sm md:text-base font-semibold text-gray-800 group-hover:text-[#DBCAB9] transition-colors duration-300 font-roboto leading-tight">
                   {nombreCorto(persona.nombre)}
                 </span>
               </Link>
