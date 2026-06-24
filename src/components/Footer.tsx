@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 const navLinks = [
-  { label: "Acerca de Vía3", href: "#acerca" },
+  { label: "Acerca de Vía 3", href: "#el-estudio" },
   { label: "Nosotros", href: "#nosotros" },
   { label: "Soluciones", href: "#soluciones" },
   { label: "Clientes", href: "#clientes" },
