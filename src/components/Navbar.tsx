@@ -52,7 +52,16 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 lg:h-20">
         {/* Logo — siempre va al inicio */}
-        <Link href="/" className="flex-shrink-0">
+        <Link
+          href={pathname === "/" ? "/" : "/"}
+          onClick={(e) => {
+            if (pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
+          className="flex-shrink-0"
+        >
           <Image
             src={
               scrolled
