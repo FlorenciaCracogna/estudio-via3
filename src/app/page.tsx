@@ -4,6 +4,7 @@ import NuestrosPilares from "@/components/NuestrosPilares";
 import Nosotros from "@/components/Nosotros";
 import Partnerships from "@/components/Partnerships";
 import Clientes from "@/components/Clientes";
+import Contacto from "@/components/Contacto";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Nosotros />
       <Partnerships />
       <Clientes />
+      <Contacto />
     </main>
   );
 }
