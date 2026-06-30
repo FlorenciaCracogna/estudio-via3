@@ -4,6 +4,7 @@ import NuestrosPilares from "@/components/NuestrosPilares";
 import Nosotros from "@/components/Nosotros";
 import Partnerships from "@/components/Partnerships";
 import Clientes from "@/components/Clientes";
+import Novedades from "@/components/Novedades";
 import Contacto from "@/components/Contacto";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <Nosotros />
       <Partnerships />
       <Clientes />
+      <Novedades />
       <Contacto />
     </main>
   );

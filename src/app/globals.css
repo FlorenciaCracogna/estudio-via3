@@ -8,8 +8,23 @@
 body {
   background: #ffffff;
   color: #171717;
+  overflow-x: hidden;
 }
 
 .titulo-seccion {
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 90px;
+}
+
+@media (min-width: 1024px) {
+  section[id] {
+    scroll-margin-top: 100px;
+  }
 }

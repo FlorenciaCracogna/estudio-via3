@@ -14,22 +14,6 @@ const navLinks = [
   { label: "CONTACTO", hash: "contacto" },
 ];
 
-const ChevronDown = () => (
-  <svg
-    className="w-3 h-3"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M19 9l-7 7-7-7"
-    />
-  </svg>
-);
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -46,12 +30,20 @@ export default function Navbar() {
     return `/#${hash}`;
   };
 
+  const handleNavClick = (e: React.MouseEvent, hash: string) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      document.getElementById(hash)?.scrollIntoView({ behavior: "smooth" });
+    }
+    setMobileOpen(false);
+  };
+
   return (
     <nav
       className={`font-poppins fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? "bg-white shadow-md" : "bg-transparent"}`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 lg:h-20">
-        {/* Logo — siempre va al inicio */}
+        {/* Logo */}
         <Link
           href={pathname === "/" ? "/" : "/"}
           onClick={(e) => {
@@ -82,6 +74,7 @@ export default function Navbar() {
             <li key={label}>
               <Link
                 href={getHref(hash)}
+                onClick={(e) => handleNavClick(e, hash)}
                 className={`flex items-center gap-1 text-sm font-medium tracking-wide uppercase transition-colors duration-200 ${
                   scrolled
                     ? "text-gray-700 hover:text-[#99042F]"
@@ -140,7 +133,7 @@ export default function Navbar() {
               <li key={label}>
                 <Link
                   href={getHref(hash)}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => handleNavClick(e, hash)}
                   className="flex items-center justify-between px-6 py-3 text-sm font-medium tracking-wide uppercase text-gray-700 hover:text-[#99042F] transition-colors duration-200"
                 >
                   {label}
