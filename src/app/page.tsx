@@ -6,6 +6,7 @@ import Partnerships from "@/components/Partnerships";
 import Clientes from "@/components/Clientes";
 import Novedades from "@/components/Novedades";
 import Contacto from "@/components/Contacto";
+import Soluciones from "@/components/Soluciones";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <ElEstudio />
       <NuestrosPilares />
       <Nosotros />
+      <Soluciones />
       <Partnerships />
       <Clientes />
       <Novedades />

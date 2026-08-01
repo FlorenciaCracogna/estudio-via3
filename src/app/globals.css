@@ -5,6 +5,12 @@
   --font-roboto: var(--font-roboto);
 }
 
+@custom-variant can-hover {
+  @media (hover: hover) and (pointer: fine) {
+    @slot;
+  }
+}
+
 body {
   background: #ffffff;
   color: #171717;
