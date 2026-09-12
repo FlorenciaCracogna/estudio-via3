@@ -1,14 +1,19 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
-import { soluciones } from "@/data/soluciones";
+import { soluciones, type Solucion } from "@/data/soluciones";
 import SolucionCard from "./SolucionCard";
+import SolucionModal from "./SolucionModal";
 
 export default function Soluciones() {
+  const [activa, setActiva] = useState<Solucion | null>(null);
+
   return (
     <section
       id="soluciones"
       className="relative bg-[#7A0326] py-16 md:py-20 overflow-hidden"
     >
-      {/* Flecha top-right */}
       <Image
         src="/arrows-dots/flecha-blanca.png"
         alt=""
@@ -16,8 +21,6 @@ export default function Soluciones() {
         height={70}
         className="absolute top-6 right-4 md:right-50 opacity-90"
       />
-
-      {/* Flecha bottom-left — ahora pegada al borde inferior de la sección */}
       <Image
         src="/arrows-dots/flecha-blanca.png"
         alt=""
@@ -37,10 +40,14 @@ export default function Soluciones() {
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch">
           {soluciones.map((s) => (
-            <SolucionCard key={s.slug} {...s} />
+            <SolucionCard key={s.slug} {...s} onSaberMas={() => setActiva(s)} />
           ))}
         </div>
       </div>
+
+      {activa && (
+        <SolucionModal solucion={activa} onClose={() => setActiva(null)} />
+      )}
     </section>
   );
 }
