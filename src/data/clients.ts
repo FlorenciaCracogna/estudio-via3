@@ -14,6 +14,12 @@ export const clients: Client[] = [
     featured: true,
   },
   {
+    name: "Nacion Seguros",
+    slug: "nacion-seguros",
+    logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1789226495/nacion-seguros_nglsaq.jpg",
+    featured: true,
+  },
+  {
     name: "Arcos Dorados",
     slug: "arcos-dorados",
     logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397184/arcos-dorados_j3x3tp.jpg",
@@ -145,6 +151,12 @@ export const clients: Client[] = [
     name: "ACA",
     slug: "aca",
     logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397159/aca_neuiqu.jpg",
+    featured: false,
+  },
+  {
+    name: "Selú",
+    slug: "selu",
+    logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1789226495/selu_ld9jcx.jpg",
     featured: false,
   },
   {

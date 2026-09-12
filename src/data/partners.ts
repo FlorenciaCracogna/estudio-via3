@@ -103,4 +103,28 @@ export const partners: Partner[] = [
       "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782311676/lucia-prado_gerlxe.jpg",
     tipo: "persona",
   },
+  {
+    id: "josefina-elisii",
+    nombre: "Lic. Josefina Elisii",
+    url: "https://josefinaelisii.com/",
+    imagen:
+      "https://res.cloudinary.com/dg8rew4w9/image/upload/v1789226704/josefina-elisii_cqgr4r.jpg",
+    tipo: "persona",
+  },
+  {
+    id: "manuela-mascheroni",
+    nombre: "Cra. Manuela Mascheroni",
+    url: "https://www.linkedin.com/in/manuemascheroni/",
+    imagen:
+      "https://ui-avatars.com/api/?name=Manuela+Mascheroni&background=99042F&color=fff&size=200&font-size=0.33",
+    tipo: "persona",
+  },
+  {
+    id: "carolina-sosa",
+    nombre: "Lic. Carolina Sosa",
+    url: "",
+    imagen:
+      "https://ui-avatars.com/api/?name=Carolina+Sosa&background=99042F&color=fff&size=200&font-size=0.33",
+    tipo: "persona",
+  },
 ];
