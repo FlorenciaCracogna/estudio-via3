@@ -123,6 +123,7 @@ Creá un archivo `.env.local` en la raíz del proyecto con estas variables:
 # Sanity
 NEXT_PUBLIC_SANITY_DATASET="production"
 NEXT_PUBLIC_SANITY_PROJECT_ID=
+SANITY_REVALIDATE_SECRET=
 
 # Resend
 RESEND_API_KEY=
@@ -149,6 +150,7 @@ Desde el Studio se pueden crear, editar y publicar novedades. Los cambios se ref
 - **Los carruseles usan `requestAnimationFrame` en lugar de una librería.** Así tengo control total sobre la velocidad y la fluidez, y el bundle queda más liviano.
 - **El contenido está separado en dos tipos.** El contenido estable (equipo, clientes, partners, soluciones) está en archivos `data/*.ts` tipados. El contenido que cambia seguido (novedades) está en Sanity. Esto mantiene el CMS simple para el cliente.
 - **Las imágenes están en Cloudinary.** Se optimizan y se sirven desde una CDN, y el repositorio queda más liviano.
+- **Actualización de contenido en dos capas:** la Live Content API de Sanity (`<SanityLive />`) refleja los cambios en tiempo real mientras hay visitantes en el sitio. Además, un webhook (`/api/revalidate`) limpia el caché de Next.js cada vez que se crea, edita o borra una novedad. Así, los cambios del cliente se ven siempre, aunque nadie tenga el sitio abierto en ese momento.
 
 ---
 
