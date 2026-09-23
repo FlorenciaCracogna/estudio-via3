@@ -89,7 +89,7 @@ estudio-via3/
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/<tu-usuario>/estudio-via3.git
+git clone https://github.com/FlorenciaCracogna/estudio-via3.git
 cd estudio-via3
 
 # 2. Instalar dependencias
