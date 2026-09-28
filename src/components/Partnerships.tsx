@@ -21,7 +21,7 @@ function PartnerCard({ partner }: { partner: Partner }) {
     >
       {/* Imagen / logo */}
       <div
-        className={`w-full h-full transition-all duration-300 ${
+        className={`relative w-full h-full transition-all duration-300 ${
           partner.tipo === "empresa" ? "bg-white" : ""
         }`}
       >
@@ -29,7 +29,7 @@ function PartnerCard({ partner }: { partner: Partner }) {
           src={partner.imagen}
           alt={partner.nombre}
           fill
-          className={`object-${partner.tipo === "empresa" ? "contain" : "cover"} p-${partner.tipo === "empresa" ? "4" : "0"} transition-opacity duration-300 ${hovered ? "opacity-40" : "opacity-100"}`}
+          className={`${partner.tipo === "empresa" ? "object-contain p-4" : "object-cover p-0"} transition-opacity duration-300 ${hovered ? "opacity-40" : "opacity-100"}`}
           sizes="144px"
         />
       </div>

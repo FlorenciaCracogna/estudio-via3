@@ -101,7 +101,7 @@ function NosotrosContent() {
       {/* Header de la página */}
       <div className="w-full bg-[#99042F] py-16 md:py-24 relative overflow-hidden">
         {/* Dots decorativos */}
-        <div className="absolute top-6 right-6 opacity-30">
+        <div className="absolute top-20 lg:top-24 right-6 opacity-30">
           <Image
             src="/arrows-dots/puntitos-blanco.png"
             alt=""

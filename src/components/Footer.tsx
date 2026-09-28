@@ -1,15 +1,17 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { label: "Acerca de Vía 3", href: "#el-estudio" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Soluciones", href: "#soluciones" },
-  { label: "Clientes", href: "#clientes" },
-  { label: "Novedades", href: "#novedades" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Acerca de Vía 3", hash: "el-estudio" },
+  { label: "Nosotros", hash: "nosotros" },
+  { label: "Soluciones", hash: "soluciones" },
+  { label: "Clientes", hash: "clientes" },
+  { label: "Novedades", hash: "novedades" },
+  { label: "Contacto", hash: "contacto" },
 ];
 
 const sedes = [
@@ -37,6 +39,11 @@ const sedes = [
 
 export default function Footer() {
   const [sedeActiva, setSedeActiva] = useState(0);
+  const pathname = usePathname();
+
+  // Desde rutas internas los anchors tienen que volver al home
+  const getHref = (hash: string) =>
+    pathname === "/" ? `#${hash}` : `/#${hash}`;
 
   const prev = () =>
     setSedeActiva((i) => (i - 1 + sedes.length) % sedes.length);
@@ -98,13 +105,13 @@ export default function Footer() {
             <p className="font-semibold text-lg mb-4">Navegar</p>
             <ul className="flex flex-col md:flex-row md:flex-wrap md:gap-x-6 gap-3 items-center lg:items-center lg:flex-col">
               {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
+                <li key={link.hash}>
+                  <Link
+                    href={getHref(link.hash)}
                     className="text-base text-gray-300 hover:text-white transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

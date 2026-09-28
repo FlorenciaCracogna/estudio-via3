@@ -38,7 +38,7 @@ export default async function NovedadesPage() {
         }}
       >
         {/* Puntitos arriba derecha */}
-        <div className="absolute top-6 right-2 md:right-12 opacity-90">
+        <div className="absolute top-20 lg:top-24 right-2 md:right-12 opacity-90">
           <Image
             src="/arrows-dots/puntitos-negro.png"
             alt=""
