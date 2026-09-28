@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import type { Solucion } from "@/data/soluciones";
 import BoldText from "./BoldText";
+import Button from "./Button";
 
 type Props = Solucion & { onSaberMas: () => void };
 
@@ -36,17 +37,14 @@ export default function SolucionCard({
           <BoldText text={descripcion} />
         </p>
         <div className="mt-auto pt-4 flex justify-center">
-          <button
-            onClick={onSaberMas}
-            className="inline-flex items-center gap-2 bg-[#99042F] text-white font-semibold px-6 py-2 rounded hover:bg-[#7a0326] transition-colors"
-          >
+          <Button onClick={onSaberMas}>
             Saber más
             <ArrowRight
               size={16}
               aria-hidden="true"
               className="transition-transform duration-300 can-hover:motion-safe:group-hover:translate-x-1"
             />
-          </button>
+          </Button>
         </div>
       </div>
     </div>

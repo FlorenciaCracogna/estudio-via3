@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef, useEffect } from "react";
 import { featuredClients } from "@/data/clients";
+import { buttonClasses } from "./Button";
 
 const tickerItems = [...featuredClients, ...featuredClients];
 
@@ -87,7 +88,7 @@ export default function Clientes() {
       <div className="flex justify-center mt-12" data-reveal>
         <Link
           href="/clientes"
-          className="px-8 py-2.5 bg-[#99042F] hover:bg-[#7a0326] text-white font-medium tracking-widest rounded-md transition-colors duration-200 font-roboto text-sm"
+          className={buttonClasses()}
         >
           Ver más
         </Link>

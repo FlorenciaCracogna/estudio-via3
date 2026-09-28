@@ -3,6 +3,7 @@ import Image from "next/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { ULTIMAS_NOVEDADES_QUERY } from "@/sanity/lib/queries";
 import NovedadCard from "./NovedadCard";
+import { buttonClasses } from "./Button";
 import type { Image as SanityImage } from "sanity";
 
 interface Novedad {
@@ -77,7 +78,7 @@ export default async function Novedades() {
       <div className="flex justify-center mt-12 relative z-10" data-reveal>
         <Link
           href="/novedades"
-          className="bg-[#99042F] text-white text-sm font-semibold px-8 py-3 rounded hover:opacity-90 transition"
+          className={buttonClasses()}
         >
           Más novedades
         </Link>

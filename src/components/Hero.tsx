@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { buttonClasses } from "./Button";
 
 export default function Hero() {
   return (
@@ -28,7 +29,10 @@ export default function Hero() {
 
         <a
           href="#el-estudio"
-          className="hero-entrada [--hero-delay:300ms] mt-2 px-12 py-3 bg-[#99042F] hover:bg-[#7a0326] text-white font-medium tracking-widest rounded-md transition-colors duration-200"
+          className={buttonClasses({
+            size: "lg",
+            className: "hero-entrada [--hero-delay:300ms] mt-2",
+          })}
         >
           Conocenos
         </a>

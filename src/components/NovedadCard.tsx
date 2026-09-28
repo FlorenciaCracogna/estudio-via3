@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
+import { buttonClasses } from "./Button";
 import type { Image as SanityImage } from "sanity";
 
 interface NovedadCardProps {
@@ -31,7 +32,7 @@ export default function NovedadCard({
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-[#99042F] text-white text-sm font-semibold px-6 py-2 rounded hover:opacity-90 transition"
+          className={buttonClasses()}
         >
           {buttonText}
         </a>

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { equipo } from "@/data/equipo";
+import { buttonClasses } from "./Button";
 
 // Nombre corto sin "Lic." para la sección home (igual que el Figma)
 function nombreCorto(nombre: string) {
@@ -98,7 +99,7 @@ export default function Nosotros() {
           </div>
           <Link
             href="/nosotros"
-            className="px-8 py-2.5 bg-[#99042F] hover:bg-[#7a0326] text-white font-medium tracking-widest rounded-md transition-colors duration-200 font-roboto text-sm"
+            className={buttonClasses()}
           >
             Conocenos
           </Link>
