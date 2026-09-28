@@ -17,7 +17,7 @@ export default function Nosotros() {
     >
       <div className="w-full max-w-6xl mx-auto px-6 md:px-12">
         {/* Encabezado */}
-        <div className="relative flex flex-col items-center mb-10">
+        <div className="relative flex flex-col items-center mb-10" data-reveal>
           {/* Dots decorativos arriba derecha */}
           <div className="absolute -top-2 right-0">
             <Image
@@ -55,6 +55,7 @@ export default function Nosotros() {
           <div
             className="relative w-full grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 justify-items-center"
             style={{ zIndex: 1 }}
+            data-reveal-stagger
           >
             {equipo.map((persona) => (
               <Link
@@ -82,7 +83,7 @@ export default function Nosotros() {
         </div>
 
         {/* CTA inferior */}
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center gap-3" data-reveal>
           <div className="flex items-center gap-3">
             <p className="text-gray-600 italic font-roboto text-sm md:text-base text-center">
               Acerquémonos un poco más y conocé más sobre nuestro equipo

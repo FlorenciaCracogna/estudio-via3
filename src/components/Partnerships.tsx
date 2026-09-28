@@ -83,7 +83,7 @@ export default function Partnerships() {
     >
       <div className="w-full max-w-6xl mx-auto px-6 md:px-12 mb-10">
         {/* Encabezado */}
-        <div className="flex flex-col items-center text-center gap-4">
+        <div className="flex flex-col items-center text-center gap-4" data-reveal>
           <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide font-poppins">
             Partnerships
           </h2>
@@ -96,7 +96,7 @@ export default function Partnerships() {
       </div>
 
       {/* Ticker carrusel */}
-      <div className="relative w-full">
+      <div className="relative w-full" data-reveal>
         {/* Fade izquierda */}
         <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-[#DBCAB9] to-transparent z-10 pointer-events-none" />
         {/* Fade derecha */}

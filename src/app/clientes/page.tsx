@@ -45,7 +45,10 @@ export default function ClientesPage() {
 
       {/* Grilla con fondo blanco */}
       <div className="bg-white py-16 px-6 md:px-12">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div
+          className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          data-reveal-stagger
+        >
           {clients.map((client) => (
             <div
               key={client.slug}

@@ -15,7 +15,7 @@ export default function Contacto() {
         backgroundColor: "#99042F",
       }}
     >
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-2xl mx-auto" data-reveal-stagger>
         <h2 className="titulo-seccion font-poppins text-white text-center font-extrabold text-3xl md:text-4xl uppercase tracking-wide mb-10">
           ¿Cómo te ayudamos?
         </h2>

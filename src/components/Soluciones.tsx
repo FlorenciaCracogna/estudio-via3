@@ -30,15 +30,24 @@ export default function Soluciones() {
       />
 
       <div className="max-w-5xl mx-auto px-4 relative">
-        <h2 className="titulo-seccion text-center text-white font-poppins font-extrabold text-3xl md:text-4xl uppercase tracking-wide">
+        <h2
+          className="titulo-seccion text-center text-white font-poppins font-extrabold text-3xl md:text-4xl uppercase tracking-wide"
+          data-reveal
+        >
           Soluciones
         </h2>
-        <p className="text-center text-white/90 font-roboto mt-3 max-w-2xl mx-auto">
+        <p
+          className="text-center text-white/90 font-roboto mt-3 max-w-2xl mx-auto"
+          data-reveal
+        >
           Las soluciones son estrategias, dispositivos y actividades que se
           orientan a ampliar los saberes organizacionales.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch">
+        <div
+          className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch"
+          data-reveal-stagger
+        >
           {soluciones.map((s) => (
             <SolucionCard key={s.slug} {...s} onSaberMas={() => setActiva(s)} />
           ))}

@@ -33,7 +33,10 @@ export default async function Novedades() {
         backgroundRepeat: "repeat",
       }}
     >
-      <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center font-poppins mb-12 relative z-10">
+      <h2
+        className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center font-poppins mb-12 relative z-10"
+        data-reveal
+      >
         Novedades
       </h2>
 
@@ -54,7 +57,10 @@ export default async function Novedades() {
           className="absolute bottom-6 left-2 w-10 h-auto md:w-14 md:-left-10 opacity-90 z-0"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 relative z-10">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 relative z-10"
+          data-reveal-stagger
+        >
           {novedadesList.map((novedad) => (
             <NovedadCard
               key={novedad._id}
@@ -68,7 +74,7 @@ export default async function Novedades() {
         </div>
       </div>
 
-      <div className="flex justify-center mt-12 relative z-10">
+      <div className="flex justify-center mt-12 relative z-10" data-reveal>
         <Link
           href="/novedades"
           className="bg-[#99042F] text-white text-sm font-semibold px-8 py-3 rounded hover:opacity-90 transition"

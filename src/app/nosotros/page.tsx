@@ -143,7 +143,10 @@ function NosotrosContent() {
       </div>
 
       {/* Contenido: perfiles */}
-      <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 md:py-24 flex flex-col gap-10">
+      <div
+        className="max-w-5xl mx-auto px-6 md:px-12 py-16 md:py-24 flex flex-col gap-10"
+        data-reveal-stagger
+      >
         {sinResultados ? (
           <div className="text-center py-20">
             <p className="text-gray-500 font-roboto text-lg">
