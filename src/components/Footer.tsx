@@ -122,7 +122,7 @@ export default function Footer() {
             <p className="font-semibold text-lg">Nuestras direcciones</p>
 
             {/* Nombre de la sede */}
-            <p className="font-semibold text-base text-[#99042f]">
+            <p className="font-semibold text-base text-[#DBCAB9]">
               {sede.nombre}
             </p>
 

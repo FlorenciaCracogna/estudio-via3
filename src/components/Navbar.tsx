@@ -19,6 +19,10 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
+  // Rutas con header claro: la navbar arranca sólida para que los links se lean
+  const headerClaro = pathname === "/clientes" || pathname === "/novedades";
+  const solida = scrolled || headerClaro;
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -40,7 +44,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`font-poppins fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? "bg-white shadow-md" : "bg-transparent"}`}
+      className={`font-poppins fixed top-0 w-full z-50 transition-all duration-500 ${solida ? "bg-white shadow-md" : "bg-transparent"}`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 lg:h-20">
         {/* Logo */}
@@ -56,7 +60,7 @@ export default function Navbar() {
         >
           <Image
             src={
-              scrolled
+              solida
                 ? "/logo-color-subtitulo.svg"
                 : "/logo-blanco-subtitulo.svg"
             }
@@ -76,7 +80,7 @@ export default function Navbar() {
                 href={getHref(hash)}
                 onClick={(e) => handleNavClick(e, hash)}
                 className={`flex items-center gap-1 text-sm font-medium tracking-wide uppercase transition-colors duration-200 ${
-                  scrolled
+                  solida
                     ? "text-gray-700 hover:text-[#99042F]"
                     : "text-white hover:text-white/80"
                 }`}
@@ -91,7 +95,7 @@ export default function Navbar() {
         <button
           onClick={() => setMobileOpen((prev) => !prev)}
           aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
-          className={`lg:hidden p-2 ${scrolled ? "text-gray-700" : "text-white"}`}
+          className={`lg:hidden p-2 ${solida ? "text-gray-700" : "text-white"}`}
         >
           {mobileOpen ? (
             <svg

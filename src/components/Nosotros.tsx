@@ -73,7 +73,7 @@ export default function Nosotros() {
                   />
                 </div>
                 {/* Nombre sin "Lic." */}
-                <span className="text-center text-sm md:text-base font-semibold text-gray-800 group-hover:text-[#DBCAB9] transition-colors duration-300 font-roboto leading-tight">
+                <span className="text-center text-sm md:text-base font-semibold text-gray-800 group-hover:text-[#99042F] transition-colors duration-300 font-roboto leading-tight">
                   {nombreCorto(persona.nombre)}
                 </span>
               </Link>
