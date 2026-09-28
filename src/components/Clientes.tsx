@@ -77,7 +77,6 @@ export default function Clientes() {
                 width={140}
                 height={70}
                 className="object-contain max-h-24 w-full"
-                unoptimized
               />
             </div>
           ))}

@@ -19,6 +19,7 @@ export default function SolucionCard({
           src={imagen}
           alt={titulo}
           fill
+          sizes="(max-width: 768px) 100vw, 320px"
           className="object-cover transition duration-500 can-hover:group-hover:brightness-[0.3] can-hover:motion-safe:group-hover:scale-105 can-hover:group-focus-within:brightness-[0.3]"
         />
         <div className="hidden can-hover:block absolute inset-0 bg-black opacity-0 group-hover:opacity-50 group-focus-within:opacity-50 transition-opacity duration-300" />

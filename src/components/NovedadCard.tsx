@@ -23,7 +23,13 @@ export default function NovedadCard({
   return (
     <div className="flex flex-col bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
       <div className="relative w-full h-48 bg-gray-50 flex items-center justify-center">
-        <Image src={imageUrl} alt={title} fill className="object-contain" />
+        <Image
+          src={imageUrl}
+          alt={title}
+          fill
+          sizes="(max-width: 768px) 100vw, 500px"
+          className="object-contain"
+        />
       </div>
       <div className="flex flex-col items-center text-center p-5 flex-1">
         <h3 className="font-poppins font-bold text-lg text-gray-900 mb-3">{title}</h3>

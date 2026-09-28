@@ -52,7 +52,7 @@ export default function NuestrosPilares() {
       className="relative flex flex-col items-center px-2 md:px-8 py-16 overflow-hidden"
       style={{
         backgroundImage:
-          "url('https://res.cloudinary.com/dg8rew4w9/image/upload/v1781807517/estudio-principal_qp6yxt.jpg')",
+          "url('https://res.cloudinary.com/dg8rew4w9/image/upload/f_auto,q_auto,w_1920/v1781807517/estudio-principal_qp6yxt.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

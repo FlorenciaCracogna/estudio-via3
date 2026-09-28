@@ -109,6 +109,7 @@ export default function SolucionModal({ solucion, onClose }: Props) {
             src={solucion.imagen}
             alt={solucion.modalTitulo}
             fill
+            sizes="(max-width: 1024px) 100vw, 1024px"
             className="object-cover rounded-t-xl"
           />
         </div>

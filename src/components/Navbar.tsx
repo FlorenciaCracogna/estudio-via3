@@ -67,7 +67,7 @@ export default function Navbar() {
             alt="Estudio VIA 3"
             width={600}
             height={160}
-            priority
+            loading="eager"
             className="h-12 md:h-16 lg:h-24 w-auto"
           />
         </Link>

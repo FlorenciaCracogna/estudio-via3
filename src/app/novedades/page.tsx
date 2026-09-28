@@ -4,10 +4,19 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { TODAS_NOVEDADES_QUERY } from "@/sanity/lib/queries";
 import NovedadCard from "@/components/NovedadCard";
 import type { Image as SanityImage } from "sanity";
+import type { Metadata } from "next";
+import { socialMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Novedades | Estudio Vía3",
-  description: "Las últimas novedades de Estudio Vía3.",
+const description = "Las últimas novedades de Estudio Vía3.";
+
+export const metadata: Metadata = {
+  title: "Novedades",
+  description,
+  ...socialMetadata({
+    title: "Novedades | Estudio Vía3",
+    description,
+    path: "/novedades",
+  }),
 };
 
 interface Novedad {
@@ -32,7 +41,7 @@ export default async function NovedadesPage() {
         className="relative pt-24 md:pt-32 pb-16 px-6 md:px-12 overflow-hidden"
         style={{
           backgroundImage:
-            "url('https://res.cloudinary.com/dg8rew4w9/image/upload/v1782760966/fondo_texturado_2_remimo.png')",
+            "url('https://res.cloudinary.com/dg8rew4w9/image/upload/f_auto,q_auto/v1782760966/fondo_texturado_2_remimo.png')",
           backgroundSize: "300px",
           backgroundRepeat: "repeat",
         }}

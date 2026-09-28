@@ -29,7 +29,7 @@ export default async function Novedades() {
       className="relative py-16 px-4 md:px-8 overflow-hidden"
       style={{
         backgroundImage:
-          "url('https://res.cloudinary.com/dg8rew4w9/image/upload/v1782760966/fondo_texturado_2_remimo.png')",
+          "url('https://res.cloudinary.com/dg8rew4w9/image/upload/f_auto,q_auto/v1782760966/fondo_texturado_2_remimo.png')",
         backgroundSize: "300px",
         backgroundRepeat: "repeat",
       }}

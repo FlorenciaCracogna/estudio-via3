@@ -1,9 +1,19 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { clients } from "@/data/clients";
+import { socialMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Clientes | Estudio Vía3",
-  description: "Organizaciones y personas en confianza mutua.",
+const description =
+  "Organizaciones y personas en confianza mutua: las empresas que confían en Estudio Vía3.";
+
+export const metadata: Metadata = {
+  title: "Clientes",
+  description,
+  ...socialMetadata({
+    title: "Clientes | Estudio Vía3",
+    description,
+    path: "/clientes",
+  }),
 };
 
 export default function ClientesPage() {
@@ -60,7 +70,6 @@ export default function ClientesPage() {
                 width={160}
                 height={80}
                 className="object-contain max-h-full w-full"
-                unoptimized
               />
             </div>
           ))}

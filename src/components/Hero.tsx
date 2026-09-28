@@ -9,7 +9,8 @@ export default function Hero() {
         src="https://res.cloudinary.com/dg8rew4w9/image/upload/v1781807517/hero-bg_bc4nqs.jpg"
         alt="Equipo Estudio Vía3"
         fill
-        priority
+        preload
+        sizes="100vw"
         className="hero-zoom object-cover object-center"
       />
 

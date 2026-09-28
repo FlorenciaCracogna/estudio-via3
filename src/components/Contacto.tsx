@@ -9,7 +9,7 @@ export default function Contacto() {
       className="relative py-20 px-4"
       style={{
         backgroundImage:
-          "url('https://res.cloudinary.com/dg8rew4w9/image/upload/v1782755940/fondo_texturado_1_epzdfo.png')",
+          "url('https://res.cloudinary.com/dg8rew4w9/image/upload/f_auto,q_auto/v1782755940/fondo_texturado_1_epzdfo.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundColor: "#99042F",
