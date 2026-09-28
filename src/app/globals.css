@@ -25,21 +25,8 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Aparición al hacer scroll (ver ScrollReveal.tsx). La clase .reveal solo
-   la agrega JS, así que sin JS o con reduced-motion todo queda visible. */
+/* La aparición al hacer scroll se anima desde ScrollReveal.tsx (Web Animations API) */
 @media (prefers-reduced-motion: no-preference) {
-  .reveal {
-    transition:
-      opacity 600ms ease-out,
-      transform 600ms ease-out;
-    transition-delay: var(--reveal-delay, 0ms);
-  }
-
-  .reveal:not(.is-visible) {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-
   /* Entrada del Hero: zoom lento de la foto + textos en secuencia */
   .hero-zoom {
     animation: hero-zoom 8s ease-out both;
