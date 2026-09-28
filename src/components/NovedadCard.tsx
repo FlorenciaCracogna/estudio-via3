@@ -25,7 +25,7 @@ export default function NovedadCard({
         <Image src={imageUrl} alt={title} fill className="object-contain" />
       </div>
       <div className="flex flex-col items-center text-center p-5 flex-1">
-        <h3 className="font-bold text-lg text-gray-900 mb-3">{title}</h3>
+        <h3 className="font-poppins font-bold text-lg text-gray-900 mb-3">{title}</h3>
         <p className="text-sm text-gray-600 mb-5 flex-1">{excerpt}</p>
         <a
           href={link}

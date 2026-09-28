@@ -62,7 +62,7 @@ export default async function NovedadesPage() {
         </div>
 
         <div className="flex flex-col items-center text-center gap-4 relative z-10">
-          <h1 className="titulo-seccion font-extrabold uppercase text-[#99042F] tracking-wide font-poppins text-3xl md:text-4xl">
+          <h1 className="font-extrabold uppercase text-[#99042F] tracking-wide font-poppins text-3xl md:text-4xl">
             Novedades
           </h1>
           <p className="text-gray-700 text-sm md:text-base max-w-2xl font-roboto leading-relaxed">

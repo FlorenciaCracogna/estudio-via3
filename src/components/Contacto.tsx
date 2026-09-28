@@ -16,7 +16,7 @@ export default function Contacto() {
       }}
     >
       <div className="max-w-2xl mx-auto">
-        <h2 className="titulo-seccion text-white text-center font-bold text-3xl md:text-4xl uppercase tracking-wide mb-10">
+        <h2 className="titulo-seccion font-poppins text-white text-center font-extrabold text-3xl md:text-4xl uppercase tracking-wide mb-10">
           ¿Cómo te ayudamos?
         </h2>
         <SolucionForm variant="light" />

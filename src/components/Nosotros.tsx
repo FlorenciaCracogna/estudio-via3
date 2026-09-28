@@ -29,7 +29,7 @@ export default function Nosotros() {
             />
           </div>
 
-          <h2 className="titulo-seccion text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center font-poppins mb-4">
+          <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center font-poppins mb-4">
             Nosotros
           </h2>
           <p className="text-gray-800 text-sm md:text-base text-center max-w-2xl font-roboto">

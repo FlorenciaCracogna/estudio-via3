@@ -33,7 +33,7 @@ export default async function Novedades() {
         backgroundRepeat: "repeat",
       }}
     >
-      <h2 className="titulo-seccion text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center font-poppins mb-12 relative z-10">
+      <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center font-poppins mb-12 relative z-10">
         Novedades
       </h2>
 

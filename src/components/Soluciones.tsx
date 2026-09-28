@@ -30,7 +30,7 @@ export default function Soluciones() {
       />
 
       <div className="max-w-5xl mx-auto px-4 relative">
-        <h2 className="text-center text-white font-poppins font-bold text-3xl md:text-4xl uppercase tracking-wide">
+        <h2 className="titulo-seccion text-center text-white font-poppins font-extrabold text-3xl md:text-4xl uppercase tracking-wide">
           Soluciones
         </h2>
         <p className="text-center text-white/90 font-roboto mt-3 max-w-2xl mx-auto">

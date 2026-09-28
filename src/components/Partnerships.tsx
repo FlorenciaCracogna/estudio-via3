@@ -84,7 +84,7 @@ export default function Partnerships() {
       <div className="w-full max-w-6xl mx-auto px-6 md:px-12 mb-10">
         {/* Encabezado */}
         <div className="flex flex-col items-center text-center gap-4">
-          <h2 className="titulo-seccion text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide font-poppins">
+          <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide font-poppins">
             Partnerships
           </h2>
           <p className="text-gray-800 text-sm md:text-base w-full max-w-2xl font-roboto leading-relaxed px-2">

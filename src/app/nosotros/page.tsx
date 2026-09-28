@@ -121,7 +121,7 @@ function NosotrosContent() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center text-center gap-4">
-          <h1 className="text-4xl md:text-5xl font-extrabold uppercase text-white tracking-wide font-poppins">
+          <h1 className="titulo-seccion text-4xl md:text-5xl font-extrabold uppercase text-white tracking-wide font-poppins">
             Nuestro Equipo
           </h1>
           <p className="text-white/80 text-base md:text-lg max-w-2xl font-roboto">
