@@ -49,6 +49,63 @@ html {
     animation: hero-entrada 700ms ease-out both;
     animation-delay: var(--hero-delay, 0ms);
   }
+
+  /* Modal de Soluciones: entrada y salida (ver SolucionModal.tsx) */
+  .modal-backdrop {
+    animation: modal-fade 200ms ease-out both;
+  }
+
+  .modal-backdrop[data-cerrando] {
+    animation: modal-fade-salida 200ms ease-in both;
+  }
+
+  .modal-panel {
+    animation: modal-entrada 250ms ease-out both;
+  }
+
+  .modal-panel[data-cerrando] {
+    animation: modal-salida 200ms ease-in both;
+  }
+}
+
+@keyframes modal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-fade-salida {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-entrada {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes modal-salida {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
 }
 
 @keyframes hero-zoom {
