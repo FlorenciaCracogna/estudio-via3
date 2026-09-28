@@ -22,7 +22,7 @@ export default function ClientesPage() {
       {/* Header con fondo beige */}
       <div className="relative bg-[#DBCAB9] pt-24 md:pt-32 pb-16 px-6 md:px-12 overflow-hidden">
         {/* Puntitos arriba derecha */}
-        <div className="absolute top-20 lg:top-24 right-6 md:right-12 opacity-50">
+        <div className="absolute top-20 lg:top-24 right-6 md:right-12 opacity-50 hidden md:block">
           <Image
             src="/arrows-dots/puntitos-negro.png"
             alt=""
