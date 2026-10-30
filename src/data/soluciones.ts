@@ -8,6 +8,8 @@ export interface Solucion {
   titulo: string;
   descripcion: string;
   imagen: string;
+  /** object-position de la foto en la franja baja del modal (default: center). */
+  focoModal?: string;
   modalTitulo: string;
   intro: string;
   secciones: SeccionSolucion[];
@@ -26,37 +28,46 @@ export const soluciones: Solucion[] = [
       "Dispositivos especialmente diseñados para contribuir con la formación laboral; focalizados en aquellas competencias que, en el ámbito organizacional, implican el marco de relaciones de una persona con sus niveles de reporte, sus pares, su entorno y su efectividad.",
     secciones: [
       {
-        subtitulo: "Relaciones con las personas a cargo",
+        subtitulo: "Aprendizaje para el desarrollo de líderes",
         items: [
-          "Conducción y liderazgo de equipos de trabajo.",
-          "Habilidades para la comunicación y el trabajo en equipo.",
-          "Gestión de las emociones y conversaciones complejas.",
+          "Desarrollo de competencias de conducción y liderazgo.",
+          "Fortalecimiento de habilidades de coaching y acompañamiento de equipos.",
+          "Gestión de conversaciones de desarrollo y retroalimentación.",
+          "Liderazgo de procesos de cambio y transformación.",
         ],
       },
       {
-        subtitulo: "Relaciones con la Organización",
+        subtitulo: "Aprendizaje para las relaciones de trabajo",
         items: [
-          "Gestión del cambio cultural.",
-          "Gestión de proyectos a través de metodologías ágiles.",
-          "Comunidades de práctica y de aprendizaje.",
-          "Calidad en la cadena de servicio interno.",
+          "Desarrollo de habilidades para la comunicación y el trabajo en equipo.",
+          "Gestión de las emociones.",
+          "Gestión de conversaciones complejas en contextos laborales.",
+          "Desarrollo de prácticas de colaboración y coordinación entre áreas.",
         ],
       },
       {
-        subtitulo: "Relaciones con los clientes de la Organización",
+        subtitulo: "Aprendizaje para la efectividad organizacional",
         items: [
-          "Calidad de servicio y calidad de contacto: enfoque people experience.",
-          "Desarrollo de la actitud comercial.",
+          "Administración de procesos de gestión del cambio cultural.",
+          "Implementación de metodologías ágiles para la gestión de proyectos.",
+          "Mejora de la calidad en la cadena de servicio interno.",
         ],
       },
       {
-        subtitulo: "Relaciones con su desarrollo profesional",
+        subtitulo: "Aprendizaje para la relación con clientes",
         items: [
-          "Planeamiento y control de gestión de la propia tarea.",
-          "Orientación a resultados y productividad.",
-          "Procesos de toma de decisiones.",
-          "Storytelling (Presentaciones orales efectivas).",
-          "Coordinación de reuniones de trabajo.",
+          "Desarrollo de estándares de calidad de servicio y calidad de contacto.",
+          "Fortalecimiento de la actitud comercial y la orientación al cliente.",
+        ],
+      },
+      {
+        subtitulo: "Aprendizaje para el desarrollo profesional",
+        items: [
+          "Optimización de prácticas de planeamiento y control de gestión de la propia tarea.",
+          "Desarrollo de habilidades para la orientación a resultados y la productividad.",
+          "Fortalecimiento de procesos de análisis y toma de decisiones.",
+          "Desarrollo de competencias de storytelling y presentaciones orales efectivas.",
+          "Mejora de la coordinación y conducción de reuniones de trabajo.",
         ],
       },
     ],
@@ -71,6 +82,8 @@ export const soluciones: Solucion[] = [
     // derecha y la pared de arriba, y deja la ronda de personas centrada.
     imagen:
       "https://res.cloudinary.com/dg8rew4w9/image/upload/c_crop,x_440,y_160,w_2560,h_1600/v1793386552/estructura-organizacional_cfrxnl.jpg",
+    // En la franja del modal (~5:1) el centro deja sólo torsos: se sube el foco a las caras y la red de hilos
+    focoModal: "50% 30%",
     modalTitulo:
       "Soluciones para la estructura organizacional y el capital humano",
     intro:
@@ -79,26 +92,44 @@ export const soluciones: Solucion[] = [
       {
         subtitulo: "Gestión del aprendizaje",
         items: [
-          "Detección de aprendizajes requeridos; áreas o niveles organizacionales.",
-          "Planeamiento de capacitación organizacional: estratégicos, de desarrollo y de aprendizaje continuo.",
-          "Diseño de materiales educativos (kits de capacitación) para entrenamientos técnicos.",
-          "Formación de facilitadores internos para el aprendizaje.",
+          "Detección de necesidades de aprendizaje en áreas, equipos y niveles organizacionales.",
+          "Diseño de planes de capacitación estratégicos y de desarrollo continuo.",
+          "Construcción de trayectos y programas adaptados a cada organización.",
+          "Diseño de materiales educativos y kits de capacitación para entrenamientos técnicos.",
+        ],
+      },
+      {
+        subtitulo: "Gestión del conocimiento",
+        items: [
+          "Construcción de mapas de saberes y conocimiento crítico.",
+          "Diseño de comunidades de práctica y aprendizaje.",
+          "Formación de facilitadores internos para multiplicar conocimientos y experiencias.",
+          "Implementación de mecanismos de evaluación de la capacitación.",
         ],
       },
       {
         subtitulo: "Gestión del talento",
         items: [
-          "Diseño organizacional: definición de organigramas, descripciones de puestos y generación de manual de funciones.",
-          "Construcción de modelos de competencias (skill master).",
-          "Construcción de perfiles laborales y mapa de saberes del rol.",
-          "Proceso de selección de personal y evaluaciones psicotécnicas.",
+          "Construcción de modelos de competencias y skill master.",
+          "Diseño de perfiles y competencias para roles laborales.",
+          "Desarrollo de procesos de selección de personal y evaluaciones psicotécnicas.",
+          "Diseño de estrategias de desarrollo y crecimiento profesional.",
         ],
       },
       {
         subtitulo: "Gestión del desempeño",
         items: [
-          "Evaluaciones de desempeño y de potencial para la promoción o reestructuración de puestos.",
-          "Evaluaciones de clima laboral para medir el ambiente de trabajo y definir acciones de mejora.",
+          "Diseño e implementación de procesos de evaluación de desempeño.",
+          "Evaluación de potencial para promociones, sucesiones o rediseño de funciones.",
+          "Mediciones de clima laboral e identificación de oportunidades de mejora.",
+        ],
+      },
+      {
+        subtitulo: "Diseño organizacional",
+        items: [
+          "Diseño de estructuras organizativas y organigramas.",
+          "Elaboración de descripciones de puestos y manuales de funciones.",
+          "Definición de mecanismos para alinear roles y responsabilidades con la estrategia de la organización.",
         ],
       },
     ],
@@ -117,16 +148,24 @@ export const soluciones: Solucion[] = [
       {
         subtitulo: "Clima y salud laboral",
         items: [
-          "Dispositivos de hábitos saludables en el ámbito laboral: salud física y mental, nutrición, actividades deportivas y manejo del estrés.",
-          "Estrategias y políticas de promoción del bienestar: ambiente laboral positivo, flexibilidad, reconocimiento y apoyo emocional.",
+          "Diseño de programas de salud física y mental en el ámbito laboral.",
+          "Promoción de hábitos saludables, nutrición, actividad física y manejo del estrés.",
+          "Implementación de estrategias y políticas orientadas a fortalecer el bienestar organizacional.",
         ],
       },
       {
-        subtitulo: "Integración",
+        subtitulo: "Integración y desarrollo de equipos",
         items: [
-          "Coaching individual y grupal para alcanzar metas y fomentar el aprendizaje compartido.",
-          "Diseño e implementación de metodologías de Team building para el fortalecimiento de la colaboración intra y/o inter equipos.",
-          "Gestión de la diversidad y la inclusión.",
+          "Diseño e implementación de actividades de team building.",
+          "Favorecimiento de la integración intra e interequipos.",
+          "Desarrollo de iniciativas para la gestión de la diversidad y la inclusión.",
+        ],
+      },
+      {
+        subtitulo: "Coaching para el desarrollo",
+        items: [
+          "Implementación de procesos de coaching individual.",
+          "Facilitación de procesos de coaching grupal orientados a metas y desafíos compartidos.",
         ],
       },
     ],
