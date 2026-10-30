@@ -21,12 +21,12 @@ body {
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 /* La aparición al hacer scroll se anima desde ScrollReveal.tsx (Web Animations API) */
 @media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
   /* Entrada del Hero: zoom lento de la foto + textos en secuencia */
   .hero-zoom {
     animation: hero-zoom 8s ease-out both;
