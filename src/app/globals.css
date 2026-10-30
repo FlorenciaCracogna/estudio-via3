@@ -37,19 +37,6 @@ body {
     animation-delay: var(--hero-delay, 0ms);
   }
 
-  /* Banda de números: oculta hasta el primer scroll (HeroNumeros.tsx pone
-     data-visible). Sólo opacidad + transform: el espacio queda reservado. */
-  .hero-numeros {
-    transition:
-      opacity 700ms ease-out,
-      transform 700ms ease-out;
-  }
-
-  .hero-numeros:not([data-visible]) {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-
   /* Modal de Soluciones: entrada y salida (ver SolucionModal.tsx) */
   .modal-backdrop {
     animation: modal-fade 200ms ease-out both;

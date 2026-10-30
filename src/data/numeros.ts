@@ -1,4 +1,4 @@
-// Banda de números del Hero (aparece con el primer scroll y hace count-up).
+// Banda de números debajo del Hero (BandaNumeros.tsx): count-up al entrar en pantalla.
 //
 // ⚠️ PLACEHOLDER: reemplazar con los datos del cliente antes del deploy.
 //    Los valores de abajo (25, +500, +12.000, +100) son de EJEMPLO.

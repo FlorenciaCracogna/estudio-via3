@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import BandaNumeros from "@/components/BandaNumeros";
 import QueProponemos from "@/components/QueProponemos";
 import ComoTrabajamos from "@/components/ComoTrabajamos";
 import Nosotros from "@/components/Nosotros";
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <BandaNumeros />
       {/* Vía3: Qué proponemos, Cómo trabajamos, Equipo y Red de especialistas */}
       <div id="via3">
         <QueProponemos />
