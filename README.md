@@ -58,7 +58,7 @@ Sitio web institucional para **Estudio Vía3**, desarrollado de forma freelance.
 | **Equipo** (ex Nosotros) | Cards con foto, rol, especialidad y LinkedIn de cada integrante (`/equipo` y `/nosotros` redirigen a `/#equipo`) |
 | **Soluciones** | 3 cards con descripción visible; "Saber más" abre un modal con las subsoluciones en acordeón y un formulario de consulta (sticky en desktop) |
 | **Red de especialistas** (ex Partnerships) | Carrusel infinito (velocidad por tiempo) con flechas, swipe y pausa en hover o fuera de pantalla |
-| **Experiencia** (ex Clientes) | Carrusel de logos y una página `/experiencia` con la grilla completa |
+| **Experiencia** (ex Clientes) | Carrusel de logos y una página `/experiencia` con los clientes agrupados por sector en acordeón |
 | **Ideas** (ex Novedades) | Contenido dinámico que se obtiene de Sanity CMS, con una página `/ideas` |
 | **Contacto** | Formulario conectado con Resend |
 | **Footer** | Carrusel con las dos sedes, acceso a WhatsApp y Google Maps |

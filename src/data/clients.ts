@@ -1,3 +1,7 @@
+// SIN USO desde contenidos 2026: la sección Experiencia usa src/data/experiencia.ts.
+// Se conserva hasta decidir qué hacer con los logos que no están en el Word
+// (Banco Columbia). Ver docs/contenidos/PLAN.md.
+
 export interface Client {
   name: string;
   slug: string;

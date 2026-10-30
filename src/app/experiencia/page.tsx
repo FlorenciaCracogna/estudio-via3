@@ -1,10 +1,15 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
-import { clients } from "@/data/clients";
+import { sectores } from "@/data/experiencia";
+import { secciones } from "@/data/secciones";
 import { socialMetadata } from "@/lib/seo";
+import { buttonClasses } from "@/components/Button";
+import PreguntaInicial from "@/components/PreguntaInicial";
+import AcordeonSectores from "@/components/AcordeonSectores";
 
 const description =
-  "Organizaciones y personas en confianza mutua: las empresas que confían en Estudio Vía3.";
+  "Organizaciones de consumo masivo, industria, energía, finanzas, salud, tecnología, logística y educación con las que trabajamos en Estudio Vía3.";
 
 export const metadata: Metadata = {
   title: "Experiencia",
@@ -43,36 +48,33 @@ export default function ExperienciaPage() {
           />
         </div>
 
-        <div className="flex flex-col items-center text-center gap-4 relative z-10">
+        <div className="flex flex-col items-center text-center gap-3 relative z-10">
           <h1 className="font-extrabold uppercase text-[#99042F] tracking-wide font-poppins text-3xl md:text-4xl">
-            Experiencia
+            {secciones.experiencia.label}
           </h1>
-          <p className="text-gray-700 text-sm md:text-base max-w-2xl font-roboto leading-relaxed">
-            Organizaciones y personas en confianza mutua.
-          </p>
+          <PreguntaInicial>{secciones.experiencia.pregunta}</PreguntaInicial>
         </div>
       </div>
 
-      {/* Grilla con fondo blanco */}
-      <div className="bg-white py-16 px-6 md:px-12">
-        <div
-          className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-          data-reveal-stagger
-        >
-          {clients.map((client) => (
-            <div
-              key={client.slug}
-              className="flex items-center justify-center bg-white border border-gray-200 rounded-lg h-32 hover:shadow-md hover:border-gray-300 transition-shadow duration-200"
-            >
-              <Image
-                src={client.logo}
-                alt={client.name}
-                width={160}
-                height={80}
-                className="object-contain max-h-full w-full"
-              />
-            </div>
-          ))}
+      {/* Sectores */}
+      <div className="bg-white py-12 md:py-16 px-6 md:px-12">
+        <div className="max-w-6xl mx-auto" data-reveal>
+          <AcordeonSectores sectores={sectores} />
+        </div>
+      </div>
+
+      {/* CTA a contacto */}
+      <div className="bg-[#99042F] py-14 md:py-16 px-6 text-center">
+        <div className="max-w-2xl mx-auto flex flex-col items-center gap-6" data-reveal>
+          <p className="font-poppins text-xl md:text-2xl font-semibold leading-snug text-white">
+            {secciones.contacto.pregunta}
+          </p>
+          <Link
+            href="/#contacto"
+            className={buttonClasses({ variant: "light", size: "lg" })}
+          >
+            Contactanos
+          </Link>
         </div>
       </div>
     </main>
