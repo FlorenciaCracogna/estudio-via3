@@ -1,7 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
 import { equipo } from "@/data/equipo";
-import { buttonClasses } from "./Button";
 
 // Nombre corto sin "Lic." para la sección home (igual que el Figma)
 function nombreCorto(nombre: string) {
@@ -67,42 +65,32 @@ export default function Nosotros() {
         </div>
 
         {/* Integrantes */}
-        <div className="mb-12">
+        <div>
           <ul
             className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
             data-reveal-stagger
           >
             {equipo.map((persona) => {
               const nombre = nombreCorto(persona.nombre);
-              const href = `/equipo?miembro=${persona.id}`;
               return (
                 <li
                   key={persona.id}
-                  className="group flex sm:flex-col items-center sm:text-center gap-4 rounded-2xl bg-gray-50 p-5 md:p-6 shadow-sm"
+                  className="flex sm:flex-col items-center sm:text-center gap-4 rounded-2xl bg-gray-50 p-5 md:p-6 shadow-sm"
                 >
-                  {/* Foto (el link accesible es el nombre; éste es un atajo para mouse) */}
-                  <Link
-                    href={href}
-                    tabIndex={-1}
-                    aria-hidden="true"
-                    className="relative shrink-0 w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden ring-4 ring-white shadow-md bg-white"
-                  >
+                  <div className="relative shrink-0 w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden ring-4 ring-white shadow-md bg-white">
                     <Image
                       src={persona.foto}
-                      alt=""
+                      alt={nombre}
                       fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="object-cover"
                       sizes="128px"
                     />
-                  </Link>
+                  </div>
 
                   <div className="flex min-w-0 flex-1 flex-col sm:items-center gap-1">
-                    <Link
-                      href={href}
-                      className="font-poppins text-base md:text-lg font-semibold leading-tight text-gray-900 hover:text-[#99042F] transition-colors"
-                    >
+                    <h3 className="font-poppins text-base md:text-lg font-semibold leading-tight text-gray-900">
                       {nombre}
-                    </Link>
+                    </h3>
                     <p className="font-poppins text-xs font-semibold uppercase tracking-[0.15em] text-[#99042F]">
                       {persona.rol}
                     </p>
@@ -124,28 +112,6 @@ export default function Nosotros() {
               );
             })}
           </ul>
-        </div>
-
-        {/* CTA inferior */}
-        <div className="flex flex-col items-center gap-3" data-reveal>
-          <div className="flex items-center gap-3">
-            <p className="text-gray-600 italic font-roboto text-sm md:text-base text-center">
-              Acerquémonos un poco más y conocé más sobre nuestro equipo
-            </p>
-            <Image
-              src="/arrows-dots/flecha-bordo.png"
-              alt=""
-              width={44}
-              height={28}
-              aria-hidden="true"
-            />
-          </div>
-          <Link
-            href="/equipo"
-            className={buttonClasses()}
-          >
-            Conocenos
-          </Link>
         </div>
       </div>
     </section>

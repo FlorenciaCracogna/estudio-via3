@@ -16,13 +16,13 @@ const nextConfig = {
       },
     ],
   },
-  // Rutas renombradas en los contenidos 2026. 301 para que Google traspase
-  // el posicionamiento; los query params (?miembro=) se conservan solos.
+  // Rutas renombradas en los contenidos 2026. 301 para que Google traspase el
+  // posicionamiento. /equipo y /nosotros se redirigen en src/proxy.ts: acá
+  // Next les arrastraría el ?miembro= (quedaría /?miembro=1#equipo).
   async redirects() {
     return [
       { source: "/clientes", destination: "/experiencia", statusCode: 301 },
       { source: "/novedades", destination: "/ideas", statusCode: 301 },
-      { source: "/nosotros", destination: "/equipo", statusCode: 301 },
     ];
   },
 };
