@@ -132,7 +132,7 @@ export default function NosotrosContent() {
           {/* Volver a todos si estamos filtrando */}
           {miembroParam && (
             <Link
-              href="/nosotros"
+              href="/equipo"
               className="mt-4 inline-flex items-center gap-2 text-white/90 hover:text-white text-sm font-roboto underline underline-offset-4 transition-colors"
             >
               ← Ver todos los integrantes
@@ -150,7 +150,7 @@ export default function NosotrosContent() {
           <div className="text-center py-20">
             <p className="text-gray-500 font-roboto text-lg">
               No encontramos ese integrante.{" "}
-              <Link href="/nosotros" className="text-[#99042F] hover:underline">
+              <Link href="/equipo" className="text-[#99042F] hover:underline">
                 Ver todos
               </Link>
             </p>

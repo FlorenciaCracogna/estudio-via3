@@ -7,15 +7,16 @@ import type { Image as SanityImage } from "sanity";
 import type { Metadata } from "next";
 import { socialMetadata } from "@/lib/seo";
 
-const description = "Las últimas novedades de Estudio Vía3.";
+const description =
+  "Qué pensamos en Estudio Vía3 sobre aprendizaje organizacional y desarrollo de capacidades.";
 
 export const metadata: Metadata = {
-  title: "Novedades",
+  title: "Ideas",
   description,
   ...socialMetadata({
-    title: "Novedades | Estudio Vía3",
+    title: "Ideas | Estudio Vía3",
     description,
-    path: "/novedades",
+    path: "/ideas",
   }),
 };
 
@@ -28,7 +29,7 @@ interface Novedad {
   buttonText?: string;
 }
 
-export default async function NovedadesPage() {
+export default async function IdeasPage() {
   const { data: novedades } = await sanityFetch({
     query: TODAS_NOVEDADES_QUERY,
   });
@@ -72,7 +73,7 @@ export default async function NovedadesPage() {
 
         <div className="flex flex-col items-center text-center gap-4 relative z-10">
           <h1 className="font-extrabold uppercase text-[#99042F] tracking-wide font-poppins text-3xl md:text-4xl">
-            Novedades
+            Ideas
           </h1>
           <p className="text-gray-700 text-sm md:text-base max-w-2xl font-roboto leading-relaxed">
             Enterate de lo último de Estudio Vía3.

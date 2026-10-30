@@ -20,7 +20,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   // Rutas con header claro: la navbar arranca sólida para que los links se lean
-  const headerClaro = pathname === "/clientes" || pathname === "/novedades";
+  const headerClaro = pathname === "/experiencia" || pathname === "/ideas";
   const solida = scrolled || headerClaro;
 
   useEffect(() => {

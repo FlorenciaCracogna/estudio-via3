@@ -55,11 +55,11 @@ Sitio web institucional para **Estudio Vía3**, desarrollado de forma freelance.
 | **Navbar** | Navegación con transparencia según el scroll |
 | **El Estudio** | Presentación con un collage de imágenes en diagonal |
 | **Nuestros Pilares** | Acordeón con íconos exportados desde Figma (`mix-blend-mode: screen`) |
-| **Nosotros** | Grilla del equipo con páginas de detalle por integrante (query params en la URL) |
+| **Equipo** (ex Nosotros) | Grilla del equipo y una página `/equipo` con el detalle de cada integrante (query params en la URL) |
 | **Soluciones** | Cards con overlay en hover; el botón "Saber más" abre un modal con el detalle y un formulario de consulta |
 | **Partnerships** | Carrusel infinito con desplazamiento automático |
-| **Clientes** | Carrusel de logos y una página `/clientes` con la grilla completa |
-| **Novedades** | Contenido dinámico que se obtiene de Sanity CMS |
+| **Experiencia** (ex Clientes) | Carrusel de logos y una página `/experiencia` con la grilla completa |
+| **Ideas** (ex Novedades) | Contenido dinámico que se obtiene de Sanity CMS, con una página `/ideas` |
 | **Contacto** | Formulario conectado con Resend |
 | **Footer** | Carrusel con las dos sedes, acceso a WhatsApp y Google Maps |
 

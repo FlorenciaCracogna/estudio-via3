@@ -61,7 +61,7 @@ export default function Nosotros() {
             {equipo.map((persona) => (
               <Link
                 key={persona.id}
-                href={`/nosotros?miembro=${persona.id}`}
+                href={`/equipo?miembro=${persona.id}`}
                 className="flex flex-col items-center gap-3 group cursor-pointer"
               >
                 {/* Foto circular */}
@@ -98,7 +98,7 @@ export default function Nosotros() {
             />
           </div>
           <Link
-            href="/nosotros"
+            href="/equipo"
             className={buttonClasses()}
           >
             Conocenos

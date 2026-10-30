@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const SITE_URL = "https://estudiovia3.com.ar";
 export const SITE_NAME = "Estudio Vía3";
 export const SITE_DESCRIPTION =
-  "Somos un estudio que brinda soluciones personalizadas para el aprendizaje y desarrollo empresarial: formación, estructura organizacional y bienestar para empresas.";
+  "Aprendizaje organizacional: ayudamos a las organizaciones a transformar conocimientos en resultados del negocio. Soluciones de aprendizaje, estructura organizacional, capital humano y bienestar.";
 
 // Foto del Hero recortada a 1200x630 por Cloudinary para compartir en redes
 const OG_IMAGE =

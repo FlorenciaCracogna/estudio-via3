@@ -12,11 +12,11 @@ export const metadata: Metadata = {
   ...socialMetadata({
     title: "Nuestro Equipo | Estudio Vía3",
     description,
-    path: "/nosotros",
+    path: "/equipo",
   }),
 };
 
-export default function NosotrosPage() {
+export default function EquipoPage() {
   return (
     <Suspense
       fallback={

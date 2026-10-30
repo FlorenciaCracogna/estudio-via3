@@ -89,7 +89,7 @@ export default function Clientes() {
       {/* Botón Ver más */}
       <div className="flex justify-center mt-12" data-reveal>
         <Link
-          href="/clientes"
+          href="/experiencia"
           className={buttonClasses()}
         >
           Ver más

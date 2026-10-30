@@ -146,7 +146,7 @@ export const clients: Client[] = [
     featured: true,
   },
 
-  // ── RESTO (solo en /clientes) ─────────────────────────────────────────
+  // ── RESTO (solo en /experiencia) ─────────────────────────────────────────
   {
     name: "ACA",
     slug: "aca",

@@ -82,7 +82,7 @@ export default async function Novedades() {
 
       <div className="flex justify-center mt-12 relative z-10" data-reveal>
         <Link
-          href="/novedades"
+          href="/ideas"
           className={buttonClasses()}
         >
           Más novedades
