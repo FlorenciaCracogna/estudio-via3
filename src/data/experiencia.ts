@@ -1,9 +1,6 @@
 // Experiencia (Word 2026): los 8 sectores en el orden del Word, con sus clientes.
-// - logo: URL de Cloudinary. Los clientes sin logo llevan LOGO_PENDIENTE y se
-//   muestran como una tarjeta con el nombre en texto, del mismo tamaño que los logos.
+// - logo: URL de Cloudinary (la grilla de /experiencia le aplica e_trim).
 // - carrusel: aparece en el carrusel del home (los que ya estaban destacados).
-
-export const LOGO_PENDIENTE = "PLACEHOLDER";
 
 export interface Cliente {
   nombre: string;
@@ -89,8 +86,7 @@ export const sectores: Sector[] = [
       { nombre: "BBVA", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397125/bbva_ck4xde.jpg", carrusel: true },
       { nombre: "Santander", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397130/santander_t6fnqm.jpg", carrusel: true },
       { nombre: "Naranja X", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1793390658/naranja-x_eia0vu.png" },
-      // PLACEHOLDER: falta el logo de Red Link
-      { nombre: "Red Link", logo: LOGO_PENDIENTE },
+      { nombre: "Red Link", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1793391005/Red_link_logo_iwbwrt.png" },
       { nombre: "Caja de Valores", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397130/caja-de-valores_fvkiem.jpg" },
       { nombre: "Nación Seguros", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1789226495/nacion-seguros_nglsaq.jpg", carrusel: true },
       { nombre: "MAPFRE", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782396890/mapfre_zm9ldu.jpg", carrusel: true },
@@ -115,8 +111,9 @@ export const sectores: Sector[] = [
     clientes: [
       { nombre: "Telecom", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397183/telecom_ozguvx.jpg", carrusel: true },
       { nombre: "Grupo Clarín", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782396889/grupo-clarin_vzf6cm.jpg" },
-      // PLACEHOLDER: falta el logo de Linkit Global
-      { nombre: "Linkit Global", logo: LOGO_PENDIENTE },
+      // El PNG es la versión para fondo oscuro (las "i" y la bajada son blancas):
+      // e_replace_color pasa el blanco a gris oscuro para que se lea sobre la tarjeta blanca.
+      { nombre: "Linkit Global", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/e_replace_color:4b5563:40:ffffff/v1793391004/Linkit_phd461.png" },
       { nombre: "WiseTech Global", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397131/wisetech-global_ttnw9g.jpg" },
       { nombre: "Turner Broadcasting", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397132/turner_lvar6g.jpg" },
       { nombre: "Nyvus Net", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397148/nyvusnet_donhvt.jpg" },
@@ -160,7 +157,7 @@ export const sectores: Sector[] = [
   },
 ];
 
-/** Logos del carrusel del home: sólo clientes del Word con logo. */
+/** Logos del carrusel del home. */
 export const clientesCarrusel = sectores
   .flatMap((s) => s.clientes)
-  .filter((c) => c.carrusel && c.logo !== LOGO_PENDIENTE);
+  .filter((c) => c.carrusel);

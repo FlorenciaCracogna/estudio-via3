@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useId, useState } from "react";
-import { LOGO_PENDIENTE, type Cliente, type Sector } from "@/data/experiencia";
+import type { Cliente, Sector } from "@/data/experiencia";
 
 /**
  * Sectores de /experiencia en acordeón: todos cerrados al entrar y se pueden
@@ -83,24 +83,10 @@ export default function AcordeonSectores({ sectores }: { sectores: Sector[] }) {
  * una caja interior de 78% x 58%: los apaisados quedan limitados por el ancho
  * y los cuadrados por el alto, así ninguno queda gigante o diminuto al lado
  * de otro.
- * Sin logo (LOGO_PENDIENTE): el nombre en texto, con la misma tarjeta.
  */
 function LogoCliente({ cliente }: { cliente: Cliente }) {
-  const tarjeta =
-    "flex aspect-[3/2] items-center justify-center rounded-lg border bg-white";
-
-  if (cliente.logo === LOGO_PENDIENTE) {
-    return (
-      <div className={`${tarjeta} border-dashed border-gray-300 px-3`}>
-        <span className="text-center font-poppins text-sm font-semibold leading-snug text-gray-600">
-          {cliente.nombre}
-        </span>
-      </div>
-    );
-  }
-
   return (
-    <div className={`${tarjeta} border-gray-200`}>
+    <div className="flex aspect-[3/2] items-center justify-center rounded-lg border border-gray-200 bg-white">
       <div className="relative h-[58%] w-[78%]">
         <Image
           // e_trim: Cloudinary recorta el margen blanco que traen muchos JPG,
