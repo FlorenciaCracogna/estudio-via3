@@ -16,9 +16,9 @@ export interface Solucion {
 export const soluciones: Solucion[] = [
   {
     slug: "formacion",
-    titulo: "Formación",
+    titulo: "Aprendizaje organizacional",
     descripcion:
-      "Capacitamos en todas aquellas **competencias interpersonales** en el ámbito laboral, siguiendo diferentes objetivos.",
+      "Diseñamos estrategias, cursos y experiencias de aprendizaje orientados a fortalecer capacidades y prácticas que las personas y los equipos necesitan para alcanzar mejores resultados.",
     imagen:
       "https://res.cloudinary.com/dg8rew4w9/image/upload/v1785593016/formacion_xo1zrd.jpg",
     modalTitulo: "Soluciones para el aprendizaje organizacional",
@@ -63,9 +63,10 @@ export const soluciones: Solucion[] = [
   },
   {
     slug: "estructura-organizacional",
-    titulo: "Estructura organizacional y potencial humano",
+    titulo: "Estructura organizacional y capital humano",
+    // Word: "para el que aprendizaje" → corregido a "para que el aprendizaje"
     descripcion:
-      "Brindamos un servicio de **asesoramiento, evaluación y diseño o reestructuración de los procesos**, para lograr un ambiente de trabajo organizado, con visión estratégica de futuro.",
+      "Desarrollamos procesos, herramientas y prácticas que generan las condiciones para que el aprendizaje se sostenga en el tiempo, se transfiera a los puestos de trabajo y se consolide como parte del crecimiento organizacional.",
     // Foto muy panorámica (4000x1848): c_crop saca las sillas apiladas de la
     // derecha y la pared de arriba, y deja la ronda de personas centrada.
     imagen:
@@ -106,7 +107,7 @@ export const soluciones: Solucion[] = [
     slug: "bienestar-organizacional",
     titulo: "Bienestar organizacional",
     descripcion:
-      "Ofrecemos programas y actividades diseñadas para fomentar un **ambiente de trabajo saludable y positivo**, enfocándonos en el **desarrollo personal y colectivo de los colaboradores**.",
+      "Diseñamos programas e intervenciones orientados a construir entornos de trabajo saludables que favorezcan el bienestar individual y colectivo, las experiencias laborales positivas, el compromiso y el desarrollo.",
     imagen:
       "https://res.cloudinary.com/dg8rew4w9/image/upload/v1785593015/bienestar-organizacional_mue0ox.jpg",
     modalTitulo: "Soluciones para el bienestar organizacional",
