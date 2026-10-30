@@ -2,8 +2,6 @@
 // - logo: URL de Cloudinary. Los clientes sin logo llevan LOGO_PENDIENTE y se
 //   muestran como una tarjeta con el nombre en texto, del mismo tamaño que los logos.
 // - carrusel: aparece en el carrusel del home (los que ya estaban destacados).
-// Los logos de clients.ts que no están en el Word no se usan, pero se conservan
-// hasta decidir qué hacer con ellos (ver docs/contenidos/PLAN.md).
 
 export const LOGO_PENDIENTE = "PLACEHOLDER";
 
@@ -40,8 +38,7 @@ export const sectores: Sector[] = [
       { nombre: "Carrefour", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397116/carrefour_agnt7z.jpg", carrusel: true },
       { nombre: "Jumbo", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397117/jumbo_g6w0hg.jpg" },
       { nombre: "Farmacity", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397177/farmacity_fd6ctr.jpg", carrusel: true },
-      // PLACEHOLDER: falta el logo de The Food Market
-      { nombre: "The Food Market", logo: LOGO_PENDIENTE },
+      { nombre: "The Food Market", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1793390658/the-food-market_vcsuc8.jpg" },
       { nombre: "Avon", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397149/avon_pbirmt.jpg", carrusel: true },
       { nombre: "Gillette", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782396880/gillette_riqmla.jpg", carrusel: true },
       { nombre: "Barugel", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782396882/barugel_qkpqwf.jpg" },
@@ -65,7 +62,7 @@ export const sectores: Sector[] = [
       { nombre: "Bosch", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397163/bosch_cyw670.jpg", carrusel: true },
       { nombre: "Wiebel", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782396873/wiebel_grqkgj.jpg" },
       { nombre: "Coca-Cola FEMSA", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397155/femsa_gjc6jl.jpg" },
-      { nombre: "EG Impresores", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782396883/impresores_djszzt.jpg" }, // logo dice "impresores" (sin "EG"): confirmar con el cliente
+      { nombre: "EG Impresores", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782396883/impresores_djszzt.jpg" },
     ],
   },
   {
@@ -91,8 +88,7 @@ export const sectores: Sector[] = [
       { nombre: "Banco Macro", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397125/macro_rpequt.jpg" },
       { nombre: "BBVA", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397125/bbva_ck4xde.jpg", carrusel: true },
       { nombre: "Santander", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397130/santander_t6fnqm.jpg", carrusel: true },
-      // PLACEHOLDER: falta el logo de Naranja X
-      { nombre: "Naranja X", logo: LOGO_PENDIENTE },
+      { nombre: "Naranja X", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1793390658/naranja-x_eia0vu.png" },
       // PLACEHOLDER: falta el logo de Red Link
       { nombre: "Red Link", logo: LOGO_PENDIENTE },
       { nombre: "Caja de Valores", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397130/caja-de-valores_fvkiem.jpg" },
