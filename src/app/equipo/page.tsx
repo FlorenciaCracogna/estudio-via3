@@ -4,7 +4,7 @@ import { socialMetadata } from "@/lib/seo";
 import NosotrosContent from "./NosotrosContent";
 
 const description =
-  "Somos un equipo comprometido con la excelencia, guiado por la integridad, impulsado por el dinamismo, y sostenido por la profesionalidad y el entusiasmo en cada proyecto.";
+  "Profesionales con experiencia en consultoría, gestión organizacional, aprendizaje corporativo, desarrollo del talento y formación ejecutiva.";
 
 export const metadata: Metadata = {
   title: "Nuestro Equipo",

@@ -141,6 +141,10 @@ body {
   }
 }
 
-main [id] {
-  scroll-margin-top: var(--navbar-h);
+/* En @layer base para poder pisarlo con scroll-mt-* (los estilos sin capa le
+   ganan a las utilidades de Tailwind sin importar la especificidad) */
+@layer base {
+  main [id] {
+    scroll-margin-top: var(--navbar-h);
+  }
 }

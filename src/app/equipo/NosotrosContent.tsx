@@ -51,6 +51,12 @@ function PerfilCard({
             <h2 className="text-lg md:text-xl font-bold text-gray-900 font-poppins leading-tight">
               {persona.nombre}
             </h2>
+            <p className="mt-1 text-xs font-semibold uppercase tracking-[0.15em] text-[#99042F] font-poppins">
+              {persona.rol}
+            </p>
+            <p className="mt-2 text-sm text-gray-600 leading-relaxed font-roboto">
+              {persona.especialidad}
+            </p>
             <a
               href={persona.linkedin}
               target="_blank"
@@ -124,9 +130,9 @@ export default function NosotrosContent() {
             Nuestro Equipo
           </h1>
           <p className="text-white/80 text-base md:text-lg max-w-2xl font-roboto">
-            Somos un equipo comprometido con la excelencia, guiado por la
-            integridad, impulsado por el dinamismo, y sostenido por la
-            profesionalidad y el entusiasmo en cada proyecto
+            Profesionales con experiencia en consultoría, gestión
+            organizacional, aprendizaje corporativo, desarrollo del talento y
+            formación ejecutiva.
           </p>
 
           {/* Volver a todos si estamos filtrando */}
