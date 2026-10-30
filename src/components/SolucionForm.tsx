@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { soluciones } from "@/data/soluciones";
+import Button from "./Button";
 
 type Props = {
   defaultSolucion?: string;
@@ -76,7 +77,7 @@ export default function SolucionForm({
           ? undefined
           : {
               backgroundImage:
-                "url('https://res.cloudinary.com/dg8rew4w9/image/upload/v1782755940/fondo_texturado_1_epzdfo.png')",
+                "url('https://res.cloudinary.com/dg8rew4w9/image/upload/f_auto,q_auto/v1782755940/fondo_texturado_1_epzdfo.png')",
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundColor: "#99042F",
@@ -242,17 +243,13 @@ export default function SolucionForm({
           )}
 
           <div className="flex justify-center">
-            <button
+            <Button
               onClick={handleSubmit}
               disabled={estado === "enviando"}
-              className={
-                isLight
-                  ? "bg-[#99042F] text-white px-12 py-2.5 rounded-md font-medium tracking-widest text-sm hover:bg-[#7a0326] transition-colors disabled:opacity-60"
-                  : "bg-white text-[#99042F] px-12 py-2.5 rounded-md font-medium tracking-widest text-sm hover:bg-gray-100 transition-colors disabled:opacity-60"
-              }
+              variant={isLight ? "primary" : "light"}
             >
               {estado === "enviando" ? "Enviando..." : "Enviar"}
-            </button>
+            </Button>
           </div>
         </>
       )}

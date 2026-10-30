@@ -3,6 +3,7 @@ import Image from "next/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { ULTIMAS_NOVEDADES_QUERY } from "@/sanity/lib/queries";
 import NovedadCard from "./NovedadCard";
+import { buttonClasses } from "./Button";
 import type { Image as SanityImage } from "sanity";
 
 interface Novedad {
@@ -28,12 +29,15 @@ export default async function Novedades() {
       className="relative py-16 px-4 md:px-8 overflow-hidden"
       style={{
         backgroundImage:
-          "url('https://res.cloudinary.com/dg8rew4w9/image/upload/v1782760966/fondo_texturado_2_remimo.png')",
+          "url('https://res.cloudinary.com/dg8rew4w9/image/upload/f_auto,q_auto/v1782760966/fondo_texturado_2_remimo.png')",
         backgroundSize: "300px",
         backgroundRepeat: "repeat",
       }}
     >
-      <h2 className="titulo-seccion text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center font-poppins mb-12 relative z-10">
+      <h2
+        className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center font-poppins mb-12 relative z-10"
+        data-reveal
+      >
         Novedades
       </h2>
 
@@ -54,7 +58,10 @@ export default async function Novedades() {
           className="absolute bottom-6 left-2 w-10 h-auto md:w-14 md:-left-10 opacity-90 z-0"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 relative z-10">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 relative z-10"
+          data-reveal-stagger
+        >
           {novedadesList.map((novedad) => (
             <NovedadCard
               key={novedad._id}
@@ -68,10 +75,10 @@ export default async function Novedades() {
         </div>
       </div>
 
-      <div className="flex justify-center mt-12 relative z-10">
+      <div className="flex justify-center mt-12 relative z-10" data-reveal>
         <Link
           href="/novedades"
-          className="bg-[#99042F] text-white text-sm font-semibold px-8 py-3 rounded hover:opacity-90 transition"
+          className={buttonClasses()}
         >
           Más novedades
         </Link>

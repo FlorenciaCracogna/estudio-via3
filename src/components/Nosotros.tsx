@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { equipo } from "@/data/equipo";
+import { buttonClasses } from "./Button";
 
 // Nombre corto sin "Lic." para la sección home (igual que el Figma)
 function nombreCorto(nombre: string) {
@@ -17,7 +18,7 @@ export default function Nosotros() {
     >
       <div className="w-full max-w-6xl mx-auto px-6 md:px-12">
         {/* Encabezado */}
-        <div className="relative flex flex-col items-center mb-10">
+        <div className="relative flex flex-col items-center mb-10" data-reveal>
           {/* Dots decorativos arriba derecha */}
           <div className="absolute -top-2 right-0">
             <Image
@@ -29,7 +30,7 @@ export default function Nosotros() {
             />
           </div>
 
-          <h2 className="titulo-seccion text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center font-poppins mb-4">
+          <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center font-poppins mb-4">
             Nosotros
           </h2>
           <p className="text-gray-800 text-sm md:text-base text-center max-w-2xl font-roboto">
@@ -55,6 +56,7 @@ export default function Nosotros() {
           <div
             className="relative w-full grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 justify-items-center"
             style={{ zIndex: 1 }}
+            data-reveal-stagger
           >
             {equipo.map((persona) => (
               <Link
@@ -73,7 +75,7 @@ export default function Nosotros() {
                   />
                 </div>
                 {/* Nombre sin "Lic." */}
-                <span className="text-center text-sm md:text-base font-semibold text-gray-800 group-hover:text-[#DBCAB9] transition-colors duration-300 font-roboto leading-tight">
+                <span className="text-center text-sm md:text-base font-semibold text-gray-800 group-hover:text-[#99042F] transition-colors duration-300 font-roboto leading-tight">
                   {nombreCorto(persona.nombre)}
                 </span>
               </Link>
@@ -82,7 +84,7 @@ export default function Nosotros() {
         </div>
 
         {/* CTA inferior */}
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center gap-3" data-reveal>
           <div className="flex items-center gap-3">
             <p className="text-gray-600 italic font-roboto text-sm md:text-base text-center">
               Acerquémonos un poco más y conocé más sobre nuestro equipo
@@ -97,7 +99,7 @@ export default function Nosotros() {
           </div>
           <Link
             href="/nosotros"
-            className="px-8 py-2.5 bg-[#99042F] hover:bg-[#7a0326] text-white font-medium tracking-widest rounded-md transition-colors duration-200 font-roboto text-sm"
+            className={buttonClasses()}
           >
             Conocenos
           </Link>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef, useEffect } from "react";
 import { featuredClients } from "@/data/clients";
+import { buttonClasses } from "./Button";
 
 const tickerItems = [...featuredClients, ...featuredClients];
 
@@ -43,8 +44,8 @@ export default function Clientes() {
       className="bg-white py-16 md:py-24 overflow-hidden w-full"
     >
       <div className="w-full max-w-6xl mx-auto px-6 md:px-12 mb-10">
-        <div className="flex flex-col items-center text-center gap-4">
-          <h2 className="titulo-seccion text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide font-poppins">
+        <div className="flex flex-col items-center text-center gap-4" data-reveal>
+          <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide font-poppins">
             Clientes
           </h2>
           <p className="text-gray-600 text-sm md:text-base max-w-2xl font-roboto leading-relaxed">
@@ -54,7 +55,7 @@ export default function Clientes() {
       </div>
 
       {/* Ticker */}
-      <div className="relative w-full">
+      <div className="relative w-full" data-reveal>
         {/* Fade izquierda */}
         <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
         {/* Fade derecha */}
@@ -76,7 +77,6 @@ export default function Clientes() {
                 width={140}
                 height={70}
                 className="object-contain max-h-24 w-full"
-                unoptimized
               />
             </div>
           ))}
@@ -84,10 +84,10 @@ export default function Clientes() {
       </div>
 
       {/* Botón Ver más */}
-      <div className="flex justify-center mt-12">
+      <div className="flex justify-center mt-12" data-reveal>
         <Link
           href="/clientes"
-          className="px-8 py-2.5 bg-[#99042F] hover:bg-[#7a0326] text-white font-medium tracking-widest rounded-md transition-colors duration-200 font-roboto text-sm"
+          className={buttonClasses()}
         >
           Ver más
         </Link>

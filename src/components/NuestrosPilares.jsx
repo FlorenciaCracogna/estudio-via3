@@ -52,7 +52,7 @@ export default function NuestrosPilares() {
       className="relative flex flex-col items-center px-2 md:px-8 py-16 overflow-hidden"
       style={{
         backgroundImage:
-          "url('https://res.cloudinary.com/dg8rew4w9/image/upload/v1781807517/estudio-principal_qp6yxt.jpg')",
+          "url('https://res.cloudinary.com/dg8rew4w9/image/upload/f_auto,q_auto,w_1920/v1781807517/estudio-principal_qp6yxt.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -60,10 +60,16 @@ export default function NuestrosPilares() {
       <div className="absolute inset-0 bg-black/90" />
 
       <div className="relative z-10 text-center w-full max-w-4xl">
-        <h2 className="titulo-seccion font-poppins font-bold text-white tracking-widest text-3xl md:text-4xl mb-4">
+        <h2
+          className="titulo-seccion font-poppins font-extrabold text-white tracking-widest text-3xl md:text-4xl mb-4"
+          data-reveal
+        >
           NUESTROS PILARES
         </h2>
-        <p className="font-roboto italic text-white/85 text-base md:text-base leading-relaxed max-w-2xl mx-auto mb-8">
+        <p
+          className="font-roboto italic text-white/85 text-base md:text-base leading-relaxed max-w-2xl mx-auto mb-8"
+          data-reveal
+        >
           Actitud con la que la red de relaciones piensa, siente y desarrolla el
           servicio; especificando un sistema de creencias que sostiene y otorga
           coherencia a su performance.

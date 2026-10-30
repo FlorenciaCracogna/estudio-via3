@@ -21,7 +21,7 @@ function PartnerCard({ partner }: { partner: Partner }) {
     >
       {/* Imagen / logo */}
       <div
-        className={`w-full h-full transition-all duration-300 ${
+        className={`relative w-full h-full transition-all duration-300 ${
           partner.tipo === "empresa" ? "bg-white" : ""
         }`}
       >
@@ -29,7 +29,7 @@ function PartnerCard({ partner }: { partner: Partner }) {
           src={partner.imagen}
           alt={partner.nombre}
           fill
-          className={`object-${partner.tipo === "empresa" ? "contain" : "cover"} p-${partner.tipo === "empresa" ? "4" : "0"} transition-opacity duration-300 ${hovered ? "opacity-40" : "opacity-100"}`}
+          className={`${partner.tipo === "empresa" ? "object-contain p-4" : "object-cover p-0"} transition-opacity duration-300 ${hovered ? "opacity-40" : "opacity-100"}`}
           sizes="144px"
         />
       </div>
@@ -83,8 +83,8 @@ export default function Partnerships() {
     >
       <div className="w-full max-w-6xl mx-auto px-6 md:px-12 mb-10">
         {/* Encabezado */}
-        <div className="flex flex-col items-center text-center gap-4">
-          <h2 className="titulo-seccion text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide font-poppins">
+        <div className="flex flex-col items-center text-center gap-4" data-reveal>
+          <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide font-poppins">
             Partnerships
           </h2>
           <p className="text-gray-800 text-sm md:text-base w-full max-w-2xl font-roboto leading-relaxed px-2">
@@ -96,7 +96,7 @@ export default function Partnerships() {
       </div>
 
       {/* Ticker carrusel */}
-      <div className="relative w-full">
+      <div className="relative w-full" data-reveal>
         {/* Fade izquierda */}
         <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-[#DBCAB9] to-transparent z-10 pointer-events-none" />
         {/* Fade derecha */}

@@ -164,8 +164,8 @@ export default function ElEstudio() {
       {/* ── PARTE 1: Título + texto + foto que sobresale ── */}
       <div className="relative py-16 md:py-24 overflow-hidden w-full max-w-full">
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12">
-          <div className="md:max-w-[50%]">
-            <h2 className="titulo-seccion text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center md:text-left mb-6 font-poppins">
+          <div className="md:max-w-[50%]" data-reveal>
+            <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center md:text-left mb-6 font-poppins">
               El Estudio
             </h2>
             <p className="text-gray-700 text-base md:text-lg leading-loose font-roboto">
@@ -193,7 +193,7 @@ export default function ElEstudio() {
       {/* ── PARTE 2: Collage + texto secundario ── */}
       <div className="relative py-12 md:py-20">
         {/* MOBILE: texto + carrusel simple */}
-        <div className="md:hidden flex flex-col gap-6 px-6">
+        <div className="md:hidden flex flex-col gap-6 px-6" data-reveal-stagger>
           <p className="text-gray-700 text-base leading-loose font-roboto">
             Estamos convencidos que cada organización requiere sus propias
             soluciones para optimizar los procesos, mejorar el desempeño de sus
@@ -203,7 +203,10 @@ export default function ElEstudio() {
         </div>
 
         {/* TABLET/DESKTOP: collage full-width izquierda + texto derecha */}
-        <div className="hidden md:grid md:grid-cols-[2fr_1fr] items-center">
+        <div
+          className="hidden md:grid md:grid-cols-[2fr_1fr] items-center"
+          data-reveal-stagger
+        >
           {/* Columna izquierda — collage sin padding, llega al borde */}
           <div className="relative pl-12 h-[560px] lg:h-[620px] overflow-hidden">
             {/* Foto chica arriba izquierda */}

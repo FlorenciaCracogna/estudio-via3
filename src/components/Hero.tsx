@@ -1,15 +1,17 @@
 import Image from "next/image";
+import { buttonClasses } from "./Button";
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-screen min-h-[600px] md:min-h-[700px] max-h-[800px] md:max-h-[900px] lg:max-h-[800px] flex items-center">
+    <section className="relative w-full h-screen min-h-[600px] md:min-h-[700px] max-h-[800px] md:max-h-[900px] lg:max-h-[800px] flex items-center overflow-hidden">
       {/* Imagen de fondo */}
       <Image
         src="https://res.cloudinary.com/dg8rew4w9/image/upload/v1781807517/hero-bg_bc4nqs.jpg"
         alt="Equipo Estudio Vía3"
         fill
-        priority
-        className="object-cover object-center"
+        preload
+        sizes="100vw"
+        className="hero-zoom object-cover object-center"
       />
 
       {/* Overlay oscuro */}
@@ -17,18 +19,21 @@ export default function Hero() {
 
       {/* Contenido */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col items-center text-center text-white gap-6">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wide leading-tight px-4">
+        <h1 className="hero-entrada titulo-seccion font-poppins text-[clamp(1.5rem,8vw,2rem)] sm:text-5xl md:text-6xl lg:text-7xl font-bold uppercase tracking-wide leading-tight px-4">
           Aprendizaje Organizacional
         </h1>
 
-        <p className="text-base md:text-lg max-w-xl text-white/90 italic">
+        <p className="hero-entrada [--hero-delay:150ms] text-base md:text-lg max-w-xl text-white/90 italic">
           Somos un estudio que brinda soluciones personalizadas para el
           aprendizaje y desarrollo empresarial.
         </p>
 
         <a
           href="#el-estudio"
-          className="mt-2 px-12 py-3 bg-[#99042F] hover:bg-[#7a0326] text-white font-medium tracking-widest rounded-md transition-colors duration-200"
+          className={buttonClasses({
+            size: "lg",
+            className: "hero-entrada [--hero-delay:300ms] mt-2",
+          })}
         >
           Conocenos
         </a>

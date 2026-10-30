@@ -1,6 +1,8 @@
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import type { Solucion } from "@/data/soluciones";
 import BoldText from "./BoldText";
+import Button from "./Button";
 
 type Props = Solucion & { onSaberMas: () => void };
 
@@ -11,16 +13,17 @@ export default function SolucionCard({
   onSaberMas,
 }: Props) {
   return (
-    <div className="group h-full flex flex-col bg-white rounded-lg overflow-hidden shadow-md">
+    <div className="group h-full flex flex-col bg-white rounded-lg overflow-hidden shadow-md transition duration-300 can-hover:motion-safe:hover:-translate-y-1.5 can-hover:hover:shadow-xl">
       <div className="order-1 relative w-full h-56 md:h-64 overflow-hidden">
         <Image
           src={imagen}
           alt={titulo}
           fill
-          className="object-cover transition duration-300 can-hover:group-hover:brightness-[0.3]"
+          sizes="(max-width: 768px) 100vw, 320px"
+          className="object-cover transition duration-500 can-hover:group-hover:brightness-[0.3] can-hover:motion-safe:group-hover:scale-105 can-hover:group-focus-within:brightness-[0.3]"
         />
-        <div className="hidden can-hover:block absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
-        <div className="hidden can-hover:flex absolute inset-0 items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="hidden can-hover:block absolute inset-0 bg-black opacity-0 group-hover:opacity-50 group-focus-within:opacity-50 transition-opacity duration-300" />
+        <div className="hidden can-hover:flex absolute inset-0 items-center justify-center p-6 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300">
           <p className="text-white text-center text-sm font-roboto leading-relaxed">
             <BoldText text={descripcion} />
           </p>
@@ -35,12 +38,14 @@ export default function SolucionCard({
           <BoldText text={descripcion} />
         </p>
         <div className="mt-auto pt-4 flex justify-center">
-          <button
-            onClick={onSaberMas}
-            className="bg-[#99042F] text-white font-semibold px-6 py-2 rounded hover:bg-[#7a0326] transition-colors"
-          >
+          <Button onClick={onSaberMas}>
             Saber más
-          </button>
+            <ArrowRight
+              size={16}
+              aria-hidden="true"
+              className="transition-transform duration-300 can-hover:motion-safe:group-hover:translate-x-1"
+            />
+          </Button>
         </div>
       </div>
     </div>

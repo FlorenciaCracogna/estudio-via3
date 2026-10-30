@@ -4,10 +4,19 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { TODAS_NOVEDADES_QUERY } from "@/sanity/lib/queries";
 import NovedadCard from "@/components/NovedadCard";
 import type { Image as SanityImage } from "sanity";
+import type { Metadata } from "next";
+import { socialMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Novedades | Estudio Vía3",
-  description: "Las últimas novedades de Estudio Vía3.",
+const description = "Las últimas novedades de Estudio Vía3.";
+
+export const metadata: Metadata = {
+  title: "Novedades",
+  description,
+  ...socialMetadata({
+    title: "Novedades | Estudio Vía3",
+    description,
+    path: "/novedades",
+  }),
 };
 
 interface Novedad {
@@ -32,13 +41,13 @@ export default async function NovedadesPage() {
         className="relative pt-24 md:pt-32 pb-16 px-6 md:px-12 overflow-hidden"
         style={{
           backgroundImage:
-            "url('https://res.cloudinary.com/dg8rew4w9/image/upload/v1782760966/fondo_texturado_2_remimo.png')",
+            "url('https://res.cloudinary.com/dg8rew4w9/image/upload/f_auto,q_auto/v1782760966/fondo_texturado_2_remimo.png')",
           backgroundSize: "300px",
           backgroundRepeat: "repeat",
         }}
       >
         {/* Puntitos arriba derecha */}
-        <div className="absolute top-6 right-2 md:right-12 opacity-90">
+        <div className="absolute top-20 lg:top-24 right-2 md:right-12 opacity-90">
           <Image
             src="/arrows-dots/puntitos-negro.png"
             alt=""
@@ -62,7 +71,7 @@ export default async function NovedadesPage() {
         </div>
 
         <div className="flex flex-col items-center text-center gap-4 relative z-10">
-          <h1 className="titulo-seccion font-extrabold uppercase text-[#99042F] tracking-wide font-poppins text-3xl md:text-4xl">
+          <h1 className="font-extrabold uppercase text-[#99042F] tracking-wide font-poppins text-3xl md:text-4xl">
             Novedades
           </h1>
           <p className="text-gray-700 text-sm md:text-base max-w-2xl font-roboto leading-relaxed">
@@ -78,7 +87,10 @@ export default async function NovedadesPage() {
             Todavía no hay novedades cargadas.
           </p>
         ) : (
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            data-reveal-stagger
+          >
             {novedadesList.map((novedad) => (
               <NovedadCard
                 key={novedad._id}

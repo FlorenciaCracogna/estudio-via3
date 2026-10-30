@@ -1,9 +1,19 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { clients } from "@/data/clients";
+import { socialMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Clientes | Estudio Vía3",
-  description: "Organizaciones y personas en confianza mutua.",
+const description =
+  "Organizaciones y personas en confianza mutua: las empresas que confían en Estudio Vía3.";
+
+export const metadata: Metadata = {
+  title: "Clientes",
+  description,
+  ...socialMetadata({
+    title: "Clientes | Estudio Vía3",
+    description,
+    path: "/clientes",
+  }),
 };
 
 export default function ClientesPage() {
@@ -12,7 +22,7 @@ export default function ClientesPage() {
       {/* Header con fondo beige */}
       <div className="relative bg-[#DBCAB9] pt-24 md:pt-32 pb-16 px-6 md:px-12 overflow-hidden">
         {/* Puntitos arriba derecha */}
-        <div className="absolute top-6 right-6 md:right-12 opacity-50">
+        <div className="absolute top-20 lg:top-24 right-6 md:right-12 opacity-50 hidden md:block">
           <Image
             src="/arrows-dots/puntitos-negro.png"
             alt=""
@@ -34,7 +44,7 @@ export default function ClientesPage() {
         </div>
 
         <div className="flex flex-col items-center text-center gap-4 relative z-10">
-          <h1 className="titulo-seccion font-extrabold uppercase text-[#99042F] tracking-wide font-poppins text-3xl md:text-4xl">
+          <h1 className="font-extrabold uppercase text-[#99042F] tracking-wide font-poppins text-3xl md:text-4xl">
             Confían en nosotros
           </h1>
           <p className="text-gray-700 text-sm md:text-base max-w-2xl font-roboto leading-relaxed">
@@ -45,7 +55,10 @@ export default function ClientesPage() {
 
       {/* Grilla con fondo blanco */}
       <div className="bg-white py-16 px-6 md:px-12">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div
+          className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          data-reveal-stagger
+        >
           {clients.map((client) => (
             <div
               key={client.slug}
@@ -57,7 +70,6 @@ export default function ClientesPage() {
                 width={160}
                 height={80}
                 className="object-contain max-h-full w-full"
-                unoptimized
               />
             </div>
           ))}
