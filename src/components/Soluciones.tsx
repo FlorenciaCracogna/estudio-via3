@@ -41,13 +41,6 @@ export default function Soluciones() {
         <PreguntaInicial tono="oscuro" className="text-center mt-3">
           {secciones.soluciones.pregunta}
         </PreguntaInicial>
-        <p
-          className="text-center text-white/90 font-roboto mt-3 max-w-2xl mx-auto"
-          data-reveal
-        >
-          Las soluciones son estrategias, dispositivos y actividades que se
-          orientan a ampliar los saberes organizacionales.
-        </p>
 
         <div
           className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch"

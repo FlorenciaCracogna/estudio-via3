@@ -1,5 +1,5 @@
 // Soluciones del home (Word 2026): las 3 categorías, su párrafo introductorio,
-// las subsoluciones con sus bullets y la foto de cada una.
+// las subsoluciones con sus bullets y la foto de cada card.
 
 export interface Subsolucion {
   titulo: string;
@@ -8,15 +8,12 @@ export interface Subsolucion {
 
 export interface Solucion {
   slug: string;
-  /** Nombre corto: título de la card y valor del select del formulario. */
+  /** Nombre corto (va después de la etiqueta "Soluciones para"): título de
+   *  la card y del modal, y valor del select del formulario. */
   titulo: string;
-  /** Nombre completo del Word: título del modal. */
-  nombreCompleto: string;
   /** Párrafo introductorio: se ve en la card y en el modal. */
   descripcion: string;
   imagen: string;
-  /** object-position de la foto en la franja baja del modal (default: center). */
-  focoModal?: string;
   subsoluciones: Subsolucion[];
 }
 
@@ -28,7 +25,6 @@ export const soluciones: Solucion[] = [
       "Diseñamos estrategias, cursos y experiencias de aprendizaje orientados a fortalecer capacidades y prácticas que las personas y los equipos necesitan para alcanzar mejores resultados.",
     imagen:
       "https://res.cloudinary.com/dg8rew4w9/image/upload/v1785593016/formacion_xo1zrd.jpg",
-    nombreCompleto: "Soluciones para el aprendizaje organizacional",
     subsoluciones: [
       {
         titulo: "Aprendizaje para el desarrollo de líderes",
@@ -85,10 +81,6 @@ export const soluciones: Solucion[] = [
     // derecha y la pared de arriba, y deja la ronda de personas centrada.
     imagen:
       "https://res.cloudinary.com/dg8rew4w9/image/upload/c_crop,x_440,y_160,w_2560,h_1600/v1793386552/estructura-organizacional_cfrxnl.jpg",
-    // En la franja del modal (~5:1) el centro deja sólo torsos: se sube el foco a las caras y la red de hilos
-    focoModal: "50% 30%",
-    nombreCompleto:
-      "Soluciones para la estructura organizacional y el capital humano",
     subsoluciones: [
       {
         titulo: "Gestión del aprendizaje",
@@ -142,7 +134,6 @@ export const soluciones: Solucion[] = [
       "Diseñamos programas e intervenciones orientados a construir entornos de trabajo saludables que favorezcan el bienestar individual y colectivo, las experiencias laborales positivas, el compromiso y el desarrollo.",
     imagen:
       "https://res.cloudinary.com/dg8rew4w9/image/upload/v1785593015/bienestar-organizacional_mue0ox.jpg",
-    nombreCompleto: "Soluciones para el bienestar organizacional",
     subsoluciones: [
       {
         titulo: "Clima y salud laboral",

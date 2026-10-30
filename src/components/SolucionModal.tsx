@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import type { Solucion } from "@/data/soluciones";
@@ -103,6 +102,7 @@ export default function SolucionModal({ solucion, onClose }: Props) {
   };
 
   const tituloId = `modal-titulo-${solucion.slug}`;
+  const etiquetaId = `modal-etiqueta-${solucion.slug}`;
 
   return (
     <div
@@ -114,9 +114,9 @@ export default function SolucionModal({ solucion, onClose }: Props) {
         ref={panelRef}
         role="dialog"
         aria-modal="true"
-        aria-labelledby={tituloId}
+        aria-labelledby={`${etiquetaId} ${tituloId}`}
         tabIndex={-1}
-        className="modal-panel relative bg-white rounded-xl w-full max-w-5xl max-h-[90vh] overflow-y-auto focus:outline-none"
+        className="modal-panel relative bg-white rounded-xl border-t-[5px] border-[#99042F] w-full max-w-5xl max-h-[calc(100svh-4rem)] overflow-y-auto focus:outline-none"
         data-cerrando={cerrando || undefined}
         onClick={(e) => e.stopPropagation()}
       >
@@ -125,30 +125,25 @@ export default function SolucionModal({ solucion, onClose }: Props) {
           <button
             onClick={cerrar}
             aria-label="Cerrar"
-            className="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full bg-[#99042F] text-white shadow-md hover:bg-[#7a0326] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#99042F]"
+            className="absolute top-3 right-3 w-10 h-10 flex items-center justify-center rounded-full bg-white text-gray-800 ring-1 ring-gray-200 shadow-md hover:bg-gray-100 hover:text-[#99042F] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#99042F]"
           >
-            <X size={18} aria-hidden="true" />
+            <X size={20} strokeWidth={2.25} aria-hidden="true" />
           </button>
         </div>
 
-        <div className="relative w-full h-36 md:h-[180px]">
-          <Image
-            src={solucion.imagen}
-            alt=""
-            fill
-            sizes="(max-width: 1024px) 100vw, 1024px"
-            className="object-cover rounded-t-xl"
-            style={{ objectPosition: solucion.focoModal ?? "center" }}
-          />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-8 md:gap-10 p-6 md:p-8">
+        <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-8 md:gap-10 px-6 pt-14 pb-6 md:px-8 md:pt-14 md:pb-8">
           <div>
+            <p
+              id={etiquetaId}
+              className="font-poppins text-xs font-semibold uppercase tracking-[0.2em] text-[#99042F]"
+            >
+              Soluciones para
+            </p>
             <h2
               id={tituloId}
-              className="text-[#99042F] font-poppins font-bold text-2xl md:text-3xl uppercase mb-4"
+              className="mt-1 text-[#99042F] font-poppins font-bold text-2xl md:text-3xl uppercase mb-4"
             >
-              {solucion.nombreCompleto}
+              {solucion.titulo}
             </h2>
             <p className="text-gray-700 font-roboto mb-6 leading-relaxed">
               {solucion.descripcion}
@@ -160,11 +155,12 @@ export default function SolucionModal({ solucion, onClose }: Props) {
           {/* Desktop: sticky dentro del panel (que es el que scrollea), siempre visible */}
           <div
             ref={formRef}
-            className="scroll-mt-4 md:sticky md:top-6 md:self-start"
+            className="scroll-mt-4 md:sticky md:top-14 md:self-start"
           >
             <SolucionForm
               key={solucion.slug}
               defaultSolucion={solucion.titulo}
+              compacto
             />
           </div>
         </div>
