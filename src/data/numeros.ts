@@ -1,7 +1,5 @@
 // Banda de números debajo del Hero (BandaNumeros.tsx): count-up al entrar en pantalla.
-//
-// ⚠️ PLACEHOLDER: reemplazar con los datos del cliente antes del deploy.
-//    Los valores de abajo (25, +500, +12.000, +100) son de EJEMPLO.
+// Valores reales informados por el cliente.
 //
 // Sólo se muestran los que tienen valor; si ninguno tiene, la banda no aparece.
 
@@ -15,8 +13,8 @@ export interface NumeroHero {
 }
 
 export const numerosHero: NumeroHero[] = [
-  { label: "Años", valor: 25 }, // PLACEHOLDER
-  { label: "Proyectos", valor: 500, prefijo: "+" }, // PLACEHOLDER
-  { label: "Personas", valor: 12000, prefijo: "+" }, // PLACEHOLDER
-  { label: "Clientes", valor: 100, prefijo: "+" }, // PLACEHOLDER
+  { label: "Años", valor: 20 },
+  { label: "Proyectos", valor: 400, prefijo: "+" },
+  { label: "Personas formadas", valor: 12000, prefijo: "+" },
+  { label: "Clientes", valor: 100, prefijo: "+" },
 ];
