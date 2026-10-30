@@ -116,7 +116,8 @@ body {
 }
 
 /* Altura de la navbar fija (h-16 / lg:h-20): las anclas del home la compensan
-   para que el título de la sección no quede tapado. */
+   para que el título de la sección no quede tapado. El aire lo da el padding
+   de cada sección; sumar más deja ver el final de la sección anterior. */
 :root {
   --navbar-h: 4rem;
 }
@@ -128,5 +129,5 @@ body {
 }
 
 main [id] {
-  scroll-margin-top: calc(var(--navbar-h) + 1.5rem);
+  scroll-margin-top: var(--navbar-h);
 }
