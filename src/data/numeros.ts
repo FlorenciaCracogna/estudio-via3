@@ -1,5 +1,8 @@
-// Banda de números del Hero (count-up al entrar en pantalla).
-// PENDIENTE DEL CLIENTE: completar `valor` con un número (ej. 25).
+// Banda de números del Hero (aparece con el primer scroll y hace count-up).
+//
+// ⚠️ PLACEHOLDER: reemplazar con los datos del cliente antes del deploy.
+//    Los valores de abajo (25, +500, +12.000, +100) son de EJEMPLO.
+//
 // Sólo se muestran los que tienen valor; si ninguno tiene, la banda no aparece.
 
 export interface NumeroHero {
@@ -12,8 +15,8 @@ export interface NumeroHero {
 }
 
 export const numerosHero: NumeroHero[] = [
-  { label: "Años", valor: null },
-  { label: "Proyectos", valor: null, prefijo: "+" },
-  { label: "Personas", valor: null, prefijo: "+" },
-  { label: "Clientes", valor: null, prefijo: "+" },
+  { label: "Años", valor: 25 }, // PLACEHOLDER
+  { label: "Proyectos", valor: 500, prefijo: "+" }, // PLACEHOLDER
+  { label: "Personas", valor: 12000, prefijo: "+" }, // PLACEHOLDER
+  { label: "Clientes", valor: 100, prefijo: "+" }, // PLACEHOLDER
 ];
