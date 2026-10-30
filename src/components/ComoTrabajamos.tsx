@@ -62,16 +62,19 @@ export default function ComoTrabajamos() {
           data-reveal-stagger
         >
           {principios.map((p) => (
+            // Hover como en las cards de Soluciones: sólo con mouse (can-hover).
+            // Con reduced motion queda únicamente el cambio de borde. Las cards
+            // no tienen nada enfocable, así que no aplica el foco de teclado.
             <li
               key={p.titulo}
-              className="flex flex-col items-center text-center gap-4 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm"
+              className="group flex flex-col items-center text-center gap-4 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm transition duration-300 ease-out can-hover:hover:border-white/35 can-hover:motion-safe:hover:bg-white/10 can-hover:motion-safe:hover:-translate-y-1"
             >
               <Image
                 src={p.icono}
                 alt=""
                 width={80}
                 height={80}
-                className="w-20 h-20 mix-blend-screen"
+                className="w-20 h-20 mix-blend-screen transition-transform duration-300 ease-out can-hover:motion-safe:group-hover:scale-105"
               />
               <h3 className="font-poppins text-lg font-semibold leading-snug text-white">
                 {p.titulo}
