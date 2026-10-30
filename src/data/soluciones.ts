@@ -66,8 +66,10 @@ export const soluciones: Solucion[] = [
     titulo: "Estructura organizacional y potencial humano",
     descripcion:
       "Brindamos un servicio de **asesoramiento, evaluación y diseño o reestructuración de los procesos**, para lograr un ambiente de trabajo organizado, con visión estratégica de futuro.",
+    // Foto muy panorámica (4000x1848): c_crop saca las sillas apiladas de la
+    // derecha y la pared de arriba, y deja la ronda de personas centrada.
     imagen:
-      "https://res.cloudinary.com/dg8rew4w9/image/upload/v1781807517/hero-bg_bc4nqs.jpg",
+      "https://res.cloudinary.com/dg8rew4w9/image/upload/c_crop,x_440,y_160,w_2560,h_1600/v1793386552/estructura-organizacional_cfrxnl.jpg",
     modalTitulo:
       "Soluciones para la estructura organizacional y el capital humano",
     intro:
