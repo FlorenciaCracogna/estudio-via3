@@ -49,6 +49,7 @@ export default function NuestrosPilares() {
 
   return (
     <section
+      id="como-trabajamos"
       className="relative flex flex-col items-center px-2 md:px-8 py-16 overflow-hidden"
       style={{
         backgroundImage:
@@ -61,10 +62,10 @@ export default function NuestrosPilares() {
 
       <div className="relative z-10 text-center w-full max-w-4xl">
         <h2
-          className="titulo-seccion font-poppins font-extrabold text-white tracking-widest text-3xl md:text-4xl mb-4"
+          className="titulo-seccion font-poppins font-extrabold text-white tracking-widest text-3xl md:text-4xl mb-4 uppercase"
           data-reveal
         >
-          NUESTROS PILARES
+          Cómo trabajamos
         </h2>
         <p
           className="font-roboto italic text-white/85 text-base md:text-base leading-relaxed max-w-2xl mx-auto mb-8"

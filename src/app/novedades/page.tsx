@@ -108,7 +108,7 @@ export default async function NovedadesPage() {
       {/* Footer de la página: volver a home */}
       <div className="bg-[#DBCAB9] border-t border-[#c9b5a0] py-10 flex justify-center">
         <Link
-          href="/#novedades"
+          href="/#ideas"
           className="inline-flex items-center gap-3 text-[#99042F] hover:text-[#7a0326] font-roboto font-medium transition-colors"
         >
           <Image

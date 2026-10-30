@@ -5,6 +5,8 @@ import Image from "next/image";
 import { soluciones, type Solucion } from "@/data/soluciones";
 import SolucionCard from "./SolucionCard";
 import SolucionModal from "./SolucionModal";
+import PreguntaInicial from "./PreguntaInicial";
+import { secciones } from "@/data/secciones";
 
 export default function Soluciones() {
   const [activa, setActiva] = useState<Solucion | null>(null);
@@ -34,8 +36,11 @@ export default function Soluciones() {
           className="titulo-seccion text-center text-white font-poppins font-extrabold text-3xl md:text-4xl uppercase tracking-wide"
           data-reveal
         >
-          Soluciones
+          {secciones.soluciones.label}
         </h2>
+        <PreguntaInicial tono="oscuro" className="text-center mt-3">
+          {secciones.soluciones.pregunta}
+        </PreguntaInicial>
         <p
           className="text-center text-white/90 font-roboto mt-3 max-w-2xl mx-auto"
           data-reveal

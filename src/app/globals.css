@@ -115,12 +115,18 @@ body {
   }
 }
 
-section[id] {
-  scroll-margin-top: 90px;
+/* Altura de la navbar fija (h-16 / lg:h-20): las anclas del home la compensan
+   para que el título de la sección no quede tapado. */
+:root {
+  --navbar-h: 4rem;
 }
 
 @media (min-width: 1024px) {
-  section[id] {
-    scroll-margin-top: 100px;
+  :root {
+    --navbar-h: 5rem;
   }
+}
+
+main [id] {
+  scroll-margin-top: calc(var(--navbar-h) + 1.5rem);
 }

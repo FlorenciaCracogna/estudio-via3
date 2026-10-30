@@ -1,6 +1,8 @@
 "use client";
 
 import SolucionForm from "./SolucionForm";
+import PreguntaInicial from "./PreguntaInicial";
+import { secciones } from "@/data/secciones";
 
 export default function Contacto() {
   return (
@@ -16,9 +18,12 @@ export default function Contacto() {
       }}
     >
       <div className="max-w-2xl mx-auto" data-reveal-stagger>
-        <h2 className="titulo-seccion font-poppins text-white text-center font-extrabold text-3xl md:text-4xl uppercase tracking-wide mb-10">
-          ¿Cómo te ayudamos?
+        <h2 className="titulo-seccion font-poppins text-white text-center font-extrabold text-3xl md:text-4xl uppercase tracking-wide mb-3">
+          {secciones.contacto.label}
         </h2>
+        <PreguntaInicial tono="oscuro" className="text-center mb-10">
+          {secciones.contacto.pregunta}
+        </PreguntaInicial>
         <SolucionForm variant="light" />
       </div>
     </section>

@@ -169,7 +169,7 @@ export default function NosotrosContent() {
       {/* Footer de la página: volver a home */}
       <div className="border-t border-gray-100 py-10 flex justify-center">
         <Link
-          href="/#nosotros"
+          href="/#equipo"
           className="inline-flex items-center gap-3 text-[#99042F] hover:text-[#7a0326] font-roboto font-medium transition-colors"
         >
           <Image

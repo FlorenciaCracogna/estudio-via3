@@ -78,14 +78,14 @@ export default function Partnerships() {
 
   return (
     <section
-      id="partnerships"
+      id="red-de-especialistas"
       className="bg-[#DBCAB9] py-16 md:py-24 overflow-hidden w-full"
     >
       <div className="w-full max-w-6xl mx-auto px-6 md:px-12 mb-10">
         {/* Encabezado */}
         <div className="flex flex-col items-center text-center gap-4" data-reveal>
           <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide font-poppins">
-            Partnerships
+            Red de especialistas
           </h2>
           <p className="text-gray-800 text-sm md:text-base w-full max-w-2xl font-roboto leading-relaxed px-2">
             Empresas, Fundaciones y Colegas que, en alianzas estratégicas,

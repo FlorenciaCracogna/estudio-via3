@@ -4,6 +4,8 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { ULTIMAS_NOVEDADES_QUERY } from "@/sanity/lib/queries";
 import NovedadCard from "./NovedadCard";
 import { buttonClasses } from "./Button";
+import PreguntaInicial from "./PreguntaInicial";
+import { secciones } from "@/data/secciones";
 import type { Image as SanityImage } from "sanity";
 
 interface Novedad {
@@ -25,7 +27,7 @@ export default async function Novedades() {
 
   return (
     <section
-      id="novedades"
+      id="ideas"
       className="relative py-16 px-4 md:px-8 overflow-hidden"
       style={{
         backgroundImage:
@@ -35,11 +37,14 @@ export default async function Novedades() {
       }}
     >
       <h2
-        className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center font-poppins mb-12 relative z-10"
+        className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center font-poppins mb-3 relative z-10"
         data-reveal
       >
-        Novedades
+        {secciones.ideas.label}
       </h2>
+      <PreguntaInicial className="text-center max-w-2xl mx-auto mb-12 relative z-10">
+        {secciones.ideas.pregunta}
+      </PreguntaInicial>
 
       <div className="relative max-w-5xl mx-auto">
         {/* Puntitos decorativos, posicionados relativos al bloque de cards */}

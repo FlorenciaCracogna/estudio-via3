@@ -4,15 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-
-const navLinks = [
-  { label: "Acerca de Vía 3", hash: "el-estudio" },
-  { label: "Nosotros", hash: "nosotros" },
-  { label: "Soluciones", hash: "soluciones" },
-  { label: "Clientes", hash: "clientes" },
-  { label: "Novedades", hash: "novedades" },
-  { label: "Contacto", hash: "contacto" },
-];
+import { seccionesMenu } from "@/data/secciones";
 
 const sedes = [
   {
@@ -104,10 +96,10 @@ export default function Footer() {
           <div className="flex flex-col items-center lg:items-center mt-6 lg:mt-20">
             <p className="font-semibold text-lg mb-4">Navegar</p>
             <ul className="flex flex-col md:flex-row md:flex-wrap md:gap-x-6 gap-3 items-center lg:items-center lg:flex-col">
-              {navLinks.map((link) => (
-                <li key={link.hash}>
+              {seccionesMenu.map((link) => (
+                <li key={link.id}>
                   <Link
-                    href={getHref(link.hash)}
+                    href={getHref(link.id)}
                     className="text-base text-gray-300 hover:text-white transition-colors"
                   >
                     {link.label}

@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import { secciones } from "@/data/secciones";
+import PreguntaInicial from "./PreguntaInicial";
 
 const slots = [
   {
@@ -160,14 +162,17 @@ export default function ElEstudio() {
   const allImages = slots.flatMap((s) => s.images);
 
   return (
-    <section id="el-estudio" className="bg-white overflow-x-hidden w-full">
+    <section id="que-proponemos" className="bg-white overflow-x-hidden w-full">
       {/* ── PARTE 1: Título + texto + foto que sobresale ── */}
       <div className="relative py-16 md:py-24 overflow-hidden w-full max-w-full">
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12">
           <div className="md:max-w-[50%]" data-reveal>
-            <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center md:text-left mb-6 font-poppins">
-              El Estudio
+            <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center md:text-left mb-3 font-poppins">
+              {secciones.via3.label}
             </h2>
+            <PreguntaInicial className="text-center md:text-left mb-6">
+              {secciones.via3.pregunta}
+            </PreguntaInicial>
             <p className="text-gray-700 text-base md:text-lg leading-loose font-roboto">
               Somos una red dinámica de contactos entre personas y
               organizaciones, profesionales, empresas y marcas que,

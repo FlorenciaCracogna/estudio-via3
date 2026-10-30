@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useRef, useEffect } from "react";
 import { featuredClients } from "@/data/clients";
 import { buttonClasses } from "./Button";
+import PreguntaInicial from "./PreguntaInicial";
+import { secciones } from "@/data/secciones";
 
 const tickerItems = [...featuredClients, ...featuredClients];
 
@@ -40,14 +42,15 @@ export default function Clientes() {
 
   return (
     <section
-      id="clientes"
+      id="experiencia"
       className="bg-white py-16 md:py-24 overflow-hidden w-full"
     >
       <div className="w-full max-w-6xl mx-auto px-6 md:px-12 mb-10">
         <div className="flex flex-col items-center text-center gap-4" data-reveal>
           <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide font-poppins">
-            Clientes
+            {secciones.experiencia.label}
           </h2>
+          <PreguntaInicial>{secciones.experiencia.pregunta}</PreguntaInicial>
           <p className="text-gray-600 text-sm md:text-base max-w-2xl font-roboto leading-relaxed">
             Organizaciones y personas en confianza mutua.
           </p>

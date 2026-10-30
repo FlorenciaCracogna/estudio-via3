@@ -13,7 +13,7 @@ function nombreCorto(nombre: string) {
 export default function Nosotros() {
   return (
     <section
-      id="nosotros"
+      id="equipo"
       className="bg-white py-16 md:py-20 overflow-x-hidden w-full"
     >
       <div className="w-full max-w-6xl mx-auto px-6 md:px-12">
@@ -31,7 +31,7 @@ export default function Nosotros() {
           </div>
 
           <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center font-poppins mb-4">
-            Nosotros
+            Equipo
           </h2>
           <p className="text-gray-800 text-sm md:text-base text-center max-w-2xl font-roboto">
             Somos un equipo comprometido con la excelencia, guiado por la

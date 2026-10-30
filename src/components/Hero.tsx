@@ -29,7 +29,7 @@ export default function Hero() {
         </p>
 
         <a
-          href="#el-estudio"
+          href="#via3"
           className={buttonClasses({
             size: "lg",
             className: "hero-entrada [--hero-delay:300ms] mt-2",
