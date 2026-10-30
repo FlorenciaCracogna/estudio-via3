@@ -1,38 +1,31 @@
 import Image from "next/image";
 
-// Íconos del Word: líneas blancas sobre fondo negro opaco (no son PNG
-// transparentes). Con mix-blend-mode: screen el negro toma el color del
-// círculo bordó y sólo quedan las líneas blancas. Son de ~90 px: si el
-// cliente consigue versiones SVG o más grandes, conviene reemplazarlos.
+// Íconos de Cloudinary (los de la ex sección Pilares): PNG de 360 px con
+// fondo transparente y líneas blancas. Mismo tratamiento que tenían en
+// Pilares: 80x80 y mix-blend-mode: screen sobre el fondo oscuro.
+const CLOUDINARY = "https://res.cloudinary.com/dg8rew4w9/image/upload";
+
 const principios = [
   {
-    icono: "/iconos/como-trabajamos/aprendizaje-con-impacto.png",
-    ancho: 85,
-    alto: 80,
+    icono: `${CLOUDINARY}/v1781808689/target_lmxku9.png`,
     titulo: "Aprendizaje con impacto",
     texto:
       "Diseñamos experiencias y procesos que favorecen la transferencia del aprendizaje al trabajo y su contribución a los resultados del negocio.",
   },
   {
-    icono: "/iconos/como-trabajamos/soluciones-a-medida.png",
-    ancho: 92,
-    alto: 72,
+    icono: `${CLOUDINARY}/v1781808685/puzzle_rx2scb.png`,
     titulo: "Soluciones construidas para cada organización",
     texto:
       "Partimos de necesidades concretas y diseñamos soluciones alineadas con la estrategia, la cultura y los desafíos de cada organización.",
   },
   {
-    icono: "/iconos/como-trabajamos/mirada-integrada.png",
-    ancho: 98,
-    alto: 70,
+    icono: `${CLOUDINARY}/v1781808664/chess-brain_zzbdy4.png`,
     titulo: "Una mirada integrada",
     texto:
       "Vinculamos aprendizaje, gestión del talento, dinámica organizacional y desarrollo de capacidades para generar cambios sostenibles.",
   },
   {
-    icono: "/iconos/como-trabajamos/socios-estrategicos.png",
-    ancho: 109,
-    alto: 104,
+    icono: `${CLOUDINARY}/v1781808683/personas_jiqoq9.png`,
     titulo: "Socios estratégicos para el desarrollo",
     texto:
       "Trabajamos junto a nuestros clientes con cercanía, compromiso y orientación a resultados.",
@@ -71,19 +64,15 @@ export default function ComoTrabajamos() {
           {principios.map((p) => (
             <li
               key={p.titulo}
-              className="flex flex-col gap-4 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm"
+              className="flex flex-col items-center text-center gap-4 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm"
             >
-              <div className="isolate flex h-16 w-16 items-center justify-center rounded-full bg-[#99042F]">
-                <Image
-                  src={p.icono}
-                  alt=""
-                  width={p.ancho}
-                  height={p.alto}
-                  // contrast() lleva el fondo casi negro (#111) a negro puro antes
-                  // del blend; si no, queda un cuadrado apenas visible.
-                  className="h-9 w-auto mix-blend-screen [filter:contrast(1.5)]"
-                />
-              </div>
+              <Image
+                src={p.icono}
+                alt=""
+                width={80}
+                height={80}
+                className="w-20 h-20 mix-blend-screen"
+              />
               <h3 className="font-poppins text-lg font-semibold leading-snug text-white">
                 {p.titulo}
               </h3>

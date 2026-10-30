@@ -54,7 +54,7 @@ Sitio web institucional para **Estudio Vía3**, desarrollado de forma freelance.
 | **Hero** | Presentación principal del estudio |
 | **Navbar** | Navegación con transparencia según el scroll |
 | **Vía3 / Qué proponemos** | Presentación con un mosaico de fotos que rotan con crossfade (se pausa fuera de pantalla) |
-| **Cómo trabajamos** | 4 principios con íconos sobre círculo bordó (`mix-blend-mode: screen`) |
+| **Cómo trabajamos** | 4 principios con íconos de Cloudinary (`mix-blend-mode: screen`) |
 | **Equipo** (ex Nosotros) | Grilla del equipo y una página `/equipo` con el detalle de cada integrante (query params en la URL) |
 | **Soluciones** | Cards con overlay en hover; el botón "Saber más" abre un modal con el detalle y un formulario de consulta |
 | **Red de especialistas** (ex Partnerships) | Carrusel infinito (velocidad por tiempo) con flechas, swipe y pausa en hover o fuera de pantalla |
