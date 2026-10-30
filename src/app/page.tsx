@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import ElEstudio from "@/components/ElEstudio";
+import QueProponemos from "@/components/QueProponemos";
 import NuestrosPilares from "@/components/NuestrosPilares";
 import Nosotros from "@/components/Nosotros";
 import Partnerships from "@/components/Partnerships";
@@ -15,7 +15,7 @@ export default function Home() {
       <Hero />
       {/* Vía3: Qué proponemos, Cómo trabajamos, Equipo y Red de especialistas */}
       <div id="via3">
-        <ElEstudio />
+        <QueProponemos />
         <NuestrosPilares />
         <Nosotros />
         <Partnerships />
