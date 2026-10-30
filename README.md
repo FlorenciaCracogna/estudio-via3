@@ -56,7 +56,7 @@ Sitio web institucional para **Estudio Vía3**, desarrollado de forma freelance.
 | **Vía3 / Qué proponemos** | Presentación con un mosaico de fotos que rotan con crossfade (se pausa fuera de pantalla) |
 | **Cómo trabajamos** | 4 principios con íconos de Cloudinary (`mix-blend-mode: screen`) |
 | **Equipo** (ex Nosotros) | Cards con foto, rol, especialidad y LinkedIn de cada integrante (`/equipo` y `/nosotros` redirigen a `/#equipo`) |
-| **Soluciones** | Cards con overlay en hover; el botón "Saber más" abre un modal con el detalle y un formulario de consulta |
+| **Soluciones** | 3 cards con descripción visible; "Saber más" abre un modal con las subsoluciones en acordeón y un formulario de consulta (sticky en desktop) |
 | **Red de especialistas** (ex Partnerships) | Carrusel infinito (velocidad por tiempo) con flechas, swipe y pausa en hover o fuera de pantalla |
 | **Experiencia** (ex Clientes) | Carrusel de logos y una página `/experiencia` con la grilla completa |
 | **Ideas** (ex Novedades) | Contenido dinámico que se obtiene de Sanity CMS, con una página `/ideas` |

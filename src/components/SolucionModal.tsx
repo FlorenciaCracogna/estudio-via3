@@ -148,13 +148,13 @@ export default function SolucionModal({ solucion, onClose }: Props) {
               id={tituloId}
               className="text-[#99042F] font-poppins font-bold text-2xl md:text-3xl uppercase mb-4"
             >
-              {solucion.modalTitulo}
+              {solucion.nombreCompleto}
             </h2>
             <p className="text-gray-700 font-roboto mb-6 leading-relaxed">
               {solucion.descripcion}
             </p>
 
-            <AcordeonSubsoluciones secciones={solucion.secciones} />
+            <AcordeonSubsoluciones subsoluciones={solucion.subsoluciones} />
           </div>
 
           {/* Desktop: sticky dentro del panel (que es el que scrollea), siempre visible */}
