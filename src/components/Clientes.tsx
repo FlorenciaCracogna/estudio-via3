@@ -17,7 +17,6 @@ const VELOCIDAD = 40; // px por segundo (por tiempo, no por frame: igual a 60 y 
 export default function Clientes() {
   const seccionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const pausado = useRef(false);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -38,7 +37,7 @@ export default function Clientes() {
     const tick = (ahora: number) => {
       const dt = Math.min(ahora - ultimo, 100) / 1000; // tope si la pestaña estuvo en segundo plano
       ultimo = ahora;
-      if (!pausado.current) pos = (pos + VELOCIDAD * dt) % periodo();
+      pos = (pos + VELOCIDAD * dt) % periodo();
       track.style.transform = `translate3d(${-pos}px, 0, 0)`;
       frame = requestAnimationFrame(tick);
     };
@@ -91,12 +90,6 @@ export default function Clientes() {
           ref={trackRef}
           className="flex items-center gap-6 md:gap-8 will-change-transform py-4"
           style={{ width: "max-content" }}
-          onPointerEnter={(e) => {
-            if (e.pointerType === "mouse") pausado.current = true;
-          }}
-          onPointerLeave={(e) => {
-            if (e.pointerType === "mouse") pausado.current = false;
-          }}
         >
           {tickerItems.map((cliente, i) => (
             <div
