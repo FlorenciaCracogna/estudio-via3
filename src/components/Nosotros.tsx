@@ -18,7 +18,7 @@ export default function Nosotros() {
       <div className="w-full max-w-6xl mx-auto px-6 md:px-12">
         {/* Quiénes somos */}
         <div
-          className="grid lg:grid-cols-[2fr_3fr] gap-6 lg:gap-16 items-start mb-16 md:mb-24"
+          className="grid lg:grid-cols-[2fr_3fr] gap-6 lg:gap-16 items-start lg:items-center mb-16 md:mb-24"
           data-reveal
         >
           <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center lg:text-left font-poppins">
