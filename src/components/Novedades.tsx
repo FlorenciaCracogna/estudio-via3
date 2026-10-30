@@ -5,6 +5,7 @@ import { ULTIMAS_NOVEDADES_QUERY } from "@/sanity/lib/queries";
 import NovedadCard from "./NovedadCard";
 import { buttonClasses } from "./Button";
 import PreguntaInicial from "./PreguntaInicial";
+import IdeasVacio from "./IdeasVacio";
 import { secciones } from "@/data/secciones";
 import type { Image as SanityImage } from "sanity";
 
@@ -21,9 +22,9 @@ export default async function Novedades() {
   const { data: novedades } = await sanityFetch({
     query: ULTIMAS_NOVEDADES_QUERY,
   });
-  const novedadesList = novedades as Novedad[];
-
-  if (!novedadesList || novedadesList.length === 0) return null;
+  const novedadesList = (novedades as Novedad[] | null) ?? [];
+  // Sin publicaciones la sección se muestra igual, para que #ideas no quede roto
+  const hayIdeas = novedadesList.length > 0;
 
   return (
     <section
@@ -63,31 +64,39 @@ export default async function Novedades() {
           className="absolute bottom-6 left-2 w-10 h-auto md:w-14 md:-left-10 opacity-90 z-0"
         />
 
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 relative z-10"
-          data-reveal-stagger
-        >
-          {novedadesList.map((novedad) => (
-            <NovedadCard
-              key={novedad._id}
-              title={novedad.title}
-              excerpt={novedad.excerpt}
-              image={novedad.image}
-              link={novedad.link}
-              buttonText={novedad.buttonText}
-            />
-          ))}
-        </div>
+        {hayIdeas ? (
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 relative z-10"
+            data-reveal-stagger
+          >
+            {novedadesList.map((novedad) => (
+              <NovedadCard
+                key={novedad._id}
+                title={novedad.title}
+                excerpt={novedad.excerpt}
+                image={novedad.image}
+                link={novedad.link}
+                buttonText={novedad.buttonText}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="relative z-10 py-6" data-reveal>
+            <IdeasVacio />
+          </div>
+        )}
       </div>
 
-      <div className="flex justify-center mt-12 relative z-10" data-reveal>
-        <Link
-          href="/ideas"
-          className={buttonClasses()}
-        >
-          Más novedades
-        </Link>
-      </div>
+      {hayIdeas && (
+        <div className="flex justify-center mt-12 relative z-10" data-reveal>
+          <Link
+            href="/ideas"
+            className={buttonClasses()}
+          >
+            Más novedades
+          </Link>
+        </div>
+      )}
     </section>
   );
 }

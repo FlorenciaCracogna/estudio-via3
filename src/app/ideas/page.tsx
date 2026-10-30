@@ -3,6 +3,7 @@ import Link from "next/link";
 import { sanityFetch } from "@/sanity/lib/live";
 import { TODAS_NOVEDADES_QUERY } from "@/sanity/lib/queries";
 import NovedadCard from "@/components/NovedadCard";
+import IdeasVacio from "@/components/IdeasVacio";
 import type { Image as SanityImage } from "sanity";
 import type { Metadata } from "next";
 import { socialMetadata } from "@/lib/seo";
@@ -84,9 +85,7 @@ export default async function IdeasPage() {
       {/* Grilla con fondo beige */}
       <div className="bg-[#DBCAB9] py-16 px-6 md:px-12">
         {!novedadesList || novedadesList.length === 0 ? (
-          <p className="text-center text-gray-500 font-roboto">
-            Todavía no hay novedades cargadas.
-          </p>
+          <IdeasVacio />
         ) : (
           <div
             className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
