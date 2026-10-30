@@ -7,37 +7,32 @@ import PreguntaInicial from "./PreguntaInicial";
 
 const CLOUDINARY = "https://res.cloudinary.com/dg8rew4w9/image/upload";
 
-// Fotos del collage anterior, repartidas entre las 4 piezas del mosaico.
-// Cada pieza rota sólo sus fotos, con su propio intervalo y un desfase
-// inicial, para que nunca cambien todas juntas.
+// Fotos del collage anterior (todas horizontales), repartidas entre las 3
+// piezas del mosaico. Las de menor resolución (collage-4: 1040 px, collage-7:
+// 960 px) van sólo en las chicas para que no se pixelen. Cada pieza rota sus
+// fotos con su propio intervalo y desfase, así nunca cambian todas juntas.
 const piezas = [
   {
-    fotos: ["v1781808175/collage-1_dkxjx1.jpg", "v1781808179/collage-5_jje6jd.jpg", "v1781808187/collage-9_toxeot.jpg"],
-    intervalo: 6000,
+    fotos: ["v1781808175/collage-1_dkxjx1.jpg", "v1781808183/collage-2_nbxwhh.jpg", "v1781808181/collage-6_shg0ct.jpg", "v1781808187/collage-9_toxeot.jpg"],
+    intervalo: 6500,
     desfase: 0,
-    className: "col-span-2",
-    sizes: "(min-width: 1024px) 38vw, (min-width: 768px) 60vw, 100vw",
-  },
-  {
-    fotos: ["v1781808183/collage-2_nbxwhh.jpg", "v1781808181/collage-6_shg0ct.jpg"],
-    intervalo: 7500,
-    desfase: 2500,
-    className: "hidden md:block md:row-span-2",
-    sizes: "(min-width: 1024px) 19vw, 30vw",
+    // Arriba, ancho completo
+    className: "col-span-2 aspect-[16/9] lg:aspect-auto",
+    sizes: "(min-width: 1280px) 700px, (min-width: 1024px) 55vw, 100vw",
   },
   {
     fotos: ["v1781808177/collage-3_ixtrri.jpg", "v1781808182/collage-7_vj7iv2.jpg"],
     intervalo: 5000,
-    desfase: 1200,
-    className: "",
-    sizes: "(min-width: 1024px) 19vw, (min-width: 768px) 30vw, 50vw",
+    desfase: 1500,
+    className: "aspect-[4/3] lg:aspect-auto",
+    sizes: "(min-width: 1280px) 340px, (min-width: 1024px) 28vw, 50vw",
   },
   {
-    fotos: ["v1781808176/collage-4_pf5yaz.jpg", "v1781808184/collage-8_mgzj2u.jpg"],
-    intervalo: 8500,
-    desfase: 4000,
-    className: "",
-    sizes: "(min-width: 1024px) 19vw, (min-width: 768px) 30vw, 50vw",
+    fotos: ["v1781808176/collage-4_pf5yaz.jpg", "v1781808179/collage-5_jje6jd.jpg", "v1781808184/collage-8_mgzj2u.jpg"],
+    intervalo: 7500,
+    desfase: 3500,
+    className: "aspect-[4/3] lg:aspect-auto",
+    sizes: "(min-width: 1280px) 340px, (min-width: 1024px) 28vw, 50vw",
   },
 ];
 
@@ -117,9 +112,9 @@ export default function QueProponemos() {
       id="que-proponemos"
       className="bg-white py-16 md:py-24 overflow-hidden w-full"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-[5fr_7fr] gap-10 lg:gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-[5fr_7fr] gap-10 lg:gap-16 lg:items-stretch">
         {/* Texto */}
-        <div data-reveal>
+        <div className="lg:self-center" data-reveal>
           <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#99042F] tracking-wide text-center lg:text-left mb-3 font-poppins">
             {secciones.via3.label}
           </h2>
@@ -142,8 +137,10 @@ export default function QueProponemos() {
           </p>
         </div>
 
-        {/* Mosaico: 3 piezas en mobile, 4 desde tablet. Grilla sin huecos. */}
-        <div className="relative" data-reveal>
+        {/* Mosaico: una foto grande arriba y dos chicas abajo, todas
+            horizontales. En desktop se estira al alto del texto (filas 3fr/2fr);
+            debajo de lg cada pieza usa su aspect ratio. */}
+        <div className="relative lg:h-full" data-reveal>
           <Image
             src="/arrows-dots/puntitos-bordo.png"
             alt=""
@@ -154,7 +151,7 @@ export default function QueProponemos() {
           />
           <div
             ref={mosaicoRef}
-            className="relative grid grid-cols-2 md:grid-cols-3 grid-rows-[11rem_8.5rem] md:grid-rows-[15rem_12rem] gap-3 md:gap-4"
+            className="relative grid grid-cols-2 gap-3 md:gap-4 lg:h-full lg:min-h-[26rem] lg:grid-rows-[3fr_2fr]"
           >
             {piezas.map((pieza) => (
               <PiezaMosaico
