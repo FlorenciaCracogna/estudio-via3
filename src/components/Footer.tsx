@@ -137,7 +137,11 @@ function TarjetaSede({ sede }: { sede: Sede }) {
             <span className="mt-0.5 shrink-0 text-gray-400">
               <EmailIcon />
             </span>
-            <span className="min-w-0 [overflow-wrap:anywhere]">{sede.mail}</span>
+            {/* Si no entra en una línea, corta después de la @ (nunca a mitad del dominio) */}
+            <span className="min-w-0">
+              {sede.mail.split("@")[0]}@<wbr />
+              <span className="whitespace-nowrap">{sede.mail.split("@")[1]}</span>
+            </span>
           </a>
         </li>
       </ul>
