@@ -13,10 +13,10 @@ interface NovedadCardProps {
 
 /**
  * Card de una Idea (tipo "novedad" en Sanity), de hasta 380 px de ancho (lo
- * fija la grilla). Imagen 2:1 recortada por Sanity respetando el hotspot que
- * se marque en el Studio, contenido centrado y resumen completo (el schema lo
- * limita a 200 caracteres). El botón queda abajo: todas las cards de una fila
- * miden lo mismo.
+ * fija la grilla). Imagen 19:8 (160 px de alto en la card de 380) recortada
+ * por Sanity respetando el hotspot que se marque en el Studio, contenido
+ * centrado y resumen completo (el schema lo limita a 300 caracteres). El botón
+ * queda abajo: todas las cards de una fila miden lo mismo.
  */
 export default function NovedadCard({
   title,
@@ -25,11 +25,11 @@ export default function NovedadCard({
   link,
   buttonText = "Saber más",
 }: NovedadCardProps) {
-  const imageUrl = urlFor(image).width(760).height(380).url();
+  const imageUrl = urlFor(image).width(760).height(320).url();
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-md transition duration-300 can-hover:hover:shadow-xl can-hover:motion-safe:hover:-translate-y-1">
-      <div className="relative aspect-[2/1] w-full overflow-hidden bg-gray-100">
+      <div className="relative aspect-[19/8] w-full overflow-hidden bg-gray-100">
         <Image
           src={imageUrl}
           alt=""
@@ -42,7 +42,7 @@ export default function NovedadCard({
         <h3 className="font-poppins text-xl font-bold leading-snug text-gray-900">
           {title}
         </h3>
-        <p className="mt-3 font-roboto text-[15px] md:text-base leading-relaxed text-gray-700">
+        <p className="mt-3 font-roboto text-sm md:text-[15px] leading-relaxed text-gray-700">
           {excerpt}
         </p>
         <div className="mt-auto pt-5">

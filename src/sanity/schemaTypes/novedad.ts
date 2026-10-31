@@ -38,12 +38,12 @@ export const novedad = defineType({
       name: "excerpt",
       title: "Resumen",
       description:
-        "Se muestra completo en la card de la web. Máximo 200 caracteres (2 o 3 oraciones cortas).",
+        "Se muestra completo en la card de la web. Máximo 300 caracteres (3 o 4 oraciones cortas).",
       type: "text",
       rows: 4,
       validation: (Rule) =>
-        Rule.required().max(200).error(
-          "El resumen puede tener hasta 200 caracteres: se muestra completo en la card y un texto más largo la desarma.",
+        Rule.required().max(300).error(
+          "El resumen puede tener hasta 300 caracteres: se muestra completo en la card y un texto más largo la desarma.",
         ),
     }),
     defineField({
