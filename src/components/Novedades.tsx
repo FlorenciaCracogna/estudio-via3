@@ -93,7 +93,7 @@ export default async function Novedades() {
             href="/ideas"
             className={buttonClasses()}
           >
-            Más novedades
+            Ver más ideas
           </Link>
         </div>
       )}
