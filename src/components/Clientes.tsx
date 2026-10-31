@@ -11,7 +11,7 @@ import { secciones } from "@/data/secciones";
 // Duplicamos la lista para el efecto infinito
 const tickerItems = [...clientesCarrusel, ...clientesCarrusel];
 
-const VELOCIDAD = 40; // px por segundo (por tiempo, no por frame: igual a 60 y 120 Hz)
+const VELOCIDAD = 55; // px por segundo (por tiempo, no por frame: igual a 60 y 120 Hz)
 
 /** Home → Experiencia: carrusel de logos y acceso a la página por sector. */
 export default function Clientes() {
