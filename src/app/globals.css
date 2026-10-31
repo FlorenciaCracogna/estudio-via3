@@ -53,6 +53,30 @@ body {
   .modal-panel[data-cerrando] {
     animation: modal-salida 200ms ease-in both;
   }
+
+  /* Panel del botón flotante de WhatsApp (ver WhatsAppFlotante.tsx) */
+  .whatsapp-panel {
+    transform-origin: bottom right;
+    animation: whatsapp-panel 180ms ease-out both;
+  }
+}
+
+@keyframes whatsapp-panel {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* El botón flotante no tapa el menú mobile ni el modal de Soluciones
+   (Navbar y SolucionModal marcan <body> mientras están abiertos) */
+body[data-menu-abierto] .whatsapp-flotante,
+body[data-modal-abierto] .whatsapp-flotante {
+  display: none;
 }
 
 @keyframes modal-fade {

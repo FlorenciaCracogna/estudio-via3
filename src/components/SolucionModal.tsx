@@ -45,8 +45,11 @@ export default function SolucionModal({ solucion, onClose }: Props) {
     const previo = document.activeElement as HTMLElement | null;
     panelRef.current?.focus({ preventScroll: true });
     document.body.style.overflow = "hidden";
+    // Oculta el WhatsApp flotante mientras el modal está abierto
+    document.body.setAttribute("data-modal-abierto", "");
     return () => {
       document.body.style.overflow = "";
+      document.body.removeAttribute("data-modal-abierto");
       previo?.focus({ preventScroll: true });
     };
   }, []);

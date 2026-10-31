@@ -29,6 +29,12 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Marca <body> mientras el menú mobile está abierto (oculta el WhatsApp flotante)
+  useEffect(() => {
+    document.body.toggleAttribute("data-menu-abierto", mobileOpen);
+    return () => document.body.removeAttribute("data-menu-abierto");
+  }, [mobileOpen]);
+
   // Esc cierra el menú mobile y devuelve el foco a la hamburguesa
   useEffect(() => {
     if (!mobileOpen) return;
