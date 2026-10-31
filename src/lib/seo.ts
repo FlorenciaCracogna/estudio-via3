@@ -41,7 +41,7 @@ export function socialMetadata({
   };
 }
 
-// Datos estructurados para Google. Mantener sincronizado con las sedes del Footer.
+// Datos estructurados para Google. Mantener sincronizado con src/data/sedes.ts.
 export const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",

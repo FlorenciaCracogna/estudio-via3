@@ -5,29 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { seccionesMenu } from "@/data/secciones";
-
-const sedes = [
-  {
-    nombre: "Sede Buenos Aires",
-    telefono: "+5411 51806029",
-    telefonoHref: "https://wa.me/541151806029",
-    mail: "julio.capra@estudiovia3.com.ar",
-    direccion: "Avda. Del Libertador 5582 – 14 D - CABA",
-    mapSrc:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.7111432390343!2d-58.446970524946025!3d-34.56086835523525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb5c9608fdfa7%3A0xf9a8644fb79679d8!2sAv.%20del%20Libertador%205582%2C%20C1426%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1781016814668!5m2!1ses!2sar",
-    mapTitle: "Ubicación Sede Buenos Aires",
-  },
-  {
-    nombre: "Sede NEA",
-    telefono: "+54362 4388507",
-    telefonoHref: "https://wa.me/543624388507",
-    mail: "antonella.cracogna@estudiovia3.com.ar",
-    direccion: "Santiago del Estero 636 – Resistencia, Chaco",
-    mapSrc:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1251.804769298111!2d-58.99637730380771!3d-27.449372720192862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450d76712d733f%3A0x231520d84f9cb6c7!2sLic.%20en%20Psicolog%C3%ADa%20Antonella%20Cracogna!5e0!3m2!1ses!2sar!4v1781707500043!5m2!1ses!2sar",
-    mapTitle: "Ubicación Sede NEA",
-  },
-];
+import { sedes, whatsappHref } from "@/data/sedes";
 
 export default function Footer() {
   const [sedeActiva, setSedeActiva] = useState(0);
@@ -121,7 +99,7 @@ export default function Footer() {
             {/* Contacto */}
             <div className="flex flex-col gap-3">
               <a
-                href={sede.telefonoHref}
+                href={whatsappHref(sede)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-base text-gray-300 hover:text-white transition-colors"
