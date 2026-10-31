@@ -24,9 +24,9 @@ export default function Footer() {
 
   return (
     <footer className="bg-black text-white font-poppins">
-      <div className="max-w-6xl mx-auto px-6 md:px-8 pt-14 pb-12">
-        {/* Fila superior: logo con bajada + redes */}
-        <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
+      <div className="max-w-6xl mx-auto px-6 md:px-8 pt-12 pb-10">
+        {/* Bloque superior centrado: logo (el SVG incluye la bajada) y redes */}
+        <div className="flex flex-col items-center gap-5">
           <Link href="/" className="rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
             <Image
               src="/logo-blanco-subtitulo.svg"
@@ -55,7 +55,7 @@ export default function Footer() {
         </div>
 
         {/* Navegación en una línea */}
-        <nav aria-label="Pie de página" className="mt-10 border-y border-white/10 py-5">
+        <nav aria-label="Pie de página" className="mt-7 border-y border-white/10 py-4">
           <ul className="flex flex-wrap justify-center gap-x-1 gap-y-2 text-sm md:text-base">
             {seccionesMenu.map((link, i) => (
               <li key={link.id} className="flex items-center gap-1">
@@ -77,7 +77,7 @@ export default function Footer() {
 
         {/* Sedes lado a lado (Buenos Aires primero, orden de sedes.ts) */}
         {/* minmax(0,1fr): un mail largo no agranda la columna más allá de la pantalla */}
-        <div className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-6 md:grid-cols-[repeat(2,minmax(0,1fr))]">
+        <div className="mt-7 grid grid-cols-[minmax(0,1fr)] gap-6 md:grid-cols-[repeat(2,minmax(0,1fr))]">
           {sedes.map((sede) => (
             <TarjetaSede key={sede.id} sede={sede} />
           ))}
