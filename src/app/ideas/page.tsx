@@ -42,7 +42,7 @@ export default async function IdeasPage() {
     <main className="min-h-screen">
       {/* Header con fondo texturado */}
       <div
-        className="relative pt-24 md:pt-32 pb-16 px-6 md:px-12 overflow-hidden"
+        className="relative pt-24 md:pt-32 pb-10 px-6 md:px-12 overflow-hidden"
         style={{
           backgroundImage:
             "url('https://res.cloudinary.com/dg8rew4w9/image/upload/f_auto,q_auto/v1782760966/fondo_texturado_2_remimo.png')",
@@ -85,7 +85,7 @@ export default async function IdeasPage() {
       </div>
 
       {/* Grilla con fondo beige */}
-      <div className="bg-[#DBCAB9] py-16 px-6 md:px-12">
+      <div className="bg-[#DBCAB9] pt-4 pb-16 px-6 md:px-12">
         {!novedadesList || novedadesList.length === 0 ? (
           <IdeasVacio />
         ) : (
