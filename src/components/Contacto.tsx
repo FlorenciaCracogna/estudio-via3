@@ -31,8 +31,8 @@ export default function Contacto() {
 
         {/* Desktop: texto + WhatsApp a la izquierda, formulario a la derecha.
             Mobile: primero el texto y los botones, después el formulario. */}
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16 lg:items-center">
-          <div className="text-center lg:text-left" data-reveal>
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16 lg:items-start">
+          <div className="text-center lg:text-left lg:pt-10" data-reveal>
             {/* Texto propuesto: a confirmar con el cliente (ver docs/contenidos/PLAN.md) */}
             <p className="font-poppins text-xl md:text-2xl font-semibold leading-snug text-white">
               Contanos tu desafío y armamos una propuesta a medida para tu
