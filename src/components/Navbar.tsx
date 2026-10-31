@@ -16,6 +16,9 @@ export default function Navbar() {
   const [via3Abierto, setVia3Abierto] = useState(false);
   const [via3MobileAbierto, setVia3MobileAbierto] = useState(false);
   const botonVia3Ref = useRef<HTMLButtonElement>(null);
+  // Si el desplegable se abrió por hover, el click siguiente no lo cierra
+  // (si no, al acercar el mouse y hacer click en la flecha se abría y cerraba)
+  const abiertoPorHover = useRef(false);
   const hamburguesaRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
 
@@ -106,10 +109,16 @@ export default function Navbar() {
                 // Hover sólo con mouse: en pantallas táctiles grandes el tap
                 // dispararía pointerenter + click y el menú se cerraría solo.
                 onPointerEnter={(e) => {
-                  if (e.pointerType === "mouse") setVia3Abierto(true);
+                  if (e.pointerType === "mouse" && !via3Abierto) {
+                    abiertoPorHover.current = true;
+                    setVia3Abierto(true);
+                  }
                 }}
                 onPointerLeave={(e) => {
-                  if (e.pointerType === "mouse") setVia3Abierto(false);
+                  if (e.pointerType === "mouse") {
+                    abiertoPorHover.current = false;
+                    setVia3Abierto(false);
+                  }
                 }}
                 onBlur={(e) => {
                   if (!e.currentTarget.contains(e.relatedTarget as Node)) {
@@ -134,7 +143,13 @@ export default function Navbar() {
                   <button
                     ref={botonVia3Ref}
                     type="button"
-                    onClick={() => setVia3Abierto((prev) => !prev)}
+                    onClick={() => {
+                      if (abiertoPorHover.current) {
+                        abiertoPorHover.current = false;
+                        return;
+                      }
+                      setVia3Abierto((prev) => !prev);
+                    }}
                     aria-expanded={via3Abierto}
                     aria-controls="submenu-via3"
                     aria-label={`Secciones de ${label}`}
