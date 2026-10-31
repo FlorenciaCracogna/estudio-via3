@@ -10,11 +10,14 @@ const CLOUDINARY = "https://res.cloudinary.com/dg8rew4w9/image/upload";
 // Fotos del collage anterior (todas horizontales), repartidas entre las 3
 // piezas del mosaico. Las de menor resolución (collage-4: 1040 px, collage-7:
 // 960 px) van sólo en las chicas para que no se pixelen. Cada pieza rota sus
-// fotos con su propio intervalo y desfase, así nunca cambian todas juntas.
+// fotos con su propio intervalo (3–5 s) y desfase, así cambian de a una. El
+// primer cambio llega poco después de que el mosaico entra en pantalla
+// (PRIMER_CAMBIO + desfase), para que se note aunque se scrollee rápido.
+const PRIMER_CAMBIO = 600;
 const piezas = [
   {
     fotos: ["v1781808175/collage-1_dkxjx1.jpg", "v1781808183/collage-2_nbxwhh.jpg", "v1781808181/collage-6_shg0ct.jpg", "v1781808187/collage-9_toxeot.jpg"],
-    intervalo: 6500,
+    intervalo: 4000,
     desfase: 0,
     // Arriba, ancho completo
     className: "col-span-2 aspect-[16/9] lg:aspect-auto",
@@ -22,15 +25,15 @@ const piezas = [
   },
   {
     fotos: ["v1781808177/collage-3_ixtrri.jpg", "v1781808182/collage-7_vj7iv2.jpg"],
-    intervalo: 5000,
-    desfase: 1500,
+    intervalo: 3200,
+    desfase: 900,
     className: "aspect-[4/3] lg:aspect-auto",
     sizes: "(min-width: 1280px) 340px, (min-width: 1024px) 28vw, 50vw",
   },
   {
     fotos: ["v1781808176/collage-4_pf5yaz.jpg", "v1781808179/collage-5_jje6jd.jpg", "v1781808184/collage-8_mgzj2u.jpg"],
-    intervalo: 7500,
-    desfase: 3500,
+    intervalo: 4800,
+    desfase: 1800,
     className: "aspect-[4/3] lg:aspect-auto",
     sizes: "(min-width: 1280px) 340px, (min-width: 1024px) 28vw, 50vw",
   },
@@ -75,7 +78,7 @@ function PiezaMosaico({
         () => setActual((i) => (i + 1) % fotos.length),
         intervalo,
       );
-    }, intervalo + desfase);
+    }, PRIMER_CAMBIO + desfase);
 
     return () => {
       clearTimeout(inicio);
@@ -95,7 +98,7 @@ function PiezaMosaico({
           alt=""
           fill
           sizes={sizes}
-          className={`object-cover transition-opacity duration-1000 ease-in-out ${
+          className={`object-cover transition-opacity duration-700 ease-in-out ${
             i === actual ? "opacity-100" : "opacity-0"
           }`}
         />
