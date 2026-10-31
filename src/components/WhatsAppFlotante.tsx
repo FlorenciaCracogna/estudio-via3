@@ -2,11 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { sedePorId, whatsappHref } from "@/data/sedes";
+import { sedes, whatsappHref } from "@/data/sedes";
 import WhatsAppIcon from "./WhatsAppIcon";
-
-// Orden en el panel: NEA primero, como lo pidió el cliente
-const opciones = [sedePorId("nea"), sedePorId("buenos-aires")];
 
 /**
  * Botón flotante de WhatsApp (abajo a la derecha, en todo el sitio salvo
@@ -66,7 +63,7 @@ export default function WhatsAppFlotante() {
             ¿Con qué sede querés hablar?
           </p>
           <ul className="flex flex-col gap-2">
-            {opciones.map((sede) => (
+            {sedes.map((sede) => (
               <li key={sede.id}>
                 <a
                   href={whatsappHref(sede)}
@@ -75,7 +72,7 @@ export default function WhatsAppFlotante() {
                   onClick={() => setAbierto(false)}
                   className="flex items-center gap-3 rounded-lg border border-gray-200 px-3 py-2.5 text-sm font-medium text-gray-800 hover:border-[#25D366] hover:bg-[#25D366]/10 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#128C7E]"
                 >
-                  <span className="text-[#128C7E]">
+                  <span className="text-[#25D366]">
                     <WhatsAppIcon size={18} />
                   </span>
                   {sede.nombre}

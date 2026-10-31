@@ -20,6 +20,8 @@ export interface Sede {
   mapTitle: string;
 }
 
+// El orden de la lista es el de todo el sitio (footer, WhatsApp flotante y
+// Contacto): Buenos Aires primero.
 export const sedes: Sede[] = [
   {
     id: "buenos-aires",
@@ -44,10 +46,6 @@ export const sedes: Sede[] = [
     mapTitle: "Ubicación Sede NEA",
   },
 ];
-
-/** Sede por id (para mostrarlas en un orden propio, por ejemplo NEA primero). */
-export const sedePorId = (id: Sede["id"]) =>
-  sedes.find((s) => s.id === id) as Sede;
 
 /** Link de WhatsApp a la sede, con el mensaje prearmado codificado en la URL. */
 export const whatsappHref = (sede: Sede) =>

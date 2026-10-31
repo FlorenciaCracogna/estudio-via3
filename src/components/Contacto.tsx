@@ -4,9 +4,7 @@ import SolucionForm from "./SolucionForm";
 import PreguntaInicial from "./PreguntaInicial";
 import WhatsAppIcon from "./WhatsAppIcon";
 import { secciones } from "@/data/secciones";
-import { sedePorId, whatsappHref } from "@/data/sedes";
-
-const sedesWhatsApp = [sedePorId("nea"), sedePorId("buenos-aires")];
+import { sedes, whatsappHref } from "@/data/sedes";
 
 export default function Contacto() {
   return (
@@ -44,14 +42,15 @@ export default function Contacto() {
             <p className="mt-8 font-roboto text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
               ¿Preferís WhatsApp?
             </p>
-            <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:justify-center lg:flex-col lg:items-start xl:flex-row">
-              {sedesWhatsApp.map((sede) => (
+            <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:justify-center lg:flex-col lg:items-start">
+              {sedes.map((sede) => (
                 <a
                   key={sede.id}
                   href={whatsappHref(sede)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2.5 rounded-md border-2 border-white px-5 py-3 font-roboto text-sm font-medium tracking-wide text-white transition-colors hover:bg-white hover:text-[#99042F] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  // Identidad de WhatsApp: verde de marca, texto e ícono blancos, sans del sistema
+                  className="inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-[#25D366] px-6 py-3 font-[system-ui,-apple-system,'Segoe_UI',Roboto,Helvetica,Arial,sans-serif] text-[15px] font-semibold text-white shadow-md transition-colors hover:bg-[#1EBE5A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   <WhatsAppIcon size={20} />
                   WhatsApp {sede.nombre}
