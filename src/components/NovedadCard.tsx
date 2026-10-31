@@ -14,8 +14,9 @@ interface NovedadCardProps {
 /**
  * Card de una Idea (tipo "novedad" en Sanity), de hasta 380 px de ancho (lo
  * fija la grilla). Imagen 2:1 recortada por Sanity respetando el hotspot que
- * se marque en el Studio, contenido centrado, extracto a 3 líneas y botón
- * alineado abajo: todas las cards de una fila miden lo mismo.
+ * se marque en el Studio, contenido centrado y resumen completo (el schema lo
+ * limita a 200 caracteres). El botón queda abajo: todas las cards de una fila
+ * miden lo mismo.
  */
 export default function NovedadCard({
   title,
@@ -41,7 +42,7 @@ export default function NovedadCard({
         <h3 className="font-poppins text-xl font-bold leading-snug text-gray-900">
           {title}
         </h3>
-        <p className="mt-3 line-clamp-3 font-roboto text-[15px] md:text-base leading-relaxed text-gray-700">
+        <p className="mt-3 font-roboto text-[15px] md:text-base leading-relaxed text-gray-700">
           {excerpt}
         </p>
         <div className="mt-auto pt-5">
