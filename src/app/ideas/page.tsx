@@ -90,7 +90,7 @@ export default async function IdeasPage() {
           <IdeasVacio />
         ) : (
           <div
-            className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="max-w-6xl mx-auto grid grid-cols-[repeat(auto-fit,minmax(min(100%,17rem),23.75rem))] justify-center gap-8"
             data-reveal-stagger
           >
             {novedadesList.map((novedad) => (

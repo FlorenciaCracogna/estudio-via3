@@ -66,7 +66,7 @@ export default async function Novedades() {
 
         {hayIdeas ? (
           <div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 relative z-10"
+            className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,17rem),23.75rem))] justify-center gap-8 relative z-10"
             data-reveal-stagger
           >
             {novedadesList.map((novedad) => (
