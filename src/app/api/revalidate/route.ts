@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
       return new NextResponse("Firma inválida", { status: 401 });
     }
 
-    // Limpia el caché de todo el sitio (home, /novedades y cualquier página futura)
+    // Limpia el caché de todo el sitio (home, /ideas y cualquier página futura)
     revalidatePath("/", "layout");
 
     return NextResponse.json({ revalidated: true, type: body?._type });

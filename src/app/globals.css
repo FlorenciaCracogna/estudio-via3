@@ -14,19 +14,22 @@
 body {
   background: #ffffff;
   color: #171717;
-  overflow-x: hidden;
+  /* Resguardo, no solución: hoy ningún elemento se pasa del ancho (verificado de
+     320 a 393 px). clip, a diferencia de hidden, no convierte al body en
+     contenedor de scroll: no rompe position: sticky ni deja paneo lateral en iOS. */
+  overflow-x: clip;
 }
 
 .titulo-seccion {
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 /* La aparición al hacer scroll se anima desde ScrollReveal.tsx (Web Animations API) */
 @media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
   /* Entrada del Hero: zoom lento de la foto + textos en secuencia */
   .hero-zoom {
     animation: hero-zoom 8s ease-out both;
@@ -53,6 +56,30 @@ html {
   .modal-panel[data-cerrando] {
     animation: modal-salida 200ms ease-in both;
   }
+
+  /* Panel del botón flotante de WhatsApp (ver WhatsAppFlotante.tsx) */
+  .whatsapp-panel {
+    transform-origin: bottom right;
+    animation: whatsapp-panel 180ms ease-out both;
+  }
+}
+
+@keyframes whatsapp-panel {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* El botón flotante no tapa el menú mobile ni el modal de Soluciones
+   (Navbar y SolucionModal marcan <body> mientras están abiertos) */
+body[data-menu-abierto] .whatsapp-flotante,
+body[data-modal-abierto] .whatsapp-flotante {
+  display: none;
 }
 
 @keyframes modal-fade {
@@ -115,12 +142,23 @@ html {
   }
 }
 
-section[id] {
-  scroll-margin-top: 90px;
+/* Altura de la navbar fija (h-16 / lg:h-20): las anclas del home la compensan
+   para que el título de la sección no quede tapado. El aire lo da el padding
+   de cada sección; sumar más deja ver el final de la sección anterior. */
+:root {
+  --navbar-h: 4rem;
 }
 
 @media (min-width: 1024px) {
-  section[id] {
-    scroll-margin-top: 100px;
+  :root {
+    --navbar-h: 5rem;
+  }
+}
+
+/* En @layer base para poder pisarlo con scroll-mt-* (los estilos sin capa le
+   ganan a las utilidades de Tailwind sin importar la especificidad) */
+@layer base {
+  main [id] {
+    scroll-margin-top: var(--navbar-h);
   }
 }

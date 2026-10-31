@@ -11,6 +11,13 @@ interface NovedadCardProps {
   buttonText?: string;
 }
 
+/**
+ * Card de una Idea (tipo "novedad" en Sanity), de hasta 380 px de ancho (lo
+ * fija la grilla). Imagen 19:8 (160 px de alto en la card de 380) recortada
+ * por Sanity respetando el hotspot que se marque en el Studio, contenido
+ * centrado y resumen completo (el schema lo limita a 300 caracteres). El botón
+ * queda abajo: todas las cards de una fila miden lo mismo.
+ */
 export default function NovedadCard({
   title,
   excerpt,
@@ -18,31 +25,38 @@ export default function NovedadCard({
   link,
   buttonText = "Saber más",
 }: NovedadCardProps) {
-  const imageUrl = urlFor(image).width(800).url();
+  const imageUrl = urlFor(image).width(760).height(320).url();
 
   return (
-    <div className="flex flex-col bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-      <div className="relative w-full h-48 bg-gray-50 flex items-center justify-center">
+    <article className="group flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-md transition duration-300 can-hover:hover:shadow-xl can-hover:motion-safe:hover:-translate-y-1">
+      <div className="relative aspect-[19/8] w-full overflow-hidden bg-gray-100">
         <Image
           src={imageUrl}
-          alt={title}
+          alt=""
           fill
-          sizes="(max-width: 768px) 100vw, 500px"
-          className="object-contain"
+          sizes="(min-width: 440px) 380px, 100vw"
+          className="object-cover transition-transform duration-500 ease-out can-hover:motion-safe:group-hover:scale-105"
         />
       </div>
-      <div className="flex flex-col items-center text-center p-5 flex-1">
-        <h3 className="font-poppins font-bold text-lg text-gray-900 mb-3">{title}</h3>
-        <p className="text-sm text-gray-600 mb-5 flex-1">{excerpt}</p>
-        <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={buttonClasses()}
-        >
-          {buttonText}
-        </a>
+      <div className="flex flex-1 flex-col items-center p-6 text-center">
+        <h3 className="font-poppins text-xl font-bold leading-snug text-gray-900">
+          {title}
+        </h3>
+        <p className="mt-3 font-roboto text-sm md:text-[15px] leading-relaxed text-gray-700">
+          {excerpt}
+        </p>
+        <div className="mt-auto pt-5">
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonClasses()}
+          >
+            {buttonText}
+            <span className="sr-only">: {title} (abre en una pestaña nueva)</span>
+          </a>
+        </div>
       </div>
-    </div>
+    </article>
   );
 }

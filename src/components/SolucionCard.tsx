@@ -1,11 +1,16 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import type { Solucion } from "@/data/soluciones";
-import BoldText from "./BoldText";
 import Button from "./Button";
 
 type Props = Solucion & { onSaberMas: () => void };
 
+/**
+ * Card de una categoría de Soluciones. La descripción se ve siempre; el hover
+ * (sólo con mouse) suma la elevación, la sombra, el zoom de la foto y la
+ * flecha del botón. El botón queda abajo aunque los textos tengan largos
+ * distintos (h-full + mt-auto).
+ */
 export default function SolucionCard({
   titulo,
   descripcion,
@@ -14,31 +19,28 @@ export default function SolucionCard({
 }: Props) {
   return (
     <div className="group h-full flex flex-col bg-white rounded-lg overflow-hidden shadow-md transition duration-300 can-hover:motion-safe:hover:-translate-y-1.5 can-hover:hover:shadow-xl">
-      <div className="order-1 relative w-full h-56 md:h-64 overflow-hidden">
+      <div className="relative w-full h-52 md:h-56 overflow-hidden">
         <Image
           src={imagen}
-          alt={titulo}
+          alt=""
           fill
           sizes="(max-width: 768px) 100vw, 320px"
-          className="object-cover transition duration-500 can-hover:group-hover:brightness-[0.3] can-hover:motion-safe:group-hover:scale-105 can-hover:group-focus-within:brightness-[0.3]"
+          className="object-cover transition duration-500 can-hover:motion-safe:group-hover:scale-105"
         />
-        <div className="hidden can-hover:block absolute inset-0 bg-black opacity-0 group-hover:opacity-50 group-focus-within:opacity-50 transition-opacity duration-300" />
-        <div className="hidden can-hover:flex absolute inset-0 items-center justify-center p-6 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300">
-          <p className="text-white text-center text-sm font-roboto leading-relaxed">
-            <BoldText text={descripcion} />
-          </p>
-        </div>
       </div>
 
-      <div className="order-2 flex flex-col flex-grow px-4 pt-4 md:pt-5 pb-5">
-        <h3 className="text-center font-poppins font-bold text-gray-900 text-lg">
+      <div className="flex flex-col flex-grow px-5 pt-5 pb-6 text-center">
+        <p className="font-poppins text-xs font-semibold uppercase tracking-[0.2em] text-[#99042F]">
+          Soluciones para
+        </p>
+        <h3 className="mt-1 font-poppins font-bold text-gray-900 text-lg leading-snug">
           {titulo}
         </h3>
-        <p className="can-hover:hidden text-center text-sm font-roboto text-gray-700 pt-3 leading-relaxed">
-          <BoldText text={descripcion} />
+        <p className="pt-3 text-sm font-roboto text-gray-700 leading-relaxed">
+          {descripcion}
         </p>
-        <div className="mt-auto pt-4 flex justify-center">
-          <Button onClick={onSaberMas}>
+        <div className="mt-auto pt-5 flex justify-center">
+          <Button onClick={onSaberMas} aria-label={`Saber más sobre ${titulo}`}>
             Saber más
             <ArrowRight
               size={16}

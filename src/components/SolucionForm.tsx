@@ -7,11 +7,14 @@ import Button from "./Button";
 type Props = {
   defaultSolucion?: string;
   variant?: "dark" | "light";
+  /** Espaciado reducido (modal de Soluciones): entra entero en 1366x768. */
+  compacto?: boolean;
 };
 
 export default function SolucionForm({
   defaultSolucion = "",
   variant = "dark",
+  compacto = false,
 }: Props) {
   const [form, setForm] = useState({
     nombre: "",
@@ -64,13 +67,15 @@ export default function SolucionForm({
   };
 
   const isLight = variant === "light";
+  const padding = compacto ? "px-6 py-5" : "px-6 py-8 md:px-8 md:py-10";
+  const campo = `w-full border border-gray-200 rounded-md px-3 ${compacto ? "py-1.5" : "py-2"} text-sm bg-gray-50 focus:outline-none focus:border-[#99042F]`;
 
   return (
     <div
       className={
         isLight
-          ? "bg-white rounded-2xl px-6 py-8 md:px-8 md:py-10"
-          : "rounded-2xl px-6 py-8 md:px-8 md:py-10"
+          ? `bg-white rounded-2xl ${padding}`
+          : `rounded-2xl ${padding}`
       }
       style={
         isLight
@@ -99,7 +104,7 @@ export default function SolucionForm({
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 gap-4 mb-4">
+          <div className={`grid grid-cols-1 ${compacto ? "gap-2.5 mb-2.5" : "gap-4 mb-4"}`}>
             <div>
               <label
                 className={`text-sm mb-1 block font-semibold ${
@@ -113,7 +118,7 @@ export default function SolucionForm({
                 placeholder="Ernesto Pérez"
                 value={form.nombre}
                 onChange={handleChange}
-                className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm bg-gray-50 focus:outline-none focus:border-[#99042F]"
+                className={campo}
               />
             </div>
             <div>
@@ -129,7 +134,7 @@ export default function SolucionForm({
                 placeholder="Vía3"
                 value={form.empresa}
                 onChange={handleChange}
-                className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm bg-gray-50 focus:outline-none focus:border-[#99042F]"
+                className={campo}
               />
             </div>
             <div>
@@ -145,7 +150,7 @@ export default function SolucionForm({
                 placeholder="Gerente zonal"
                 value={form.cargo}
                 onChange={handleChange}
-                className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm bg-gray-50 focus:outline-none focus:border-[#99042F]"
+                className={campo}
               />
             </div>
             <div>
@@ -162,7 +167,7 @@ export default function SolucionForm({
                 placeholder="ernestoperez@via3.com"
                 value={form.email}
                 onChange={handleChange}
-                className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm bg-gray-50 focus:outline-none focus:border-[#99042F]"
+                className={campo}
               />
             </div>
             <div>
@@ -178,7 +183,7 @@ export default function SolucionForm({
                 placeholder="11 2345 6789"
                 value={form.telefono}
                 onChange={handleChange}
-                className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm bg-gray-50 focus:outline-none focus:border-[#99042F]"
+                className={campo}
               />
             </div>
             <div>
@@ -193,7 +198,7 @@ export default function SolucionForm({
                 name="solucion"
                 value={form.solucion}
                 onChange={handleChange}
-                className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm bg-gray-50 focus:outline-none focus:border-[#99042F] text-gray-700"
+                className={`${campo} text-gray-700`}
               >
                 <option value="">Seleccionar...</option>
                 {soluciones.map((s) => (
@@ -205,7 +210,7 @@ export default function SolucionForm({
             </div>
           </div>
 
-          <div className="mb-6">
+          <div className={compacto ? "mb-4" : "mb-6"}>
             <label
               className={`text-sm mb-1 block font-semibold ${
                 isLight ? "text-gray-700" : "text-white"
@@ -218,8 +223,8 @@ export default function SolucionForm({
               placeholder="Contanos..."
               value={form.mensaje}
               onChange={handleChange}
-              rows={4}
-              className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm bg-gray-50 focus:outline-none focus:border-[#99042F] resize-none"
+              rows={compacto ? 3 : 4}
+              className={`${campo} resize-none`}
             />
           </div>
 
