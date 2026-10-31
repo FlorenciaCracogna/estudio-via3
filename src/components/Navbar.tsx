@@ -50,6 +50,36 @@ export default function Navbar() {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [mobileOpen]);
 
+  // Sección activa: en el home, la que cruza el centro de la pantalla; en las
+  // rutas internas, la que corresponde a la página.
+  const [seccionVisible, setSeccionVisible] = useState<string | null>(null);
+  useEffect(() => {
+    if (pathname !== "/") return;
+    const elementos = seccionesMenu
+      .map(({ id }) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) if (e.isIntersecting) setSeccionVisible(e.target.id);
+        // Arriba de todo (Hero y banda de números) no hay sección activa
+        if (window.scrollY < (elementos[0]?.offsetTop ?? 0) - window.innerHeight / 2) {
+          setSeccionVisible(null);
+        }
+      },
+      { rootMargin: "-50% 0px -50% 0px" },
+    );
+    elementos.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [pathname]);
+  const seccionActiva =
+    pathname === "/experiencia"
+      ? "experiencia"
+      : pathname === "/ideas"
+        ? "ideas"
+        : pathname === "/"
+          ? seccionVisible
+          : null;
+
   const getHref = (hash: string) => {
     if (pathname === "/") return `#${hash}`;
     return `/#${hash}`;
@@ -67,6 +97,13 @@ export default function Navbar() {
   const colorLink = solida
     ? "text-gray-700 hover:text-[#99042F]"
     : "text-white hover:text-white/80";
+  // Ítem activo: bordó sobre la navbar sólida; sobre el Hero, blanco subrayado
+  const claseLink = (id: string) =>
+    seccionActiva === id
+      ? solida
+        ? "text-[#99042F] underline decoration-2 underline-offset-8"
+        : "text-white underline decoration-2 underline-offset-8"
+      : colorLink;
 
   return (
     <nav
@@ -136,7 +173,8 @@ export default function Navbar() {
                   <Link
                     href={getHref(id)}
                     onClick={(e) => handleNavClick(e, id)}
-                    className={`text-sm font-medium tracking-wide uppercase transition-colors duration-200 ${colorLink} ${focoVisible}`}
+                    aria-current={seccionActiva === id ? "location" : undefined}
+                    className={`text-sm font-medium tracking-wide uppercase transition-colors duration-200 ${claseLink(id)} ${focoVisible}`}
                   >
                     {label}
                   </Link>
@@ -188,7 +226,8 @@ export default function Navbar() {
                 <Link
                   href={getHref(id)}
                   onClick={(e) => handleNavClick(e, id)}
-                  className={`text-sm font-medium tracking-wide uppercase transition-colors duration-200 ${colorLink} ${focoVisible}`}
+                  aria-current={seccionActiva === id ? "location" : undefined}
+                  className={`text-sm font-medium tracking-wide uppercase transition-colors duration-200 ${claseLink(id)} ${focoVisible}`}
                 >
                   {label}
                 </Link>
@@ -253,7 +292,8 @@ export default function Navbar() {
                     <Link
                       href={getHref(id)}
                       onClick={(e) => handleNavClick(e, id)}
-                      className="flex-1 px-6 py-3 text-sm font-medium tracking-wide uppercase text-gray-700 hover:text-[#99042F] transition-colors duration-200 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#99042F]"
+                      aria-current={seccionActiva === id ? "location" : undefined}
+                      className="flex-1 px-6 py-3 text-sm font-medium tracking-wide uppercase text-gray-700 aria-[current]:text-[#99042F] hover:text-[#99042F] transition-colors duration-200 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#99042F]"
                     >
                       {label}
                     </Link>
@@ -291,7 +331,8 @@ export default function Navbar() {
                   <Link
                     href={getHref(id)}
                     onClick={(e) => handleNavClick(e, id)}
-                    className="flex items-center justify-between px-6 py-3 text-sm font-medium tracking-wide uppercase text-gray-700 hover:text-[#99042F] transition-colors duration-200 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#99042F]"
+                    aria-current={seccionActiva === id ? "location" : undefined}
+                    className="flex items-center justify-between px-6 py-3 text-sm font-medium tracking-wide uppercase text-gray-700 aria-[current]:text-[#99042F] hover:text-[#99042F] transition-colors duration-200 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#99042F]"
                   >
                     {label}
                   </Link>
