@@ -80,7 +80,7 @@ export default function Navbar() {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }
           }}
-          className={`flex-shrink-0 ${focoVisible}`}
+          className={`min-w-0 shrink ${focoVisible}`}
         >
           <Image
             src={
@@ -92,7 +92,7 @@ export default function Navbar() {
             width={600}
             height={160}
             loading="eager"
-            className="h-12 md:h-16 lg:h-24 w-auto"
+            className="h-12 md:h-16 lg:h-24 w-auto max-w-full object-contain object-left"
           />
         </Link>
 

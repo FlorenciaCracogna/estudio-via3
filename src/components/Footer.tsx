@@ -99,7 +99,9 @@ function TarjetaSede({ sede }: { sede: Sede }) {
   const [mapaAbierto, setMapaAbierto] = useState(false);
   const mapaId = `mapa-${sede.id}`;
   const fila =
-    "inline-flex items-start gap-3 text-sm md:text-base text-gray-300 text-left";
+    // max-w-full + min-w-0: un mail largo se corta dentro de la fila en vez de
+    // ensancharla más allá de la pantalla (teléfonos de 360 px o menos)
+    "inline-flex max-w-full items-start gap-3 text-sm md:text-base text-gray-300 text-left";
 
   return (
     <div className="flex min-w-0 flex-col items-center rounded-xl bg-[#1a1a1a] p-6 text-center md:items-start md:text-left">
@@ -113,7 +115,7 @@ function TarjetaSede({ sede }: { sede: Sede }) {
           </span>
           {sede.direccion}
         </li>
-        <li>
+        <li className="max-w-full">
           <a
             href={whatsappHref(sede)}
             target="_blank"
@@ -127,7 +129,7 @@ function TarjetaSede({ sede }: { sede: Sede }) {
             <span className="sr-only"> (WhatsApp, abre en una pestaña nueva)</span>
           </a>
         </li>
-        <li>
+        <li className="max-w-full">
           <a
             href={`mailto:${sede.mail}`}
             className={`${fila} min-w-0 rounded-sm transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white`}
@@ -135,7 +137,7 @@ function TarjetaSede({ sede }: { sede: Sede }) {
             <span className="mt-0.5 shrink-0 text-gray-400">
               <EmailIcon />
             </span>
-            <span className="break-words [overflow-wrap:anywhere]">{sede.mail}</span>
+            <span className="min-w-0 [overflow-wrap:anywhere]">{sede.mail}</span>
           </a>
         </li>
       </ul>

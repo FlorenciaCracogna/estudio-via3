@@ -14,7 +14,10 @@
 body {
   background: #ffffff;
   color: #171717;
-  overflow-x: hidden;
+  /* Resguardo, no solución: hoy ningún elemento se pasa del ancho (verificado de
+     320 a 393 px). clip, a diferencia de hidden, no convierte al body en
+     contenedor de scroll: no rompe position: sticky ni deja paneo lateral en iOS. */
+  overflow-x: clip;
 }
 
 .titulo-seccion {
