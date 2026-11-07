@@ -32,8 +32,8 @@ export const equipo: Integrante[] = [
     id: "maximiliano-contreras",
     nombre: "Lic. Maximiliano Contreras",
     rol: "Consultor asociado",
-    // PLACEHOLDER: la especialidad está pendiente del cliente (en el Word dice "ANTO ARMA").
-    especialidad: "Perfil profesional próximamente.",
+    especialidad:
+      "Especialista en evaluación de perfiles por competencias y desarrollo del talento.",
     foto: "https://ui-avatars.com/api/?name=Maximiliano+Contreras&background=99042F&color=fff&size=300&font-size=0.33",
     linkedin: "https://www.linkedin.com/in/maximilianocontreras/",
   },
