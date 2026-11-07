@@ -32,7 +32,7 @@ export default function Hero() {
           Aprendizaje Organizacional
         </h1>
 
-        <p className="hero-entrada [--hero-delay:150ms] mt-[clamp(0.75rem,2.5vh,1.75rem)] text-lg md:text-xl max-w-2xl text-white/90 leading-relaxed">
+        <p className="hero-entrada [--hero-delay:150ms] mt-[clamp(0.75rem,2.5vh,1.75rem)] text-xl md:text-2xl max-w-xl text-balance text-white/90 leading-relaxed">
           Ayudamos a las organizaciones a transformar conocimientos en
           resultados del negocio.
         </p>
