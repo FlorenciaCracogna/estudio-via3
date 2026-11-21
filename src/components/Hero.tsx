@@ -19,11 +19,12 @@ export default function Hero() {
         fill
         preload
         sizes="100vw"
-        className="hero-zoom object-cover object-center"
+        // Desaturada para que la foto quede de fondo y no compita con el texto
+        className="hero-zoom object-cover object-center saturate-[.55]"
       />
 
       {/* Overlay oscuro */}
-      <div className="absolute inset-0 bg-black/65" />
+      <div className="absolute inset-0 bg-black/75" />
 
       {/* Contenido */}
       <div className="relative z-10 flex-1 w-full max-w-6xl mx-auto px-6 flex flex-col items-center justify-center text-center text-white pt-[calc(var(--navbar-h)+clamp(1rem,4vh,3rem))] pb-[clamp(1.5rem,6vh,4.5rem)]">
@@ -31,7 +32,7 @@ export default function Hero() {
           Aprendizaje Organizacional
         </h1>
 
-        <p className="hero-entrada [--hero-delay:150ms] mt-[clamp(0.75rem,2.5vh,1.75rem)] text-lg md:text-xl max-w-2xl text-white/90 leading-relaxed">
+        <p className="hero-entrada [--hero-delay:150ms] mt-[clamp(0.75rem,2.5vh,1.75rem)] text-xl md:text-2xl max-w-xl text-balance text-white/90 leading-relaxed">
           Ayudamos a las organizaciones a transformar conocimientos en
           resultados del negocio.
         </p>

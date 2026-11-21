@@ -2,7 +2,12 @@
 
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
-import { Partner, partners } from "@/data/partners";
+import {
+  Partner,
+  partners,
+  hrefDeEnlace,
+  etiquetaDeEnlace,
+} from "@/data/partners";
 
 // Duplicamos la lista para el efecto infinito
 const tickerItems = [...partners, ...partners];
@@ -25,10 +30,10 @@ function PartnerCard({
 
   return (
     <a
-      href={partner.url}
+      href={hrefDeEnlace(partner.enlace)}
       target="_blank"
       rel="noopener noreferrer"
-      // La segunda copia es sólo visual: fuera del árbol de accesibilidad y del tab
+      aria-label={etiquetaDeEnlace(partner.nombre, partner.enlace)}      // La segunda copia es sólo visual: fuera del árbol de accesibilidad y del tab
       aria-hidden={duplicado || undefined}
       tabIndex={duplicado ? -1 : undefined}
       draggable={false}

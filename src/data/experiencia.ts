@@ -39,7 +39,9 @@ export const sectores: Sector[] = [
       { nombre: "Avon", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782397149/avon_pbirmt.jpg", carrusel: true },
       { nombre: "Gillette", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782396880/gillette_riqmla.jpg", carrusel: true },
       { nombre: "Barugel", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1782396882/barugel_qkpqwf.jpg" },
-      { nombre: "Selú", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1789226495/selu_ld9jcx.jpg" },
+      // Selú: el logo trae un círculo rosado muy claro de fondo. Grises + brillo lo
+      // vuelven blanco (el logo es negro, no pierde color) y e_trim deja sólo el texto.
+      { nombre: "Selú", logo: "https://res.cloudinary.com/dg8rew4w9/image/upload/e_grayscale/e_brightness:15/e_trim:10/v1789226495/selu_ld9jcx.jpg" },
     ],
   },
   {
