@@ -2,6 +2,7 @@
 // - texto: un string por párrafo, con comillas tipográficas (“ ”) al principio
 //   del primero y al final del último.
 // - logo: se reutiliza el de experiencia.ts; si la empresa no tiene, no va.
+//   Medifé y Cablevisión van sin logo de forma definitiva (decisión del cliente).
 import { sectores } from "./experiencia";
 
 export interface Testimonio {
