@@ -145,15 +145,15 @@ export const partners: Partner[] = [
     imagen: `${CLOUDINARY}/c_fill,g_face,w_400,h_400/f_auto,q_auto/v1794055795/carolina-sosa_fppvec.jpg`,
     tipo: "persona",
   },
-  // Sin foto todavía (placeholder de ui-avatars): van al final del carrusel.
   {
     id: "manuela-mascheroni",
     nombre: "Cra. Manuela Mascheroni",
     enlace: { tipo: "linkedin", url: "https://www.linkedin.com/in/manuemascheroni/" },
-    imagen:
-      "https://ui-avatars.com/api/?name=Manuela+Mascheroni&background=99042F&color=fff&size=200&font-size=0.33",
+    imagen: `${CLOUDINARY}/c_fill,g_face,w_400,h_400/f_auto,q_auto/v1795294835/manuela-mascheroni_pllqul.jpg`,
     tipo: "persona",
   },
+  // Sin foto (decisión del cliente): queda con las iniciales de ui-avatars, al
+  // final del carrusel.
   {
     id: "romina-beyne",
     nombre: "Lic. Romina Beyne",
