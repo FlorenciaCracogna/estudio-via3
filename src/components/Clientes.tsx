@@ -6,6 +6,7 @@ import { useRef, useEffect } from "react";
 import { clientesCarrusel } from "@/data/experiencia";
 import { buttonClasses } from "./Button";
 import PreguntaInicial from "./PreguntaInicial";
+import TestimoniosSlider from "./TestimoniosSlider";
 import { secciones } from "@/data/secciones";
 
 // Duplicamos la lista para el efecto infinito
@@ -107,6 +108,20 @@ export default function Clientes() {
               />
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Casos y experiencias */}
+      <div className="w-full max-w-6xl mx-auto px-6 md:px-12 mt-16 md:mt-20">
+        <h3
+          className="flex items-center justify-center gap-3 font-poppins text-sm font-semibold uppercase tracking-[0.2em] text-[#99042F] mb-8"
+          data-reveal
+        >
+          <span aria-hidden="true" className="h-px w-8 bg-[#99042F]" />
+          Casos y experiencias
+        </h3>
+        <div data-reveal>
+          <TestimoniosSlider />
         </div>
       </div>
 
