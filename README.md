@@ -53,13 +53,13 @@ Sitio web institucional para **Estudio Vía3**, desarrollado de forma freelance.
 |---|---|
 | **Hero** | Presentación principal del estudio |
 | **Navbar** | Navegación con transparencia según el scroll |
-| **El Estudio** | Presentación con un collage de imágenes en diagonal |
-| **Nuestros Pilares** | Acordeón con íconos exportados desde Figma (`mix-blend-mode: screen`) |
-| **Nosotros** | Grilla del equipo con páginas de detalle por integrante (query params en la URL) |
-| **Soluciones** | Cards con overlay en hover; el botón "Saber más" abre un modal con el detalle y un formulario de consulta |
-| **Partnerships** | Carrusel infinito con desplazamiento automático |
-| **Clientes** | Carrusel de logos y una página `/clientes` con la grilla completa |
-| **Novedades** | Contenido dinámico que se obtiene de Sanity CMS |
+| **Vía3 / Qué proponemos** | Presentación con un mosaico de fotos que rotan con crossfade (se pausa fuera de pantalla) |
+| **Cómo trabajamos** | 4 principios con íconos de Cloudinary (`mix-blend-mode: screen`) |
+| **Equipo** (ex Nosotros) | Cards con foto, rol, especialidad y LinkedIn de cada integrante (`/equipo` y `/nosotros` redirigen a `/#equipo`) |
+| **Soluciones** | 3 cards con descripción visible; "Saber más" abre un modal con las subsoluciones en acordeón y un formulario de consulta (sticky en desktop) |
+| **Red de especialistas** (ex Partnerships) | Carrusel infinito (velocidad por tiempo) con flechas, swipe y pausa en hover o fuera de pantalla |
+| **Experiencia** (ex Clientes) | Carrusel de logos y una página `/experiencia` con los clientes agrupados por sector en acordeón |
+| **Ideas** (ex Novedades) | Contenido dinámico que se obtiene de Sanity CMS, con una página `/ideas` |
 | **Contacto** | Formulario conectado con Resend |
 | **Footer** | Carrusel con las dos sedes, acceso a WhatsApp y Google Maps |
 

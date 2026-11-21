@@ -1,101 +1,128 @@
-export interface SeccionSolucion {
-  subtitulo: string;
-  items: string[];
+// Soluciones del home (Word 2026): las 3 categorías, su párrafo introductorio,
+// las subsoluciones con sus bullets y la foto de cada card.
+
+export interface Subsolucion {
+  titulo: string;
+  bullets: string[];
 }
 
 export interface Solucion {
   slug: string;
+  /** Nombre corto (va después de la etiqueta "Soluciones para"): título de
+   *  la card y del modal, y valor del select del formulario. */
   titulo: string;
+  /** Párrafo introductorio: se ve en la card y en el modal. */
   descripcion: string;
   imagen: string;
-  modalTitulo: string;
-  intro: string;
-  secciones: SeccionSolucion[];
+  subsoluciones: Subsolucion[];
 }
 
 export const soluciones: Solucion[] = [
   {
-    slug: "formacion",
-    titulo: "Formación",
+    slug: "aprendizaje-organizacional",
+    titulo: "Aprendizaje organizacional",
     descripcion:
-      "Capacitamos en todas aquellas **competencias interpersonales** en el ámbito laboral, siguiendo diferentes objetivos.",
+      "Diseñamos estrategias, cursos y experiencias de aprendizaje orientados a fortalecer capacidades y prácticas que las personas y los equipos necesitan para alcanzar mejores resultados.",
     imagen:
       "https://res.cloudinary.com/dg8rew4w9/image/upload/v1785593016/formacion_xo1zrd.jpg",
-    modalTitulo: "Soluciones para el aprendizaje organizacional",
-    intro:
-      "Dispositivos especialmente diseñados para contribuir con la formación laboral; focalizados en aquellas competencias que, en el ámbito organizacional, implican el marco de relaciones de una persona con sus niveles de reporte, sus pares, su entorno y su efectividad.",
-    secciones: [
+    subsoluciones: [
       {
-        subtitulo: "Relaciones con las personas a cargo",
-        items: [
-          "Conducción y liderazgo de equipos de trabajo.",
-          "Habilidades para la comunicación y el trabajo en equipo.",
-          "Gestión de las emociones y conversaciones complejas.",
+        titulo: "Aprendizaje para el desarrollo de líderes",
+        bullets: [
+          "Desarrollo de competencias de conducción y liderazgo.",
+          "Fortalecimiento de habilidades de coaching y acompañamiento de equipos.",
+          "Gestión de conversaciones de desarrollo y retroalimentación.",
+          "Liderazgo de procesos de cambio y transformación.",
         ],
       },
       {
-        subtitulo: "Relaciones con la Organización",
-        items: [
-          "Gestión del cambio cultural.",
-          "Gestión de proyectos a través de metodologías ágiles.",
-          "Comunidades de práctica y de aprendizaje.",
-          "Calidad en la cadena de servicio interno.",
+        titulo: "Aprendizaje para las relaciones de trabajo",
+        bullets: [
+          "Desarrollo de habilidades para la comunicación y el trabajo en equipo.",
+          "Gestión de las emociones.",
+          "Gestión de conversaciones complejas en contextos laborales.",
+          "Desarrollo de prácticas de colaboración y coordinación entre áreas.",
         ],
       },
       {
-        subtitulo: "Relaciones con los clientes de la Organización",
-        items: [
-          "Calidad de servicio y calidad de contacto: enfoque people experience.",
-          "Desarrollo de la actitud comercial.",
+        titulo: "Aprendizaje para la efectividad organizacional",
+        bullets: [
+          "Administración de procesos de gestión del cambio cultural.",
+          "Implementación de metodologías ágiles para la gestión de proyectos.",
+          "Mejora de la calidad en la cadena de servicio interno.",
         ],
       },
       {
-        subtitulo: "Relaciones con su desarrollo profesional",
-        items: [
-          "Planeamiento y control de gestión de la propia tarea.",
-          "Orientación a resultados y productividad.",
-          "Procesos de toma de decisiones.",
-          "Storytelling (Presentaciones orales efectivas).",
-          "Coordinación de reuniones de trabajo.",
+        titulo: "Aprendizaje para la relación con clientes",
+        bullets: [
+          "Desarrollo de estándares de calidad de servicio y calidad de contacto.",
+          "Fortalecimiento de la actitud comercial y la orientación al cliente.",
+        ],
+      },
+      {
+        titulo: "Aprendizaje para el desarrollo profesional",
+        bullets: [
+          "Optimización de prácticas de planeamiento y control de gestión de la propia tarea.",
+          "Desarrollo de habilidades para la orientación a resultados y la productividad.",
+          "Fortalecimiento de procesos de análisis y toma de decisiones.",
+          "Desarrollo de competencias de storytelling y presentaciones orales efectivas.",
+          "Mejora de la coordinación y conducción de reuniones de trabajo.",
         ],
       },
     ],
   },
   {
     slug: "estructura-organizacional",
-    titulo: "Estructura organizacional y potencial humano",
+    titulo: "Estructura organizacional y capital humano",
+    // Word: "para el que aprendizaje" → corregido a "para que el aprendizaje"
     descripcion:
-      "Brindamos un servicio de **asesoramiento, evaluación y diseño o reestructuración de los procesos**, para lograr un ambiente de trabajo organizado, con visión estratégica de futuro.",
+      "Desarrollamos procesos, herramientas y prácticas que generan las condiciones para que el aprendizaje se sostenga en el tiempo, se transfiera a los puestos de trabajo y se consolide como parte del crecimiento organizacional.",
+    // Foto muy panorámica (4000x1848): c_crop saca las sillas apiladas de la
+    // derecha y la pared de arriba, y deja la ronda de personas centrada.
     imagen:
-      "https://res.cloudinary.com/dg8rew4w9/image/upload/v1781807517/hero-bg_bc4nqs.jpg",
-    modalTitulo:
-      "Soluciones para la estructura organizacional y el capital humano",
-    intro:
-      "Conjunto de condiciones, procesos y herramientas, intencionalmente estructurados para anclar los aprendizajes esperables.",
-    secciones: [
+      "https://res.cloudinary.com/dg8rew4w9/image/upload/c_crop,x_440,y_160,w_2560,h_1600/v1793386552/estructura-organizacional_cfrxnl.jpg",
+    subsoluciones: [
       {
-        subtitulo: "Gestión del aprendizaje",
-        items: [
-          "Detección de aprendizajes requeridos; áreas o niveles organizacionales.",
-          "Planeamiento de capacitación organizacional: estratégicos, de desarrollo y de aprendizaje continuo.",
-          "Diseño de materiales educativos (kits de capacitación) para entrenamientos técnicos.",
-          "Formación de facilitadores internos para el aprendizaje.",
+        titulo: "Gestión del aprendizaje",
+        bullets: [
+          "Detección de necesidades de aprendizaje en áreas, equipos y niveles organizacionales.",
+          "Diseño de planes de capacitación estratégicos y de desarrollo continuo.",
+          "Construcción de trayectos y programas adaptados a cada organización.",
+          "Diseño de materiales educativos y kits de capacitación para entrenamientos técnicos.",
         ],
       },
       {
-        subtitulo: "Gestión del talento",
-        items: [
-          "Diseño organizacional: definición de organigramas, descripciones de puestos y generación de manual de funciones.",
-          "Construcción de modelos de competencias (skill master).",
-          "Construcción de perfiles laborales y mapa de saberes del rol.",
-          "Proceso de selección de personal y evaluaciones psicotécnicas.",
+        titulo: "Gestión del conocimiento",
+        bullets: [
+          "Construcción de mapas de saberes y conocimiento crítico.",
+          "Diseño de comunidades de práctica y aprendizaje.",
+          "Formación de facilitadores internos para multiplicar conocimientos y experiencias.",
+          "Implementación de mecanismos de evaluación de la capacitación.",
         ],
       },
       {
-        subtitulo: "Gestión del desempeño",
-        items: [
-          "Evaluaciones de desempeño y de potencial para la promoción o reestructuración de puestos.",
-          "Evaluaciones de clima laboral para medir el ambiente de trabajo y definir acciones de mejora.",
+        titulo: "Gestión del talento",
+        bullets: [
+          "Construcción de modelos de competencias y skill master.",
+          "Diseño de perfiles y competencias para roles laborales.",
+          "Desarrollo de procesos de selección de personal y evaluaciones psicotécnicas.",
+          "Diseño de estrategias de desarrollo y crecimiento profesional.",
+        ],
+      },
+      {
+        titulo: "Gestión del desempeño",
+        bullets: [
+          "Diseño e implementación de procesos de evaluación de desempeño.",
+          "Evaluación de potencial para promociones, sucesiones o rediseño de funciones.",
+          "Mediciones de clima laboral e identificación de oportunidades de mejora.",
+        ],
+      },
+      {
+        titulo: "Diseño organizacional",
+        bullets: [
+          "Diseño de estructuras organizativas y organigramas.",
+          "Elaboración de descripciones de puestos y manuales de funciones.",
+          "Definición de mecanismos para alinear roles y responsabilidades con la estrategia de la organización.",
         ],
       },
     ],
@@ -104,26 +131,31 @@ export const soluciones: Solucion[] = [
     slug: "bienestar-organizacional",
     titulo: "Bienestar organizacional",
     descripcion:
-      "Ofrecemos programas y actividades diseñadas para fomentar un **ambiente de trabajo saludable y positivo**, enfocándonos en el **desarrollo personal y colectivo de los colaboradores**.",
+      "Diseñamos programas e intervenciones orientados a construir entornos de trabajo saludables que favorezcan el bienestar individual y colectivo, las experiencias laborales positivas, el compromiso y el desarrollo.",
     imagen:
       "https://res.cloudinary.com/dg8rew4w9/image/upload/v1785593015/bienestar-organizacional_mue0ox.jpg",
-    modalTitulo: "Soluciones para el bienestar organizacional",
-    intro:
-      "Programas y actividades diseñados para fomentar un ambiente de trabajo saludable y positivo, enfocándose en el desarrollo personal y colectivo, la calidad de vida laboral y la optimización del ambiente de productividad.",
-    secciones: [
+    subsoluciones: [
       {
-        subtitulo: "Clima y salud laboral",
-        items: [
-          "Dispositivos de hábitos saludables en el ámbito laboral: salud física y mental, nutrición, actividades deportivas y manejo del estrés.",
-          "Estrategias y políticas de promoción del bienestar: ambiente laboral positivo, flexibilidad, reconocimiento y apoyo emocional.",
+        titulo: "Clima y salud laboral",
+        bullets: [
+          "Diseño de programas de salud física y mental en el ámbito laboral.",
+          "Promoción de hábitos saludables, nutrición, actividad física y manejo del estrés.",
+          "Implementación de estrategias y políticas orientadas a fortalecer el bienestar organizacional.",
         ],
       },
       {
-        subtitulo: "Integración",
-        items: [
-          "Coaching individual y grupal para alcanzar metas y fomentar el aprendizaje compartido.",
-          "Diseño e implementación de metodologías de Team building para el fortalecimiento de la colaboración intra y/o inter equipos.",
-          "Gestión de la diversidad y la inclusión.",
+        titulo: "Integración y desarrollo de equipos",
+        bullets: [
+          "Diseño e implementación de actividades de team building.",
+          "Favorecimiento de la integración intra e interequipos.",
+          "Desarrollo de iniciativas para la gestión de la diversidad y la inclusión.",
+        ],
+      },
+      {
+        titulo: "Coaching para el desarrollo",
+        bullets: [
+          "Implementación de procesos de coaching individual.",
+          "Facilitación de procesos de coaching grupal orientados a metas y desafíos compartidos.",
         ],
       },
     ],

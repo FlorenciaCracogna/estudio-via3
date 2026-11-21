@@ -1,8 +1,12 @@
 import { defineField, defineType } from "sanity";
 
+// La sección se llama "Ideas" (contenidos 2026). Sólo cambia la etiqueta visible
+// del Studio (title); el nombre interno sigue siendo "novedad" porque lo usan
+// los documentos ya cargados, las queries (_type == "novedad") y el webhook de
+// revalidación. No renombrarlo sin migrar los datos.
 export const novedad = defineType({
   name: "novedad",
-  title: "Novedad",
+  title: "Idea",
   type: "document",
   fields: [
     defineField({
@@ -33,9 +37,14 @@ export const novedad = defineType({
     defineField({
       name: "excerpt",
       title: "Resumen",
+      description:
+        "Se muestra completo en la card de la web. Máximo 300 caracteres (3 o 4 oraciones cortas).",
       type: "text",
       rows: 4,
-      validation: (Rule) => Rule.required().max(500),
+      validation: (Rule) =>
+        Rule.required().max(300).error(
+          "El resumen puede tener hasta 300 caracteres: se muestra completo en la card y un texto más largo la desarma.",
+        ),
     }),
     defineField({
       name: "link",
