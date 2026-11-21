@@ -7,6 +7,8 @@ import { socialMetadata } from "@/lib/seo";
 import { buttonClasses } from "@/components/Button";
 import PreguntaInicial from "@/components/PreguntaInicial";
 import AcordeonSectores from "@/components/AcordeonSectores";
+import TestimonioCard from "@/components/TestimonioCard";
+import { testimonios } from "@/data/testimonios";
 
 const description =
   "Organizaciones de consumo masivo, industria, energía, finanzas, salud, tecnología, logística y educación con las que trabajamos en Estudio Vía3.";
@@ -62,6 +64,29 @@ export default function ExperienciaPage() {
           <AcordeonSectores sectores={sectores} />
         </div>
       </div>
+
+      {/* Casos y experiencias */}
+      <section
+        aria-labelledby="casos-y-experiencias"
+        className="bg-gray-50 py-12 md:py-16 px-6 md:px-12"
+      >
+        <div className="max-w-6xl mx-auto">
+          <h2
+            id="casos-y-experiencias"
+            className="font-extrabold uppercase text-[#99042F] tracking-wide font-poppins text-2xl md:text-3xl text-center mb-8 md:mb-10"
+            data-reveal
+          >
+            Casos y experiencias
+          </h2>
+          <ul className="grid gap-6 md:grid-cols-2" data-reveal-stagger>
+            {testimonios.map((t) => (
+              <li key={t.id}>
+                <TestimonioCard testimonio={t} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       {/* CTA a contacto */}
       <div className="bg-[#99042F] py-14 md:py-16 px-6 text-center">

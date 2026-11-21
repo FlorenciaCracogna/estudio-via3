@@ -24,10 +24,9 @@ export default function TestimonioCard({
         “
       </span>
 
-      {/* flex-1 + justify-center: cuando la card es más alta que el texto
-          (slider con el alto del más largo, o grilla con cards de igual alto),
-          el espacio sobrante se reparte arriba y abajo del texto. */}
-      <blockquote className="my-6 flex flex-1 flex-col justify-center gap-4 font-roboto text-base leading-relaxed text-gray-700 md:text-lg">
+      {/* flex-1: en la grilla, las dos cards de una fila miden lo mismo y el pie
+          queda alineado abajo en ambas. */}
+      <blockquote className="my-6 flex flex-1 flex-col gap-4 font-roboto text-base leading-relaxed text-gray-700 md:text-lg">
         {texto.map((parrafo, i) => (
           <p key={i}>{parrafo}</p>
         ))}
