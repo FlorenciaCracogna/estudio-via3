@@ -44,6 +44,6 @@ export const desafios: Desafio[] = [
     titulo: "Construir entornos de trabajo saludables y sostenibles",
     texto:
       "El bienestar de las personas constituye una condición fundamental para favorecer el compromiso, el aprendizaje continuo y la sostenibilidad organizacional.",
-    foto: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1793385796/entornos-saludables-contenidos_qsdwqr.jpg",
+    foto: "https://res.cloudinary.com/dg8rew4w9/image/upload/v1795296375/entornos-trabajo-sostenible_pklanw.heic",
   },
 ];
