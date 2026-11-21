@@ -80,7 +80,13 @@ export default function ExperienciaPage() {
           </h2>
           <ul className="grid gap-6 md:grid-cols-2" data-reveal-stagger>
             {testimonios.map((t) => (
-              <li key={t.id}>
+              <li
+                key={t.id}
+                // Si quedan en cantidad impar, la última va sola en su fila:
+                // ocupa las 2 columnas con el ancho de una card, centrada
+                // (50% menos la mitad del gap-6).
+                className="md:last:odd:col-span-2 md:last:odd:mx-auto md:last:odd:w-[calc(50%-0.75rem)]"
+              >
                 <TestimonioCard testimonio={t} />
               </li>
             ))}
