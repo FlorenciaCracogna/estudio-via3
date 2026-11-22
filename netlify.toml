@@ -1,0 +1,9 @@
+# Netlify detecta Next.js e instala su runtime (@netlify/plugin-nextjs) solo:
+# no hace falta declararlo ni fijar su versión. Ver "Deploy en Netlify" en el
+# README.
+[build]
+  command = "npm run build"
+
+[build.environment]
+  # La misma versión de Node que se usa en desarrollo
+  NODE_VERSION = "24.14.0"
