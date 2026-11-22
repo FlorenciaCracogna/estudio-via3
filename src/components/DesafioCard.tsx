@@ -1,13 +1,10 @@
 "use client";
 
-import Image, { type ImageLoader } from "next/image";
+import Image from "next/image";
 import type { Desafio } from "@/data/desafios";
 
-// Cloudinary hace el resize y la conversión (f_auto: WebP/AVIF/JPEG según el
-// navegador). Así la foto HEIC llega convertida y no pasa por el optimizador
-// de Next, que no sabe decodificarla.
-const cloudinaryLoader: ImageLoader = ({ src, width }) =>
-  src.replace("/upload/", `/upload/f_auto,q_auto,c_limit,w_${width}/`);
+// Las fotos (algunas HEIC) las convierte y achica Cloudinary a través del
+// loader global (src/lib/image-loader.ts).
 
 /**
  * Card de un desafío.
@@ -34,7 +31,6 @@ export default function DesafioCard({ titulo, texto, foto }: Desafio) {
       {/* Foto */}
       <div className="absolute inset-0">
         <Image
-          loader={cloudinaryLoader}
           src={foto}
           alt=""
           fill

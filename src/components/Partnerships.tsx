@@ -52,6 +52,9 @@ function PartnerCard({
           alt={partner.nombre}
           fill
           draggable={false}
+          // El avatar de iniciales (ui-avatars) es un PNG chico de tamaño fijo:
+          // se usa tal cual, sin srcset
+          unoptimized={partner.imagen.includes("ui-avatars.com")}
           className={`${partner.tipo === "empresa" ? "object-contain p-4" : "object-cover p-0"} transition-opacity duration-300 ${hovered ? "opacity-40" : "opacity-100"}`}
           sizes="144px"
         />

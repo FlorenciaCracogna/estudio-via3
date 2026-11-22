@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    // Cada imagen se pide a su origen (Cloudinary, Sanity…), que hace el resize:
+    // no pasan por el optimizador de la plataforma (Image CDN de Netlify).
+    loader: "custom",
+    loaderFile: "./src/lib/image-loader.ts",
+    // Con el loader propio no se usan; quedan por si se vuelve al de Next.
     remotePatterns: [
       {
         protocol: "https",
