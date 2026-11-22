@@ -1,23 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import {
   Partner,
   partners,
   hrefDeEnlace,
   etiquetaDeEnlace,
 } from "@/data/partners";
+import { useCarruselInfinito } from "@/lib/useCarruselInfinito";
 
 // Duplicamos la lista para el efecto infinito
 const tickerItems = [...partners, ...partners];
 
-const VELOCIDAD = 50; // px por segundo (por tiempo, no por frame: igual a 60 y 120 Hz)
-const PAUSA_MANUAL = 4000; // ms sin auto-scroll después de usar flechas o swipe
-const DURACION_PASO = 450; // ms de la animación de cada flecha
-const UMBRAL_ARRASTRE = 6; // px para distinguir swipe de tap
-
-const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+const VELOCIDAD = 50; // px por segundo
 
 function PartnerCard({
   partner,
@@ -73,121 +69,11 @@ function PartnerCard({
 }
 
 export default function Partnerships() {
-  const seccionRef = useRef<HTMLElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  // Estado del carrusel en refs: se lee/escribe en cada frame sin re-renderizar
-  const pos = useRef(0);
-  const enHover = useRef(false);
-  const pausaHasta = useRef(0);
-  const paso = useRef<{ desde: number; hasta: number; inicio: number; dur: number } | null>(null);
-  const arrastre = useRef<{ x0: number; pos0: number; movido: boolean } | null>(null);
-  const reduceMotion = useRef(false);
-  const swipeReciente = useRef(false);
-
-  useEffect(() => {
-    const track = trackRef.current;
-    const seccion = seccionRef.current;
-    if (!track || !seccion) return;
-
-    reduceMotion.current = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    // Ancho de una vuelta: desde el primer item hasta su copia
-    const periodo = () => {
-      const items = track.children as HTMLCollectionOf<HTMLElement>;
-      return items[partners.length].offsetLeft - items[0].offsetLeft;
-    };
-
-    let frame = 0;
-    let ultimo = 0;
-    const tick = (ahora: number) => {
-      const dt = Math.min(ahora - ultimo, 100) / 1000; // tope por si la pestaña estuvo en segundo plano
-      ultimo = ahora;
-
-      if (paso.current) {
-        const { desde, hasta, inicio, dur } = paso.current;
-        const t = dur > 0 ? Math.min((ahora - inicio) / dur, 1) : 1;
-        pos.current = desde + (hasta - desde) * easeOutCubic(t);
-        if (t === 1) paso.current = null;
-      } else if (
-        !arrastre.current &&
-        !enHover.current &&
-        !reduceMotion.current &&
-        ahora >= pausaHasta.current
-      ) {
-        pos.current += VELOCIDAD * dt;
-      }
-
-      const p = periodo();
-      if (!paso.current && !arrastre.current) pos.current = ((pos.current % p) + p) % p;
-      const visible = ((pos.current % p) + p) % p;
-      track.style.transform = `translate3d(${-visible}px, 0, 0)`;
-
-      frame = requestAnimationFrame(tick);
-    };
-
-    // Sólo corre mientras la sección está en pantalla
-    const io = new IntersectionObserver(([entry]) => {
-      cancelAnimationFrame(frame);
-      if (entry.isIntersecting) {
-        ultimo = performance.now();
-        frame = requestAnimationFrame(tick);
-      }
-    });
-    io.observe(seccion);
-
-    return () => {
-      io.disconnect();
-      cancelAnimationFrame(frame);
-    };
-  }, []);
-
-  const mover = (direccion: 1 | -1) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const items = track.children as HTMLCollectionOf<HTMLElement>;
-    const ancho = items[1].offsetLeft - items[0].offsetLeft; // card + gap
-    const ahora = performance.now();
-    // Clicks seguidos se acumulan: se parte del destino del paso en curso
-    const base = paso.current?.hasta ?? pos.current;
-    paso.current = {
-      desde: pos.current,
-      hasta: base + direccion * ancho,
-      inicio: ahora,
-      dur: reduceMotion.current ? 0 : DURACION_PASO,
-    };
-    pausaHasta.current = ahora + PAUSA_MANUAL;
-  };
-
-  // Swipe (touch/lápiz). Con mouse se usan las flechas.
-  const onPointerDown = (e: React.PointerEvent) => {
-    if (e.pointerType === "mouse") return;
-    paso.current = null;
-    arrastre.current = { x0: e.clientX, pos0: pos.current, movido: false };
-  };
-  const onPointerMove = (e: React.PointerEvent) => {
-    const a = arrastre.current;
-    if (!a) return;
-    const dx = e.clientX - a.x0;
-    if (!a.movido && Math.abs(dx) > UMBRAL_ARRASTRE) {
-      a.movido = true;
-      (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
-    }
-    if (a.movido) pos.current = a.pos0 - dx;
-  };
-  const onPointerUp = () => {
-    if (!arrastre.current) return;
-    pausaHasta.current = performance.now() + PAUSA_MANUAL;
-    // Se deja el flag un instante para que el click del final del swipe no abra el link
-    const a = arrastre.current;
-    arrastre.current = null;
-    if (a.movido) {
-      swipeReciente.current = true;
-      setTimeout(() => (swipeReciente.current = false), 50);
-    }
-  };
+  // Swipe con el dedo; con mouse se usan las flechas
+  const { seccionRef, trackProps, mover } = useCarruselInfinito({
+    cantidad: partners.length,
+    velocidad: VELOCIDAD,
+  });
 
   return (
     <section
@@ -230,23 +116,8 @@ export default function Partnerships() {
         <div
           id="carrusel-especialistas"
           className="flex items-center gap-8 md:gap-10 will-change-transform py-4 touch-pan-y select-none"
-          ref={trackRef}
           style={{ width: "max-content" }}
-          onPointerEnter={(e) => {
-            if (e.pointerType === "mouse") enHover.current = true;
-          }}
-          onPointerLeave={(e) => {
-            if (e.pointerType === "mouse") enHover.current = false;
-          }}
-          onFocus={() => (enHover.current = true)}
-          onBlur={() => (enHover.current = false)}
-          onPointerDown={onPointerDown}
-          onPointerMove={onPointerMove}
-          onPointerUp={onPointerUp}
-          onPointerCancel={onPointerUp}
-          onClickCapture={(e) => {
-            if (swipeReciente.current) e.preventDefault();
-          }}
+          {...trackProps}
         >
           {tickerItems.map((partner, i) => (
             <PartnerCard
