@@ -78,8 +78,14 @@ export default function BandaNumeros() {
         data-reveal-stagger
       >
         {numeros.map((n) => (
-          <div key={n.label} className="flex flex-col-reverse items-center gap-2 px-4">
-            <dt className="font-roboto text-xs md:text-sm uppercase tracking-[0.25em] text-white/80">
+          // justify-end: en column-reverse apila desde arriba, así los números de
+          // una fila quedan a la misma altura aunque un texto ocupe dos líneas
+          <div key={n.label} className="flex flex-col-reverse justify-end items-center gap-2 px-4">
+            {/* El letter-spacing deja un espacio después de la última letra:
+                el pl del mismo valor lo compensa para que el texto quede
+                centrado con el número. font-medium y /90: a 12 px con /80 y
+                más tracking, en iPhone la E se leía como L ("CLILNTES"). */}
+            <dt className="font-roboto font-medium text-xs md:text-sm uppercase tracking-[0.2em] pl-[0.2em] text-center text-white/90">
               {n.label}
             </dt>
             <dd className="font-poppins font-extrabold text-4xl md:text-6xl leading-none tabular-nums">
