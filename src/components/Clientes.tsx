@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useEffect } from "react";
 import { clientesCarrusel } from "@/data/experiencia";
+import { useCarruselInfinito } from "@/lib/useCarruselInfinito";
 import { buttonClasses } from "./Button";
 import PreguntaInicial from "./PreguntaInicial";
 import TestimoniosSlider from "./TestimoniosSlider";
@@ -12,52 +12,18 @@ import { secciones } from "@/data/secciones";
 // Duplicamos la lista para el efecto infinito
 const tickerItems = [...clientesCarrusel, ...clientesCarrusel];
 
-const VELOCIDAD = 55; // px por segundo (por tiempo, no por frame: igual a 60 y 120 Hz)
+const VELOCIDAD = 55; // px por segundo
 
 /** Home → Experiencia: carrusel de logos y acceso a la página por sector. */
 export default function Clientes() {
-  const seccionRef = useRef<HTMLElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const track = trackRef.current;
-    const seccion = seccionRef.current;
-    if (!track || !seccion) return;
-    // Con reduced motion no hay auto-scroll: quedan los primeros logos y el botón
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    // Ancho de una vuelta: desde el primer logo hasta su copia
-    const periodo = () => {
-      const items = track.children as HTMLCollectionOf<HTMLElement>;
-      return items[clientesCarrusel.length].offsetLeft - items[0].offsetLeft;
-    };
-
-    let pos = 0;
-    let frame = 0;
-    let ultimo = 0;
-    const tick = (ahora: number) => {
-      const dt = Math.min(ahora - ultimo, 100) / 1000; // tope si la pestaña estuvo en segundo plano
-      ultimo = ahora;
-      pos = (pos + VELOCIDAD * dt) % periodo();
-      track.style.transform = `translate3d(${-pos}px, 0, 0)`;
-      frame = requestAnimationFrame(tick);
-    };
-
-    // Sólo corre mientras la sección está en pantalla
-    const io = new IntersectionObserver(([entry]) => {
-      cancelAnimationFrame(frame);
-      if (entry.isIntersecting) {
-        ultimo = performance.now();
-        frame = requestAnimationFrame(tick);
-      }
-    });
-    io.observe(seccion);
-
-    return () => {
-      io.disconnect();
-      cancelAnimationFrame(frame);
-    };
-  }, []);
+  // Sin flechas: se arrastra con el dedo o con el mouse. Con reduced motion
+  // no hay auto-scroll, pero se puede seguir moviendo a mano.
+  const { seccionRef, trackProps } = useCarruselInfinito({
+    cantidad: clientesCarrusel.length,
+    velocidad: VELOCIDAD,
+    pausaEnHover: false,
+    arrastreConMouse: true,
+  });
 
   return (
     <section
@@ -88,9 +54,9 @@ export default function Clientes() {
         <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
         <div
-          ref={trackRef}
-          className="flex items-center gap-6 md:gap-8 will-change-transform py-4"
+          className="flex items-center gap-6 md:gap-8 will-change-transform py-4 touch-pan-y select-none can-hover:cursor-grab can-hover:active:cursor-grabbing"
           style={{ width: "max-content" }}
+          {...trackProps}
         >
           {tickerItems.map((cliente, i) => (
             <div
@@ -104,6 +70,7 @@ export default function Clientes() {
                 alt={i >= clientesCarrusel.length ? "" : cliente.nombre}
                 width={140}
                 height={70}
+                draggable={false}
                 className="object-contain max-h-24 w-full"
               />
             </div>
