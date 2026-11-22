@@ -33,13 +33,16 @@ function PartnerCard({
       aria-hidden={duplicado || undefined}
       tabIndex={duplicado ? -1 : undefined}
       draggable={false}
-      className="relative flex-shrink-0 w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden cursor-pointer"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      // Sin hover (táctil): foto y, debajo, el nombre, todo dentro del mismo
+      // link. Con mouse el nombre aparece sobre la foto al pasar por encima.
+      className="relative flex-shrink-0 flex flex-col items-center gap-2 w-32 md:w-36 cursor-pointer can-hover:rounded-full"
+      // Sólo mouse: en táctil el tap dispara mouseenter y el overlay quedaba fijo
+      onPointerEnter={(e) => e.pointerType === "mouse" && setHovered(true)}
+      onPointerLeave={(e) => e.pointerType === "mouse" && setHovered(false)}
     >
       {/* Imagen / logo */}
       <div
-        className={`relative w-full h-full transition-all duration-300 ${
+        className={`relative w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden transition-all duration-300 ${
           partner.tipo === "empresa" ? "bg-white" : ""
         }`}
       >
@@ -54,16 +57,21 @@ function PartnerCard({
           className={`${partner.tipo === "empresa" ? "object-contain p-4" : "object-cover p-0"} transition-opacity duration-300 ${hovered ? "opacity-40" : "opacity-100"}`}
           sizes="144px"
         />
+
+        {/* Overlay oscuro + nombre en blanco (con mouse) */}
+        <div
+          className={`absolute inset-0 flex items-center justify-center p-2 bg-black/50 transition-opacity duration-300 ${hovered ? "opacity-100" : "opacity-0"}`}
+        >
+          <span className="text-center text-xs font-semibold text-white leading-tight font-roboto">
+            {partner.nombre}
+          </span>
+        </div>
       </div>
 
-      {/* Overlay oscuro + nombre en blanco */}
-      <div
-        className={`absolute inset-0 flex items-center justify-center p-2 bg-black/50 transition-opacity duration-300 ${hovered ? "opacity-100" : "opacity-0"}`}
-      >
-        <span className="text-center text-xs font-semibold text-white leading-tight font-roboto">
-          {partner.nombre}
-        </span>
-      </div>
+      {/* Nombre debajo de la foto (sin hover) */}
+      <span className="can-hover:hidden w-full text-center text-xs font-semibold text-gray-900 leading-tight font-roboto">
+        {partner.nombre}
+      </span>
     </a>
   );
 }
@@ -115,7 +123,9 @@ export default function Partnerships() {
         {/* Track */}
         <div
           id="carrusel-especialistas"
-          className="flex items-center gap-8 md:gap-10 will-change-transform py-4 touch-pan-y select-none"
+          // items-start: con el nombre debajo (táctil), las fotos quedan
+          // alineadas aunque los nombres ocupen distinta cantidad de líneas
+          className="flex items-start gap-8 md:gap-10 will-change-transform py-4 touch-pan-y select-none"
           style={{ width: "max-content" }}
           {...trackProps}
         >
