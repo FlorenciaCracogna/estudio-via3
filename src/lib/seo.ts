@@ -5,9 +5,12 @@ export const SITE_NAME = "Estudio Vía3";
 export const SITE_DESCRIPTION =
   "Aprendizaje organizacional: ayudamos a las organizaciones a transformar conocimientos en resultados del negocio. Soluciones de aprendizaje, estructura organizacional, capital humano y bienestar.";
 
-// Foto del Hero recortada a 1200x630 por Cloudinary para compartir en redes
-const OG_IMAGE =
-  "https://res.cloudinary.com/dg8rew4w9/image/upload/c_fill,w_1200,h_630,f_jpg,q_auto/v1781807517/hero-bg_bc4nqs.jpg";
+// Vista previa al compartir (WhatsApp, LinkedIn, X…): 1200x630, estática en
+// /public. Foto del Hero con velo bordó, logo y "Aprendizaje organizacional",
+// centrados para que también se lean en la miniatura cuadrada de WhatsApp.
+// Es relativa: se resuelve contra metadataBase (SITE_URL).
+const OG_IMAGE = "/og-image.jpg";
+const OG_IMAGE_ALT = "Vía3: aprendizaje organizacional";
 
 /** Open Graph + Twitter de una página, con la imagen del sitio. */
 export function socialMetadata({
@@ -29,14 +32,14 @@ export function socialMetadata({
       title,
       description,
       images: [
-        { url: OG_IMAGE, width: 1200, height: 630, alt: "Equipo Estudio Vía3" },
+        { url: OG_IMAGE, width: 1200, height: 630, alt: OG_IMAGE_ALT, type: "image/jpeg" },
       ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [OG_IMAGE],
+      images: [{ url: OG_IMAGE, alt: OG_IMAGE_ALT }],
     },
   };
 }
