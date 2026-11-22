@@ -18,6 +18,7 @@ Sitio web institucional para **Estudio Vía3**, desarrollado de forma freelance.
 - [Variables de entorno](#-variables-de-entorno)
 - [Sanity CMS](#-sanity-cms)
 - [Decisiones técnicas](#-decisiones-técnicas)
+- [Deploy en Netlify](#️-deploy-en-netlify)
 - [Capturas](#-capturas)
 - [Autora](#-autora)
 
@@ -151,6 +152,49 @@ Desde el Studio se pueden crear, editar y publicar novedades. Los cambios se ref
 - **El contenido está separado en dos tipos.** El contenido estable (equipo, clientes, partners, soluciones) está en archivos `data/*.ts` tipados. El contenido que cambia seguido (novedades) está en Sanity. Esto mantiene el CMS simple para el cliente.
 - **Las imágenes están en Cloudinary.** Se optimizan y se sirven desde una CDN, y el repositorio queda más liviano.
 - **Actualización de contenido en dos capas:** la Live Content API de Sanity (`<SanityLive />`) refleja los cambios en tiempo real mientras hay visitantes en el sitio. Además, un webhook (`/api/revalidate`) limpia el caché de Next.js cada vez que se crea, edita o borra una novedad. Así, los cambios del cliente se ven siempre, aunque nadie tenga el sitio abierto en ese momento.
+
+---
+
+## ☁️ Deploy en Netlify
+
+### Plan B: si el build falla por `proxy.ts`
+
+[`src/proxy.ts`](src/proxy.ts) redirige `/equipo` y `/nosotros` (con cualquier `?miembro=`) a `/#equipo` con un 301, y descarta el query string. Hay un reporte de que con `@netlify/plugin-nextjs` 5.16.x el build de Next 16 falla con `proxy.ts`. El error es un `ENOENT` en `copyTracedFiles` que menciona `proxy.js`. Si pasa, probá en este orden:
+
+1. **Fijar el runtime a 5.15.x** (con la 5.15.13 se reportó que funciona). Netlify no lo recomienda porque se dejan de recibir las actualizaciones automáticas, así que conviene sacarlo cuando salga el arreglo.
+
+   ```bash
+   npm install -D @netlify/plugin-nextjs@5.15.13
+   ```
+
+   Y en [`netlify.toml`](netlify.toml):
+
+   ```toml
+   [[plugins]]
+     package = "@netlify/plugin-nextjs"
+   ```
+
+   Para volver a la versión automática, borrá el bloque `[[plugins]]` y la dependencia de `package.json`.
+
+2. **Volver a la convención anterior, `middleware.ts`.** Renombrá `src/proxy.ts` a `src/middleware.ts` y la función `proxy` a `middleware`. El resto del archivo queda igual. Next 16 lo marca como deprecado, pero sigue funcionando y en Netlify corre como Edge Function.
+
+3. **Último recurso: una regla de Netlify.** Ojo: los redirects de Netlify pasan el query string al destino, igual que los de `next.config`. `/equipo?miembro=1` terminaría en `/?miembro=1#equipo`. El home ignora el parámetro, así que funciona, pero la URL queda sucia. Además, la documentación de Netlify no aclara si acepta un `#fragmento` en el destino, así que hay que probarlo en un deploy preview.
+
+   ```toml
+   [[redirects]]
+     from = "/equipo"
+     to = "/#equipo"
+     status = 301
+     force = true
+
+   [[redirects]]
+     from = "/nosotros"
+     to = "/#equipo"
+     status = 301
+     force = true
+   ```
+
+   Si se usa esta opción, hay que borrar `src/proxy.ts`.
 
 ---
 
