@@ -110,11 +110,22 @@ export default function Navbar() {
       aria-label="Principal"
       className={`font-poppins fixed top-0 w-full z-50 transition-all duration-500 ${solida ? "bg-white shadow-md" : "bg-transparent"}`}
     >
+      {/* Toque afuera del menú mobile: lo cierra. La capa transparente cubre la
+          pantalla por debajo del contenido de la navbar y se queda con el
+          toque, así no activa lo que hay debajo. */}
+      {mobileOpen && (
+        <div
+          aria-hidden="true"
+          className="fixed inset-0 -z-10 lg:hidden"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 lg:h-20">
         {/* Logo */}
         <Link
           href="/"
           onClick={(e) => {
+            setMobileOpen(false);
             if (pathname === "/") {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
