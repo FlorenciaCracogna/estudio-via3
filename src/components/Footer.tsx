@@ -86,9 +86,20 @@ export default function Footer() {
 
       {/* Copyright */}
       <div className="border-t border-white/10">
-        <p className="max-w-6xl mx-auto px-6 py-5 text-center text-sm text-gray-400">
-          Copyright © 2026 Vía3
-        </p>
+        <div className="max-w-6xl mx-auto px-6 py-5 text-center">
+          <p className="text-sm text-gray-400">Copyright © 2026 Vía3</p>
+          <p className="mt-1.5 text-xs text-gray-400">
+            Diseño y desarrollo:{" "}
+            <a
+              href="https://www.linkedin.com/in/florencia-cracogna/"
+              target="_blank"
+              rel="noopener"
+              className="underline decoration-gray-600 underline-offset-2 transition-colors hover:text-gray-300 hover:decoration-gray-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white rounded-sm"
+            >
+              Florencia Cracogna
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
