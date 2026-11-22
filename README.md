@@ -157,6 +157,64 @@ Desde el Studio se pueden crear, editar y publicar novedades. Los cambios se ref
 
 ## ☁️ Deploy en Netlify
 
+El sitio está preparado para el plan gratuito de Netlify:
+
+- [`netlify.toml`](netlify.toml) define el comando de build (`npm run build`) y la versión de Node, la misma que en desarrollo. Netlify detecta Next.js e instala su runtime solo, así que no hace falta declararlo ni fijar su versión.
+- Las imágenes **no pasan por el Image CDN de Netlify**. Un loader global ([`src/lib/image-loader.ts`](src/lib/image-loader.ts)) las pide directo a Cloudinary o a Sanity, que hacen el resize. Así no consumen ancho de banda de Netlify. El loader no depende de la plataforma: funciona igual en Vercel o en local.
+
+### 1. Crear el sitio
+
+En Netlify: **Add new project → Import an existing project → GitHub**, elegir este repositorio y `main` como rama de producción. La configuración de build se toma de `netlify.toml`.
+
+### 2. Variables de entorno
+
+Se cargan en **Project configuration → Environment variables**, con todos los scopes (Builds y Functions) y todos los contextos (Production y Deploy Previews):
+
+| Variable | Para qué | Nota |
+|---|---|---|
+| `NEXT_PUBLIC_SANITY_PROJECT_ID` | Proyecto de Sanity | Se lee **en el build**: sin ella, el build falla |
+| `NEXT_PUBLIC_SANITY_DATASET` | Dataset (`production`) | Se lee **en el build** |
+| `SANITY_REVALIDATE_SECRET` | Firma del webhook de `/api/revalidate` | Secreta. Tiene que coincidir con el *secret* del webhook |
+| `RESEND_API_KEY` | Envío de mails del formulario | Secreta |
+| `CONTACT_EMAIL` | Casilla que recibe las consultas | |
+
+`NEXT_PUBLIC_SANITY_API_VERSION` es opcional (por defecto `2026-06-30`). Si cambia una variable `NEXT_PUBLIC_*`, hay que volver a deployar, porque queda fija en el build.
+
+### 3. CORS de Sanity
+
+En [sanity.io/manage](https://www.sanity.io/manage) → proyecto → **API → CORS origins**, agregá:
+
+| Origen | Allow credentials |
+|---|---|
+| `https://<nombre-del-sitio>.netlify.app` | ✅ |
+| `https://estudiovia3.com.ar` (y `https://www.estudiovia3.com.ar` si se usa) | ✅ |
+
+Las credentials hacen falta para iniciar sesión en el Studio embebido (`/studio`). Sin el origen, además, `<SanityLive />` no se conecta y en la consola aparece un error de CORS. **No uses un comodín como `https://*.netlify.app` con credentials:** cualquier sitio de Netlify quedaría habilitado. Para probar el Studio en un deploy preview, agregá esa URL puntual y borrala después.
+
+### 4. Webhook de Sanity
+
+En **API → Webhooks → Create webhook**:
+
+- **URL:** `https://estudiovia3.com.ar/api/revalidate`. Mientras no esté el dominio, usá la URL `.netlify.app`, y si existía un webhook que apuntaba a Vercel, actualizalo.
+- **Dataset:** `production`
+- **Trigger on:** Create, Update y Delete
+- **Filter:** `_type == "novedad"`
+- **HTTP method:** POST
+- **Secret:** el mismo valor que `SANITY_REVALIDATE_SECRET`
+
+Para probarlo, editá una novedad y fijate en **Webhooks → Attempts log**: tiene que responder `200 {"revalidated": true}`. Un `401` indica que el secret no coincide.
+
+### 5. Cuidar los créditos del plan gratuito
+
+El plan gratuito tiene **300 créditos por mes con tope duro**: si se agotan, el sitio deja de servirse hasta el mes siguiente. Cada deploy a producción cuesta 15 créditos y cada GB de ancho de banda, 20.
+
+- **Iterar en deploy previews:** abrir un PR contra `main` genera un preview que **no consume créditos**, igual que los deploys de ramas y los deploys fallidos.
+- **Mergear a `main` en lote:** juntar varios cambios en un solo merge, porque cada push a `main` es un deploy de producción.
+- **Publicar contenido no cuesta deploys:** las novedades de Sanity se actualizan con el webhook y Live, sin rebuild.
+- **Revisar el consumo** en **Team → Billing → Usage**, sobre todo el primer mes.
+
+> Si el build falla con un `Module not found` de `next/font/google` (Roboto/Poppins), es un error intermitente al descargar las fuentes. Se resuelve con **Retry deploy → Clear cache and deploy site**.
+
 ### Plan B: si el build falla por `proxy.ts`
 
 [`src/proxy.ts`](src/proxy.ts) redirige `/equipo` y `/nosotros` (con cualquier `?miembro=`) a `/#equipo` con un 301, y descarta el query string. Hay un reporte de que con `@netlify/plugin-nextjs` 5.16.x el build de Next 16 falla con `proxy.ts`. El error es un `ENOENT` en `copyTracedFiles` que menciona `proxy.js`. Si pasa, probá en este orden:
