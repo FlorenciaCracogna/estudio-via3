@@ -33,7 +33,7 @@ export const equipo: Integrante[] = [
     especialidad:
       "Especialista en relaciones interpersonales, gestión emocional, bienestar y salud laboral.",
     foto: `${FOTO}/v1795294883/antonella_uaxn4x.jpg`,
-    linkedin: "https://www.linkedin.com/in/antonella-cracogna-94b2a8105/",
+    linkedin: "https://www.linkedin.com/in/antonella-cracogna-7607b020a/",
   },
   {
     id: "maximiliano-contreras",
